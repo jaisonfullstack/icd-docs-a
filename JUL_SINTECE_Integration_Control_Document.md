@@ -1175,6 +1175,112 @@ Accept: application/json
 | 3 | Name | String - 100 | O | Currency name | US Dollar |
 | 4 | Symbol | String - 5 | O | Currency symbol | $ |
 
+#### 5.1.6 Banks API
+
+**Business Purpose:** Manages banking institution data for payment processing and invoice generation in CNCA certificate transactions. Essential for financial settlements, payment validations, and generating proper invoicing documentation with correct banking details.
+
+**Endpoint:** `GET /api/Banks`
+
+**Request Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | $sort | String - 100 | O | OData sort parameter | Name |
+| 2 | Name | String - 200 | O | Filter by bank name | Standard Bank |
+| 3 | active | Boolean | O | Filter active records only | 1 |
+
+**UI Validation Rules:**
+- **BANK_UI_001**: Bank name filter optional, 1-200 characters
+- **BANK_UI_002**: Display active banks only in dropdown selection
+- **BANK_UI_003**: Validate bank selection for payment processing
+
+**Business Validation Rules:**
+- **BANK_BV_001**: Only active banks allowed for new payments
+- **BANK_BV_002**: Bank must support international transfers for foreign traders
+- **BANK_BV_003**: Bank details required for invoice generation
+
+**Response Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | Id | Integer | M | Unique bank identifier | 15 |
+| 2 | Name | String - 200 | M | Bank institution name | Standard Bank Angola |
+| 3 | Code | String - 20 | O | Bank code | SBA |
+| 4 | SwiftCode | String - 11 | O | International SWIFT code | SBICAOLU |
+| 5 | Active | Boolean | M | Active status indicator | true |
+
+**Error Codes:**
+- **BANK_E001**: "Invalid parameters" (HTTP 400)
+- **BANK_E002**: "Bank not authorized for transactions" (HTTP 422)
+- **BANK_E003**: "Inactive bank selected" (HTTP 422)
+
+#### 5.1.7 Freight Payment Types API
+
+**Business Purpose:** Manages freight payment responsibility definitions critical for determining financial liability in shipping arrangements. Essential for compliance with Incoterms, customs documentation accuracy, and ensuring proper cost allocation between trading parties.
+
+**Endpoint:** `GET /api/FreightPaymentTypes`
+
+**Request Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | $sort | String - 100 | O | OData sort parameter | FreightPaymentType_Desc |
+| 2 | FreightPaymentType_Desc | String - 200 | O | Filter by payment type description | Prepaid |
+| 3 | active | Boolean | O | Filter active records only | 1 |
+
+**UI Validation Rules:**
+- **FPT_UI_001**: Payment type selection required for all certificates
+- **FPT_UI_002**: Must align with selected Incoterm
+- **FPT_UI_003**: Display payment responsibility clearly
+
+**Business Validation Rules:**
+- **FPT_BV_001**: Payment type must be compatible with selected Incoterm
+- **FPT_BV_002**: Collect freight requires special documentation
+- **FPT_BV_003**: Prepaid freight requires payment confirmation
+
+**Response Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | Id | Integer | M | Unique payment type identifier | 1 |
+| 2 | FreightPaymentType_Code | String - 10 | M | Payment type code | PP |
+| 3 | FreightPaymentType_Desc | String - 200 | M | Payment type description | Prepaid |
+| 4 | Active | Boolean | M | Active status indicator | true |
+
+#### 5.1.8 Consignees API
+
+**Business Purpose:** Manages consignee (receiver) information essential for customs clearance and delivery coordination. Critical for ensuring accurate delivery details, compliance with import regulations, and enabling proper notification workflows for certificate recipients.
+
+**Endpoint:** `GET /api/Consignees`
+
+**Request Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | $sort | String - 100 | O | OData sort parameter | NIFNumber |
+| 2 | NIFNumber | String - 50 | O | Filter by tax identification number | 123456789 |
+| 3 | active | Boolean | O | Filter active records only | 1 |
+
+**UI Validation Rules:**
+- **CONS_UI_001**: NIFNumber format validation for Angola tax system
+- **CONS_UI_002**: Company name required, 1-200 characters
+- **CONS_UI_003**: Valid contact information mandatory
+
+**Business Validation Rules:**
+- **CONS_BV_001**: NIFNumber must be valid Angola tax identifier
+- **CONS_BV_002**: Consignee must be registered for import activities
+- **CONS_BV_003**: Active status required for new certificates
+
+**Response Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | Id | Integer | M | Unique consignee identifier | 1001 |
+| 2 | NIFNumber | String - 50 | M | Tax identification number | 123456789 |
+| 3 | CompanyName | String - 200 | M | Company/consignee name | ACME Import Company |
+| 4 | ContactEmail | String - 100 | O | Contact email address | contact@acme.ao |
+| 5 | Active | Boolean | M | Active status indicator | true |
+
 ### 5.2 Certificate Management APIs
 
 Certificate management APIs handle the core CTN certificate lifecycle operations, enabling the creation, retrieval, and management of CNCA certificates throughout their entire lifecycle from draft to completion.
@@ -1458,6 +1564,56 @@ Certificate management APIs handle the core CTN certificate lifecycle operations
 | 1 | $sort | String - 100 | O | OData sort parameter | AttachmentName_Desc |
 | 2 | AttachmentName_Desc | String - 200 | O | Filter by attachment name | Bill of Lading |
 | 3 | active | Boolean | O | Filter active records only | 1 |
+
+**Vessels API**
+
+**Purpose:** Provides vessel information for maritime transport operations including vessel names, IMO numbers, and operational details for certificate submissions.
+
+**Endpoint:** `GET /api/Vessels`
+
+**Request Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | $sort | String - 100 | O | OData sort parameter | Name |
+| 2 | Name | String - 256 | O | Filter by vessel name | MSC GULSUN |
+| 3 | active | Integer | O | Active status filter | 1 |
+
+**Response Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | Id | Integer | M | Vessel identifier | 1247 |
+| 2 | Name | String - 256 | M | Vessel name | MSC GULSUN |
+| 3 | IMONumber | String - 20 | O | International Maritime Organization number | 9863023 |
+| 4 | VesselCode | String - 50 | O | Vessel identification code | MSCG001 |
+| 5 | Flag | String - 100 | O | Vessel flag state | Panama |
+| 6 | Active | Boolean | M | Active status | true |
+
+**System Metadata API**
+
+**Purpose:** Provides system configuration and metadata information including application version, available features, and system status for integration health monitoring.
+
+**Endpoint:** `GET /api/general/metadata`
+
+**Request Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | includeVersion | Boolean | O | Include system version information | true |
+| 2 | includeFeatures | Boolean | O | Include available features list | true |
+| 3 | includeStatus | Boolean | O | Include system health status | false |
+
+**Response Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | systemVersion | String - 50 | M | SINTECE system version | 3.2.1 |
+| 2 | apiVersion | String - 20 | M | API version | v1.0 |
+| 3 | environment | String - 50 | M | Environment identifier | Production |
+| 4 | lastUpdated | DateTime | M | Last system update timestamp | 2025-11-01T10:00:00Z |
+| 5 | availableFeatures | Array | O | List of available system features | ["amendments", "cancellations"] |
+| 6 | systemStatus | Object | O | System health indicators | {"database": "healthy"} |
 
 ### 5.3 CTN Related Entity APIs
 
