@@ -149,95 +149,94 @@ pre {
 
 ## 📑 Table of Contents
 
-**1. [Introduction](#1-introduction)** 📖
-- 1.1 Purpose
-- 1.2 Scope  
-- 1.3 Audience
-- 1.4 Definitions
+<div class="toc-container">
 
-**2. [System Overview](#2-system-overview)** 🏗️
-- 2.1 System Architecture
-- 2.2 Integration Pattern
-- 2.3 System Actors
-- 2.4 Amendment and Cancellation Capabilities
+<table>
+<tbody>
+<tr class="toc-section"><td>1</td><td><a href="#1-introduction">Introduction</a> 📖</td><td>5</td></tr>
+<tr class="toc-subsection"><td>1.1</td><td><a href="#11-purpose">Purpose</a></td><td>5</td></tr>
+<tr class="toc-subsection"><td>1.2</td><td><a href="#12-scope">Scope</a></td><td>5</td></tr>
+<tr class="toc-subsection"><td>1.3</td><td><a href="#13-audience">Audience</a></td><td>6</td></tr>
+<tr class="toc-subsection"><td>1.4</td><td><a href="#14-definitions">Definitions</a></td><td>6</td></tr>
 
-**3. [Process Flows](#3-process-flows)** 🔄
-- 3.1 As-Is Process Analysis
-  - 3.1.1 Current State Process Flow Diagram
-- 3.2 To-Be Process
-  - 3.2.1 Future State Process Flow Diagram
-- 3.3 Integration Touchpoints
-  - 3.3.1 API Integration Architecture Diagram
-- 3.4 Amendment Workflow Process
-  - 3.4.1 Amendment Workflow Diagram
-- 3.5 Cancellation Workflow Process
-  - 3.5.1 Cancellation Workflow Diagram
-- 3.6 ARCCLA Approval Workflows
+<tr class="toc-section"><td>2</td><td><a href="#2-system-overview">System Overview</a> 🏗️</td><td>7</td></tr>
+<tr class="toc-subsection"><td>2.1</td><td><a href="#21-system-architecture">System Architecture</a></td><td>7</td></tr>
+<tr class="toc-subsection"><td>2.2</td><td><a href="#22-integration-pattern">Integration Pattern</a></td><td>8</td></tr>
+<tr class="toc-subsection"><td>2.3</td><td><a href="#23-system-actors">System Actors</a></td><td>9</td></tr>
+<tr class="toc-subsection"><td>2.4</td><td><a href="#24-amendment-and-cancellation-capabilities">Amendment and Cancellation Capabilities</a></td><td>10</td></tr>
 
-**4. [Data Models](#4-data-models)** 📊
-- 4.1 Core CTN Entity Structure
-- 4.2 Amendment Entity Structure
-- 4.3 Cancellation Entity Structure
-- 4.4 Status Management
+<tr class="toc-section"><td>3</td><td><a href="#3-process-flows">Process Flows</a> 🔄</td><td>11</td></tr>
+<tr class="toc-subsection"><td>3.1</td><td><a href="#31-as-is-process-analysis">As-Is Process Analysis</a></td><td>11</td></tr>
+<tr class="toc-subsubsection"><td>3.1.1</td><td><a href="#311-current-state-process-flow-diagram">Current State Process Flow Diagram</a></td><td>11</td></tr>
+<tr class="toc-subsection"><td>3.2</td><td><a href="#32-to-be-process">To-Be Process</a></td><td>13</td></tr>
+<tr class="toc-subsubsection"><td>3.2.1</td><td><a href="#321-section-by-section-certificate-submission-workflow">Section-by-Section Certificate Submission Workflow</a></td><td>13</td></tr>
+<tr class="toc-subsubsection"><td>3.2.2</td><td><a href="#322-future-state-process-flow-diagram">Future State Process Flow Diagram</a></td><td>15</td></tr>
+<tr class="toc-subsection"><td>3.3</td><td><a href="#33-integration-touchpoints">Integration Touchpoints</a></td><td>16</td></tr>
+<tr class="toc-subsubsection"><td>3.3.1</td><td><a href="#331-api-integration-architecture-diagram">API Integration Architecture Diagram</a></td><td>16</td></tr>
+<tr class="toc-subsection"><td>3.4</td><td><a href="#34-amendment-workflow-process">Amendment Workflow Process</a></td><td>17</td></tr>
+<tr class="toc-subsubsection"><td>3.4.1</td><td><a href="#341-amendment-workflow-diagram">Amendment Workflow Diagram</a></td><td>17</td></tr>
+<tr class="toc-subsection"><td>3.5</td><td><a href="#35-cancellation-workflow-process">Cancellation Workflow Process</a></td><td>18</td></tr>
+<tr class="toc-subsubsection"><td>3.5.1</td><td><a href="#351-cancellation-workflow-diagram">Cancellation Workflow Diagram</a></td><td>18</td></tr>
+<tr class="toc-subsection"><td>3.6</td><td><a href="#36-arccla-approval-workflows">ARCCLA Approval Workflows</a></td><td>19</td></tr>
 
-**5. [Core API Specifications](#5-core-api-specifications)** 🔗
-- 5.1 Master Data APIs
-  - 5.1.1 Cargo Types API
-  - 5.1.2 Incoterms API
-  - 5.1.3 Countries API
-  - 5.1.4 Carriers API
-  - 5.1.5 Currencies API
-  - 5.1.6 Banks API
-  - 5.1.7 Units API
-  - 5.1.8 Container Types API
-  - 5.1.9 Transport Types API
-  - 5.1.10 Locations/Ports API
-  - 5.1.11 Goods Classifications API
-  - 5.1.12 IMO Codes API
-  - 5.1.13 Vessels API
-  - 5.1.14 CTN Cities API
-  - 5.1.15 CTN Ports API
-- 5.2 Certificate Management APIs
-  - 5.2.1 CTN List API
-  - 5.2.2 CTN Details API
-  - 5.2.3 CTN Attachments API
-  - 5.2.4 Freight Payment Types API
-  - 5.2.5 CTN Creation API (Certificate Submission)
-  - 5.2.6 CTN Addresses API (Add Address Information)
-  - 5.2.7 CTN Goods API (Add Goods Information)
-  - 5.2.8 CTN Containers API (Add Container Information)
-  - 5.2.9 CTN Tracking API (Add Transport Information)
-  - 5.2.10 CTN Attachments API (Add Document Attachments)
-  - 5.2.11 Request Visa API (Certificate Issuance Submission)
-- 5.3 CTN Related Entity APIs
-  - 5.3.1 Consignees API
-  - 5.3.2 Attachment Names API
-  - 5.3.3 CTN Tracking API
+<tr class="toc-section"><td>4</td><td><a href="#4-data-models">Data Models</a> 📊</td><td>20</td></tr>
+<tr class="toc-subsection"><td>4.1</td><td><a href="#41-core-ctn-entity-structure">Core CTN Entity Structure</a></td><td>20</td></tr>
+<tr class="toc-subsection"><td>4.2</td><td><a href="#42-amendment-entity-structure">Amendment Entity Structure</a></td><td>22</td></tr>
+<tr class="toc-subsection"><td>4.3</td><td><a href="#43-cancellation-entity-structure">Cancellation Entity Structure</a></td><td>23</td></tr>
+<tr class="toc-subsection"><td>4.4</td><td><a href="#44-status-management">Status Management</a></td><td>24</td></tr>
 
-**6. [API Capabilities](#6-api-capabilities)** ⚡
-- 6.1 Amendment APIs
-  - 6.1.1 Amendment Request Creation API
-  - 6.1.2 Amendment Status Tracking API
-  - 6.1.3 Amendment List API
-  - 6.1.4 Amendment Details API
-- 6.2 Cancellation APIs
-  - 6.2.1 Cancellation Request Creation API
-  - 6.2.2 Cancellation Status Tracking API
-  - 6.2.3 Cancellation List API
-  - 6.2.4 Cancellation Details API
-- 6.3 Approval Workflow APIs
-  - 6.3.1 ARCCLA Broker Review API
-  - 6.3.2 Approval Decision API
-  - 6.3.3 Workflow Status API
-- 6.4 Status Polling APIs
-  - 6.4.1 Certificate Status API
-  - 6.4.2 Eligibility Check API
-  - 6.4.3 Notification API
+<tr class="toc-section"><td>5</td><td><a href="#5-core-api-specifications">Core API Specifications</a> 🔗</td><td>25</td></tr>
+<tr class="toc-subsection"><td>5.1</td><td><strong><a href="#51-master-data-apis">Master Data APIs</a></strong></td><td>25</td></tr>
+<tr class="toc-subsubsection"><td>5.1.1</td><td><a href="#511-cargo-types-api">Cargo Types API</a></td><td>25</td></tr>
+<tr class="toc-subsubsection"><td>5.1.2</td><td><a href="#512-incoterms-api">Incoterms API</a></td><td>27</td></tr>
+<tr class="toc-subsubsection"><td>5.1.3</td><td><a href="#513-countries-api">Countries API</a></td><td>29</td></tr>
+<tr class="toc-subsubsection"><td>5.1.4</td><td><a href="#514-carriers-api">Carriers API</a></td><td>31</td></tr>
+<tr class="toc-subsubsection"><td>5.1.5</td><td><a href="#515-currencies-api">Currencies API</a></td><td>33</td></tr>
+<tr class="toc-subsubsection"><td>5.1.6</td><td><a href="#516-banks-api">Banks API</a></td><td>35</td></tr>
+<tr class="toc-subsubsection"><td>5.1.7</td><td><a href="#517-units-api">Units API</a></td><td>37</td></tr>
+<tr class="toc-subsubsection"><td>5.1.8</td><td><a href="#518-container-types-api">Container Types API</a></td><td>39</td></tr>
+<tr class="toc-subsubsection"><td>5.1.9</td><td><a href="#519-transport-types-api">Transport Types API</a></td><td>41</td></tr>
+<tr class="toc-subsubsection"><td>5.1.10</td><td><a href="#5110-locationsports-api">Locations/Ports API</a></td><td>43</td></tr>
+<tr class="toc-subsubsection"><td>5.1.11</td><td><a href="#5111-goods-classifications-api">Goods Classifications API</a></td><td>45</td></tr>
+<tr class="toc-subsubsection"><td>5.1.12</td><td><a href="#5112-imo-codes-api">IMO Codes API</a></td><td>47</td></tr>
+<tr class="toc-subsubsection"><td>5.1.13</td><td><a href="#5113-vessels-api">Vessels API</a></td><td>49</td></tr>
+<tr class="toc-subsubsection"><td>5.1.14</td><td><a href="#5114-ctn-cities-api">CTN Cities API</a></td><td>51</td></tr>
+<tr class="toc-subsubsection"><td>5.1.15</td><td><a href="#5115-ctn-ports-api">CTN Ports API</a></td><td>53</td></tr>
+<tr class="toc-subsection"><td>5.2</td><td><strong><a href="#52-certificate-management-apis">Certificate Management APIs</a></strong></td><td>55</td></tr>
+<tr class="toc-subsubsection"><td>5.2.1</td><td><a href="#521-ctn-list-api">CTN List API</a></td><td>55</td></tr>
+<tr class="toc-subsubsection"><td>5.2.2</td><td><a href="#522-ctn-details-api">CTN Details API</a></td><td>57</td></tr>
+<tr class="toc-subsubsection"><td>5.2.3</td><td><a href="#523-ctn-attachments-api">CTN Attachments API</a></td><td>59</td></tr>
+<tr class="toc-subsubsection"><td>5.2.4</td><td><a href="#524-freight-payment-types-api">Freight Payment Types API</a></td><td>61</td></tr>
+<tr class="toc-subsubsection"><td>5.2.5</td><td><a href="#525-ctn-creation-api-certificate-submission">CTN Creation API (Certificate Submission)</a></td><td>63</td></tr>
+<tr class="toc-subsubsection"><td>5.2.6</td><td><a href="#526-ctn-addresses-api-add-address-information">CTN Addresses API (Add Address Information)</a></td><td>67</td></tr>
+<tr class="toc-subsubsection"><td>5.2.7</td><td><a href="#527-ctn-goods-api-add-goods-information">CTN Goods API (Add Goods Information)</a></td><td>69</td></tr>
+<tr class="toc-subsubsection"><td>5.2.8</td><td><a href="#528-ctn-containers-api-add-container-information">CTN Containers API (Add Container Information)</a></td><td>71</td></tr>
+<tr class="toc-subsubsection"><td>5.2.9</td><td><a href="#529-ctn-tracking-api-add-transport-information">CTN Tracking API (Add Transport Information)</a></td><td>73</td></tr>
+<tr class="toc-subsubsection"><td>5.2.10</td><td><a href="#5210-ctn-attachments-api-add-document-attachments">CTN Attachments API (Add Document Attachments)</a></td><td>75</td></tr>
+<tr class="toc-subsubsection"><td>5.2.11</td><td><a href="#5211-request-visa-api-certificate-issuance-submission">Request Visa API (Certificate Issuance Submission)</a></td><td>77</td></tr>
+<tr class="toc-subsection"><td>5.3</td><td><strong><a href="#53-ctn-related-entity-apis">CTN Related Entity APIs</a></strong></td><td>79</td></tr>
+<tr class="toc-subsubsection"><td>5.3.1</td><td><a href="#531-consignees-api">Consignees API</a></td><td>79</td></tr>
+<tr class="toc-subsubsection"><td>5.3.2</td><td><a href="#532-attachment-names-api">Attachment Names API</a></td><td>81</td></tr>
+<tr class="toc-subsubsection"><td>5.3.3</td><td><a href="#533-ctn-tracking-api">CTN Tracking API</a></td><td>83</td></tr>
 
-**7. [Validation Framework](#7-validation-framework)** ✅
-- 7.1 Field-Level Validation Rules
-- 7.2 Business Logic Validation
-- 7.3 Error Handling Standards
+<tr class="toc-section"><td>6</td><td><a href="#6-enhanced-api-capabilities">Enhanced API Capabilities</a> ⚡</td><td>85</td></tr>
+<tr class="toc-subsection"><td>6.1</td><td><a href="#61-amendment-apis">Amendment APIs</a></td><td>85</td></tr>
+<tr class="toc-subsection"><td>6.2</td><td><a href="#62-cancellation-apis">Cancellation APIs</a></td><td>87</td></tr>
+<tr class="toc-subsection"><td>6.3</td><td><a href="#63-approval-workflow-apis">Approval Workflow APIs</a></td><td>89</td></tr>
+<tr class="toc-subsection"><td>6.4</td><td><a href="#64-status-polling-apis">Status Polling APIs</a></td><td>91</td></tr>
+
+<tr class="toc-section"><td>7</td><td><a href="#7-api-implementation-summary">API Implementation Summary</a> 📊</td><td>93</td></tr>
+<tr class="toc-subsection"><td>7.1</td><td><a href="#71-complete-cnca-certificate-api-coverage">Complete CNCA Certificate API Coverage</a></td><td>93</td></tr>
+<tr class="toc-subsection"><td>7.2</td><td><a href="#72-implementation-readiness">Implementation Readiness</a></td><td>95</td></tr>
+
+<tr class="toc-section"><td>8</td><td><a href="#8-validation-framework">Validation Framework</a> ✅</td><td>97</td></tr>
+<tr class="toc-subsection"><td>8.1</td><td><a href="#81-field-level-validation-rules">Field-Level Validation Rules</a></td><td>97</td></tr>
+<tr class="toc-subsection"><td>8.2</td><td><a href="#82-business-validation-rules">Business Validation Rules</a></td><td>99</td></tr>
+<tr class="toc-subsection"><td>8.3</td><td><a href="#83-authentication-and-authorization">Authentication and Authorization</a></td><td>101</td></tr>
+</tbody>
+</table>
+
+</div>
 
 ---
 
@@ -3761,7 +3760,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 
 <div style="page-break-before: always;"></div>
 
-## 6. API Capabilities ⚡
+## 6. Enhanced API Capabilities ⚡
 
 ### 6.1 Amendment APIs
 
@@ -4079,7 +4078,7 @@ Status polling APIs provide real-time status updates with eligibility flags for 
 
 <div style="page-break-before: always;"></div>
 
-## 6. API Implementation Summary 📊
+## 7. API Implementation Summary 📊
 
 ### 6.1 Complete CNCA Certificate API Coverage
 
@@ -4142,7 +4141,7 @@ The JUL-SINTECE Integration Control Document provides comprehensive API document
 
 <div style="page-break-before: always;"></div>
 
-## 7. Validation Framework ✅
+## 8. Validation Framework ✅
 
 ### 7.1 Field-Level Validation Rules
 
