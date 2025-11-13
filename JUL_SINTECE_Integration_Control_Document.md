@@ -159,13 +159,13 @@ pre {
 <tr class="toc-subsection"><td>1.3</td><td><a href="#13-audience">Audience</a></td><td>6</td></tr>
 <tr class="toc-subsection"><td>1.4</td><td><a href="#14-definitions">Definitions</a></td><td>6</td></tr>
 
-<tr class="toc-section"><td>2</td><td><a href="#2-system-overview">System Overview</a> 🏗️</td><td>7</td></tr>
+<tr class="toc-section"><td>2</td><td><a href="#2-system-overview-">System Overview</a> 🏗️</td><td>7</td></tr>
 <tr class="toc-subsection"><td>2.1</td><td><a href="#21-system-architecture">System Architecture</a></td><td>7</td></tr>
 <tr class="toc-subsection"><td>2.2</td><td><a href="#22-integration-pattern">Integration Pattern</a></td><td>8</td></tr>
 <tr class="toc-subsection"><td>2.3</td><td><a href="#23-system-actors">System Actors</a></td><td>9</td></tr>
 <tr class="toc-subsection"><td>2.4</td><td><a href="#24-amendment-and-cancellation-capabilities">Amendment and Cancellation Capabilities</a></td><td>10</td></tr>
 
-<tr class="toc-section"><td>3</td><td><a href="#3-process-flows">Process Flows</a> 🔄</td><td>11</td></tr>
+<tr class="toc-section"><td>3</td><td><a href="#3-process-flows-">Process Flows</a> 🔄</td><td>11</td></tr>
 <tr class="toc-subsection"><td>3.1</td><td><a href="#31-as-is-process-analysis">As-Is Process Analysis</a></td><td>11</td></tr>
 <tr class="toc-subsubsection"><td>3.1.1</td><td><a href="#311-current-state-process-flow-diagram">Current State Process Flow Diagram</a></td><td>11</td></tr>
 <tr class="toc-subsection"><td>3.2</td><td><a href="#32-to-be-process">To-Be Process</a></td><td>13</td></tr>
@@ -179,13 +179,13 @@ pre {
 <tr class="toc-subsubsection"><td>3.5.1</td><td><a href="#351-cancellation-workflow-diagram">Cancellation Workflow Diagram</a></td><td>18</td></tr>
 <tr class="toc-subsection"><td>3.6</td><td><a href="#36-arccla-approval-workflows">ARCCLA Approval Workflows</a></td><td>19</td></tr>
 
-<tr class="toc-section"><td>4</td><td><a href="#4-data-models">Data Models</a> 📊</td><td>20</td></tr>
+<tr class="toc-section"><td>4</td><td><a href="#4-data-models-">Data Models</a> 📊</td><td>20</td></tr>
 <tr class="toc-subsection"><td>4.1</td><td><a href="#41-core-ctn-entity-structure">Core CTN Entity Structure</a></td><td>20</td></tr>
 <tr class="toc-subsection"><td>4.2</td><td><a href="#42-amendment-entity-structure">Amendment Entity Structure</a></td><td>22</td></tr>
 <tr class="toc-subsection"><td>4.3</td><td><a href="#43-cancellation-entity-structure">Cancellation Entity Structure</a></td><td>23</td></tr>
 <tr class="toc-subsection"><td>4.4</td><td><a href="#44-status-management">Status Management</a></td><td>24</td></tr>
 
-<tr class="toc-section"><td>5</td><td><a href="#5-core-api-specifications">Core API Specifications</a> 🔗</td><td>25</td></tr>
+<tr class="toc-section"><td>5</td><td><a href="#5-core-api-specifications-">Core API Specifications</a> 🔗</td><td>25</td></tr>
 <tr class="toc-subsection"><td>5.1</td><td><strong><a href="#51-master-data-apis">Master Data APIs</a></strong></td><td>25</td></tr>
 <tr class="toc-subsubsection"><td>5.1.1</td><td><a href="#511-cargo-types-api">Cargo Types API</a></td><td>25</td></tr>
 <tr class="toc-subsubsection"><td>5.1.2</td><td><a href="#512-incoterms-api">Incoterms API</a></td><td>27</td></tr>
@@ -219,17 +219,17 @@ pre {
 <tr class="toc-subsubsection"><td>5.3.2</td><td><a href="#532-attachment-names-api">Attachment Names API</a></td><td>81</td></tr>
 <tr class="toc-subsubsection"><td>5.3.3</td><td><a href="#533-ctn-tracking-api">CTN Tracking API</a></td><td>83</td></tr>
 
-<tr class="toc-section"><td>6</td><td><a href="#6-enhanced-api-capabilities">Enhanced API Capabilities</a> ⚡</td><td>85</td></tr>
+<tr class="toc-section"><td>6</td><td><a href="#6-enhanced-api-capabilities-">Enhanced API Capabilities</a> ⚡</td><td>85</td></tr>
 <tr class="toc-subsection"><td>6.1</td><td><a href="#61-amendment-apis">Amendment APIs</a></td><td>85</td></tr>
 <tr class="toc-subsection"><td>6.2</td><td><a href="#62-cancellation-apis">Cancellation APIs</a></td><td>87</td></tr>
 <tr class="toc-subsection"><td>6.3</td><td><a href="#63-approval-workflow-apis">Approval Workflow APIs</a></td><td>89</td></tr>
 <tr class="toc-subsection"><td>6.4</td><td><a href="#64-status-polling-apis">Status Polling APIs</a></td><td>91</td></tr>
 
-<tr class="toc-section"><td>7</td><td><a href="#7-api-implementation-summary">API Implementation Summary</a> 📊</td><td>93</td></tr>
+<tr class="toc-section"><td>7</td><td><a href="#7-api-implementation-summary-">API Implementation Summary</a> 📊</td><td>93</td></tr>
 <tr class="toc-subsection"><td>7.1</td><td><a href="#71-complete-cnca-certificate-api-coverage">Complete CNCA Certificate API Coverage</a></td><td>93</td></tr>
 <tr class="toc-subsection"><td>7.2</td><td><a href="#72-implementation-readiness">Implementation Readiness</a></td><td>95</td></tr>
 
-<tr class="toc-section"><td>8</td><td><a href="#8-validation-framework">Validation Framework</a> ✅</td><td>97</td></tr>
+<tr class="toc-section"><td>8</td><td><a href="#8-validation-framework-">Validation Framework</a> ✅</td><td>97</td></tr>
 <tr class="toc-subsection"><td>8.1</td><td><a href="#81-field-level-validation-rules">Field-Level Validation Rules</a></td><td>97</td></tr>
 <tr class="toc-subsection"><td>8.2</td><td><a href="#82-business-validation-rules">Business Validation Rules</a></td><td>99</td></tr>
 <tr class="toc-subsection"><td>8.3</td><td><a href="#83-authentication-and-authorization">Authentication and Authorization</a></td><td>101</td></tr>
