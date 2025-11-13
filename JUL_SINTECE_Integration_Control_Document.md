@@ -69,11 +69,38 @@ pre {
   overflow-x: auto;
   border-left: 4px solid #007bff;
 }
+
+/* Process Flow Image Styling */
+.process-flow-container {
+  text-align: center;
+  margin: 20px 0;
+  page-break-inside: avoid;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #dee2e6;
+}
+
+.process-flow-container img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.process-flow-container p {
+  font-style: italic;
+  margin-top: 15px;
+  color: #666;
+  font-weight: 500;
+  font-size: 14px;
+}
 </style>
 
 <div style="text-align: center; padding: 20px 0;">
-<img src="./images/Maqta-logo.png" alt="Abu Dhabi Ports Logo" style="height: 80px; margin: 0 20px;" />
-<img src="./images/JUL-logo.png" alt="JUL Logo" style="height: 80px; margin: 0 20px;" />
+<img src="./images/JUL-logo.png" alt="JUL Logo" style="height: 60px; margin: 0 15px;" />
+<img src="./images/Maqta-logo.png" alt="Abu Dhabi Ports Logo" style="height: 60px; margin: 0 15px;" />
 </div>
 
 <div style="text-align: center; border: 2px solid #2E5BBA; padding: 20px; margin: 20px 0; background-color: #f8f9fa;">
@@ -114,20 +141,6 @@ pre {
 |-------------|----------|------------|----------------------------|
 | 1.0 | 2025-11-12 | Abu Dhabi Ports | Initial ICD creation with technical specifications for JUL-SINTECE integration. Defined API specifications, data models, integration workflows, security requirements, and testing procedures. |
 | 2.0 | 2025-11-13 | Abu Dhabi Ports | Added amendment and cancellation APIs, approval workflows, status management with canAmend/canCancel flags, validation framework, and error handling. Added process flow improvements and implementation recommendations. |
-
----
-
-## ✅ Document Approval
-
-| **Role** | **Name** | **Signature** | **Date** |
-|----------|----------|---------------|----------|
-| **Project Manager** | | | |
-| **Technical Lead** | | | |
-| **QA Lead** | | | |
-| **Business Analyst** | | | |
-| **Security Officer** | | | |
-| **ARCCLA Representative** | | | |
-| **Operations Manager** | | | |
 
 ---
 
@@ -410,27 +423,9 @@ The current SINTECE workflow consists of 15 distinct steps (LC-AR-CNCA-01 throug
 
 #### 3.1.1 Current State Process Flow Diagram
 
-<div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 10px 0;">
-
-```mermaid
-flowchart TD
-    A[LC-AR-CNCA-01: Trader Issues DUP Certificate] --> B[LC-AR-CNCA-02: Trader Receives DUP & BL]
-    B --> C[LC-AR-CNCA-03: Customs Broker Receives DUP & BL]
-    C --> D[LC-AR-CNCA-04: Customs Broker Initiates CNCA Request]
-    D --> E[LC-AR-CNCA-05: Submit DUP & BL, Assign ARCCLA Broker]
-    E --> F{LC-AR-CNCA-06: ARCCLA Broker Validates}
-    F -->|Approve| G[LC-AR-CNCA-07: Generate Invoice & CNCA Draft]
-    F -->|Reject| R1[Request Rejected - End]
-    G --> H[LC-AR-CNCA-08: Customs Broker Receives Invoice]
-    H --> I[LC-AR-CNCA-09: Trader Receives Invoice]
-    I --> J[LC-AR-CNCA-10: Customs Broker Completes Payment]
-    J --> K[LC-AR-CNCA-11: ARCCLA Gets Payment Notification]
-    K --> L[LC-AR-CNCA-12: ARCCLA Issues CNCA Certificate]
-    L --> M[LC-AR-CNCA-13: Customs Broker Receives Certificate]
-    M --> N[LC-AR-CNCA-14: Invoice Sent via Email]
-    N --> O[LC-AR-CNCA-15: Trader Receives CNCA Certificate]
-```
-
+<div class="process-flow-container">
+<img src="./images/svg/Traditional SINTECE Workflow.svg" alt="Traditional SINTECE Workflow" />
+<p>Figure 3.1: Traditional SINTECE Workflow Process</p>
 </div>
 
 > **🚨 Process Inefficiencies:**
@@ -443,8 +438,8 @@ flowchart TD
 > **⚠️ Key Bottlenecks:**
 > - ARCCLA broker manual review and approval steps
 > - Payment processing and reconciliation delays  
-- Physical document submission requirements
-- Manual invoice generation and distribution
+> - Physical document submission requirements
+> - Manual invoice generation and distribution
 
 ### 3.2 To-Be Process
 
@@ -452,61 +447,9 @@ The JUL-SINTECE integration introduces a fully digital workflow with improvement
 
 #### 3.2.1 Future State Process Flow Diagram
 
-<div style="background-color: #e8f5e8; padding: 15px; border-left: 4px solid #28a745; margin: 10px 0;">
-
-```mermaid
-flowchart TD
-    %% JUL System Processes
-    subgraph JUL["🌐 JUL System (Abu Dhabi Ports)"]
-        A1[Trader Initiates CNCA Request]
-        A2[Trader Uploads BL & DUP Documents]
-        A3[Trader Nominates Customs Broker]
-        A4[Customs Broker Accepts Nomination]
-        A5[Customs Broker Completes Certificate Data]
-        A6{Save as Draft or Submit?}
-        A7[Save as Draft]
-        A8[Submit for Approval]
-        A9[Payment Processing]
-        A10[Certificate Retrieval]
-        A11[Amendment Request Creation]
-        A12[Cancellation Request Creation]
-    end
-    
-    %% SINTECE System Processes
-    subgraph SINTECE["🏛️ SINTECE System (ARCCLA)"]
-        B1[Request Validation]
-        B2{ARCCLA Broker Review}
-        B3[Generate Invoice]
-        B4[Issue Certificate]
-        B5[Amendment Review]
-        B6[Cancellation Review]
-    end
-    
-    %% Integration Layer
-    subgraph API["🔗 Integration APIs"]
-        C1["POST /api/CTNs"]
-        C2["GET /api/CTNs/id/status"]
-        C3["POST /api/CTNs/id/amendments"]
-        C4["POST /api/CTNs/id/cancellations"]
-        C5["Webhook Notifications"]
-    end
-    
-    %% Flow connections
-    A1 --> A2 --> A3 --> A4 --> A5 --> A6
-    A6 -->|Draft| A7
-    A6 -->|Submit| A8
-    A8 --> C1 --> B1 --> B2
-    B2 -->|Approve| B3 --> A9 --> B4 --> A10
-    B2 -->|Reject| C5 --> A8
-    A10 --> A11 --> C3 --> B5
-    A10 --> A12 --> C4 --> B6
-    
-    %% Status checking
-    A8 -.-> C2
-    A11 -.-> C2
-    A12 -.-> C2
-```
-
+<div class="process-flow-container">
+<img src="./images/svg/EnhancedFutureStateCoreCertificateWorkflow.svg" alt="Enhanced Future State Core Certificate Workflow" />
+<p>Figure 3.2: Enhanced Future State Core Certificate Workflow</p>
 </div>
 
 > **✅ Core Certificate Process Improvements:**
@@ -537,71 +480,10 @@ The integration establishes comprehensive touchpoints between JUL and SINTECE sy
 
 #### 3.3.1 API Integration Architecture Diagram
 
-```mermaid
-flowchart LR
-    subgraph Frontend["JUL Frontend"]
-        UI1[Certificate Form]
-        UI2[Amendment Form]
-        UI3[Cancellation Form]
-        UI4[Status Dashboard]
-    end
-    
-    subgraph Backend["JUL Backend"]
-        BE1[Authentication Service]
-        BE2[Validation Service]
-        BE3[Business Logic Service]
-        BE4[Integration Service]
-    end
-    
-    subgraph APIs["Integration APIs"]
-        API1[Authentication APIs]
-        API2[Master Data APIs]
-        API3[Certificate APIs]
-        API4[Amendment APIs]
-        API5[Cancellation APIs]
-        API6[Status APIs]
-        API7[Notification APIs]
-    end
-    
-    subgraph SINTECE["SINTECE Backend"]
-        SI1[Request Processing]
-        SI2[Amendment Processing]
-        SI3[Cancellation Processing]
-        SI4[Approval Workflows]
-        SI5[Payment Processing]
-        SI6[Certificate Generation]
-    end
-    
-    %% Frontend to Backend
-    UI1 --> BE1 --> BE2 --> BE3 --> BE4
-    UI2 --> BE1 --> BE2 --> BE3 --> BE4
-    UI3 --> BE1 --> BE2 --> BE3 --> BE4
-    UI4 --> BE1 --> BE4
-    
-    %% Backend to APIs
-    BE4 --> API1
-    BE4 --> API2
-    BE4 --> API3
-    BE4 --> API4
-    BE4 --> API5
-    BE4 --> API6
-    
-    %% APIs to SINTECE
-    API1 --> SI1
-    API2 --> SI1
-    API3 --> SI1
-    API4 --> SI2
-    API5 --> SI3
-    API6 --> SI1
-    
-    %% SINTECE Internal Flow
-    SI1 --> SI4 --> SI6
-    SI2 --> SI4 --> SI6
-    SI3 --> SI4 --> SI5
-    
-    %% Notifications
-    SI4 --> API7 --> BE4 --> UI4
-```
+<div class="process-flow-container">
+<img src="./images/svg/Integration API Flow Diagram.svg" alt="Integration API Flow Diagram" />
+<p>Figure 3.3: Integration API Flow Architecture</p>
+</div>
 
 **Data Synchronization Points:**
 - Master data synchronization (countries, ports, cargo types)
@@ -628,57 +510,10 @@ The amendment workflow provides controlled modification capabilities for issued 
 
 #### 3.4.1 Enhanced Amendment Workflow Diagram
 
-```mermaid
-flowchart TD
-    subgraph Eligibility["Amendment Eligibility Check"]
-        E1[Check Certificate Status]
-        E2[Validate canAmend Flag]
-        E3[Check Business Rules]
-        E4{Amendment Allowed?}
-    end
-    
-    subgraph Creation["Amendment Request Creation"]
-        C1[Customs Broker Initiates Amendment]
-        C2[Select Fields to Amend]
-        C3[Enter New Values]
-        C4[Document Change Reasons]
-        C5[Validate Changes]
-        C6[Submit Amendment Request]
-    end
-    
-    subgraph Review["ARCCLA Review Process"]
-        R1[ARCCLA Broker Receives Notification]
-        R2[Review Amendment Details]
-        R3[Perform Impact Analysis]
-        R4{Approve Amendment?}
-        R5[Update Certificate]
-        R6[Generate Amendment Invoice]
-        R7[Reject with Reasons]
-    end
-    
-    subgraph Notification["Status Updates"]
-        N1[Notify Customs Broker]
-        N2[Update Certificate Status]
-        N3[Send Email Notifications]
-        N4[Update Audit Trail]
-    end
-    
-    %% Flow connections
-    C1 --> E1 --> E2 --> E3 --> E4
-    E4 -->|Yes| C2 --> C3 --> C4 --> C5 --> C6
-    E4 -->|No| ERR[Amendment Not Allowed]
-    
-    C6 --> R1 --> R2 --> R3 --> R4
-    R4 -->|Approve| R5 --> R6 --> N1
-    R4 -->|Reject| R7 --> N1
-    
-    N1 --> N2 --> N3 --> N4
-    
-    %% API calls
-    C6 -.->|"POST /api/CTNs/id/amendments"| API1[Amendment API]
-    R5 -.->|"PUT /api/amendments/id/approve"| API2[Approval API]
-    R7 -.->|"PUT /api/amendments/id/reject"| API3[Rejection API]
-```
+<div class="process-flow-container">
+<img src="./images/svg/Enhanced Amendment Workflow.svg" alt="Enhanced Amendment Workflow" />
+<p>Figure 3.4: Enhanced Amendment Workflow Process</p>
+</div>
 
 **Amendment Request Initiation:**
 1. **Eligibility Check**: System validates certificate status and amendment permissions
@@ -705,65 +540,10 @@ The cancellation workflow provides controlled termination of certificate request
 
 #### 3.5.1 Enhanced Cancellation Workflow Diagram
 
-```mermaid
-flowchart TD
-    subgraph Eligibility["Cancellation Eligibility Check"]
-        E1[Check Certificate Status]
-        E2[Validate canCancel Flag]
-        E3[Check Payment Status]
-        E4[Assess Financial Impact]
-        E5{Cancellation Allowed?}
-    end
-    
-    subgraph Creation["Cancellation Request Creation"]
-        C1[Customs Broker Initiates Cancellation]
-        C2[Select Cancellation Reason]
-        C3[Provide Additional Details]
-        C4[Review Financial Impact]
-        C5[Submit Cancellation Request]
-    end
-    
-    subgraph Review["ARCCLA Review Process"]
-        R1[ARCCLA Broker Receives Notification]
-        R2[Review Cancellation Request]
-        R3[Validate Cancellation Reason]
-        R4[Calculate Refund Amount]
-        R5{Approve Cancellation?}
-        R6[Process Cancellation]
-        R7[Initiate Refund Process]
-        R8[Reject with Reasons]
-    end
-    
-    subgraph Financial["Financial Processing"]
-        F1[Calculate Refund Amount]
-        F2[Process Refund Payment]
-        F3[Update Payment Records]
-        F4[Generate Cancellation Invoice]
-    end
-    
-    subgraph Notification["Status Updates"]
-        N1[Notify Customs Broker]
-        N2[Update Certificate Status]
-        N3[Send Cancellation Confirmation]
-        N4[Update Audit Trail]
-    end
-    
-    %% Flow connections
-    C1 --> E1 --> E2 --> E3 --> E4 --> E5
-    E5 -->|Yes| C2 --> C3 --> C4 --> C5
-    E5 -->|No| ERR[Cancellation Not Allowed]
-    
-    C5 --> R1 --> R2 --> R3 --> R4 --> R5
-    R5 -->|Approve| R6 --> F1 --> F2 --> F3 --> F4 --> N1
-    R5 -->|Reject| R8 --> N1
-    
-    N1 --> N2 --> N3 --> N4
-    
-    %% API calls
-    C5 -.->|"POST /api/CTNs/id/cancellations"| API1[Cancellation API]
-    R6 -.->|"PUT /api/cancellations/id/approve"| API2[Approval API]
-    R8 -.->|"PUT /api/cancellations/id/reject"| API3[Rejection API]
-```
+<div class="process-flow-container">
+<img src="./images/svg/Enhanced Cancellation Workflow.svg" alt="Enhanced Cancellation Workflow" />
+<p>Figure 3.5: Enhanced Cancellation Workflow Process</p>
+</div>
 
 **Cancellation Request Initiation:**
 1. **Eligibility Check**: System validates certificate status and cancellation permissions

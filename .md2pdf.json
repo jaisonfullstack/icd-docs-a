@@ -4,7 +4,7 @@
     "margin": "30mm 20mm",
     "displayHeaderFooter": true,
     "headerTemplate": "<div style='font-size: 12px; width: 100%; text-align: center;'>JUL SINTECE Integration Control Document</div>",
-    "footerTemplate": "<div style='font-size: 12px; width: 100%;'><span style='float: left;' class='date'></span><span style='float: right;'>Page <span class='pageNumber'></span> of <span class='totalPages'></span></span></div>",
+    "footerTemplate": "<div style='font-size: 12px; width: 100%;'><span style='float: left;'>Abu Dhabi Ports</span><span style='float: right;'>Page <span class='pageNumber'></span> of <span class='totalPages'></span></span></div>",
     "printBackground": true
   },
   "body_class": "markdown-body",
