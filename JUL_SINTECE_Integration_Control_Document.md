@@ -108,9 +108,9 @@ pre {
 ## CNCA Certificate Issuance Process
 ### Amendment and Cancellation Capabilities
 
-**Version 2.0**  
+**Version 3.0**  
 **Abu Dhabi Ports**  
-**November 13, 2025**
+**November 14, 2025**
 
 </div>
 
@@ -126,9 +126,9 @@ pre {
 | **Author** | Linoy Pappachan Malakkaran |
 | **Project Name** | JUL System Integration with SINTECE - CNCA Certificate Process |
 | **Document ID** | ICD-JUL-SINTECE-002 |
-| **Version** | 2.0 |
+| **Version** | 3.0 |
 | **Organization** | Abu Dhabi Ports |
-| **Date** | November 13, 2025 |
+| **Date** | November 14, 2025 |
 | **Status** | Draft for Review |
 | **Classification** | Internal Use |
 | **Prepared By** | Abu Dhabi Ports Integration Team |
@@ -142,6 +142,7 @@ pre {
 |-------------|----------|------------|----------------------------|
 | 1.0 | 2025-11-12 | Linoy Pappachan Malakkaran | Initial ICD creation with technical specifications for JUL-SINTECE integration. Defined API specifications, data models, integration workflows, security requirements, and testing procedures. |
 | 2.0 | 2025-11-13 | Linoy Pappachan Malakkaran | Added amendment and cancellation APIs, approval workflows, status management with canAmend/canCancel flags, validation framework, and error handling. Added process flow improvements and implementation recommendations. |
+| 3.0 | 2025-11-14 | Linoy Pappachan Malakkaran | Removed flow diagrams, webhook references, payment processing references. Added Keycloak SSO authentication, NIF validation API, invoice download API, status retrieval API, and consolidated CNCA certificate submission API. Updated table format to 6 columns. |
 
 ---
 
@@ -167,16 +168,12 @@ pre {
 
 <tr class="toc-section"><td>3</td><td><a href="#3-process-flows-">Process Flows</a> 🔄</td><td>11</td></tr>
 <tr class="toc-subsection"><td>3.1</td><td><a href="#31-as-is-process-analysis">As-Is Process Analysis</a></td><td>11</td></tr>
-<tr class="toc-subsubsection"><td>3.1.1</td><td><a href="#311-current-state-process-flow-diagram">Current State Process Flow Diagram</a></td><td>11</td></tr>
 <tr class="toc-subsection"><td>3.2</td><td><a href="#32-to-be-process">To-Be Process</a></td><td>13</td></tr>
 <tr class="toc-subsubsection"><td>3.2.1</td><td><a href="#321-section-by-section-certificate-submission-workflow">Section-by-Section Certificate Submission Workflow</a></td><td>13</td></tr>
-<tr class="toc-subsubsection"><td>3.2.2</td><td><a href="#322-future-state-process-flow-diagram">Future State Process Flow Diagram</a></td><td>15</td></tr>
-<tr class="toc-subsection"><td>3.3</td><td><a href="#33-integration-touchpoints">Integration Touchpoints</a></td><td>16</td></tr>
-<tr class="toc-subsubsection"><td>3.3.1</td><td><a href="#331-api-integration-architecture-diagram">API Integration Architecture Diagram</a></td><td>16</td></tr>
+
+<tr class="toc-subsection"><td>3.3</td><td><a href="#33-system-integration-architecture">System Integration Architecture</a></td><td>16</td></tr>
 <tr class="toc-subsection"><td>3.4</td><td><a href="#34-amendment-workflow-process">Amendment Workflow Process</a></td><td>17</td></tr>
-<tr class="toc-subsubsection"><td>3.4.1</td><td><a href="#341-amendment-workflow-diagram">Amendment Workflow Diagram</a></td><td>17</td></tr>
 <tr class="toc-subsection"><td>3.5</td><td><a href="#35-cancellation-workflow-process">Cancellation Workflow Process</a></td><td>18</td></tr>
-<tr class="toc-subsubsection"><td>3.5.1</td><td><a href="#351-cancellation-workflow-diagram">Cancellation Workflow Diagram</a></td><td>18</td></tr>
 <tr class="toc-subsection"><td>3.6</td><td><a href="#36-arccla-approval-workflows">ARCCLA Approval Workflows</a></td><td>19</td></tr>
 
 <tr class="toc-section"><td>4</td><td><a href="#4-data-models-">Data Models</a> 📊</td><td>20</td></tr>
@@ -208,12 +205,8 @@ pre {
 <tr class="toc-subsubsection"><td>5.2.3</td><td><a href="#523-ctn-attachments-api">CTN Attachments API</a></td><td>59</td></tr>
 <tr class="toc-subsubsection"><td>5.2.4</td><td><a href="#524-freight-payment-types-api">Freight Payment Types API</a></td><td>61</td></tr>
 <tr class="toc-subsubsection"><td>5.2.5</td><td><a href="#525-ctn-creation-api-certificate-submission">CTN Creation API (Certificate Submission)</a></td><td>63</td></tr>
-<tr class="toc-subsubsection"><td>5.2.6</td><td><a href="#526-ctn-addresses-api-add-address-information">CTN Addresses API (Add Address Information)</a></td><td>67</td></tr>
-<tr class="toc-subsubsection"><td>5.2.7</td><td><a href="#527-ctn-goods-api-add-goods-information">CTN Goods API (Add Goods Information)</a></td><td>69</td></tr>
-<tr class="toc-subsubsection"><td>5.2.8</td><td><a href="#528-ctn-containers-api-add-container-information">CTN Containers API (Add Container Information)</a></td><td>71</td></tr>
-<tr class="toc-subsubsection"><td>5.2.9</td><td><a href="#529-ctn-tracking-api-add-transport-information">CTN Tracking API (Add Transport Information)</a></td><td>73</td></tr>
-<tr class="toc-subsubsection"><td>5.2.10</td><td><a href="#5210-ctn-attachments-api-add-document-attachments">CTN Attachments API (Add Document Attachments)</a></td><td>75</td></tr>
-<tr class="toc-subsubsection"><td>5.2.11</td><td><a href="#5211-request-visa-api-certificate-issuance-submission">Request Visa API (Certificate Issuance Submission)</a></td><td>77</td></tr>
+<tr class="toc-subsubsection"><td>5.2.6</td><td><a href="#526-nif-validation-api-angola-tax-registration-number">NIF Validation API (Angola Tax Registration Number)</a></td><td>67</td></tr>
+<tr class="toc-subsubsection"><td>5.2.7</td><td><a href="#527-invoice-download-api">Invoice Download API</a></td><td>69</td></tr>
 <tr class="toc-subsection"><td>5.3</td><td><strong><a href="#53-ctn-related-entity-apis">CTN Related Entity APIs</a></strong></td><td>79</td></tr>
 <tr class="toc-subsubsection"><td>5.3.1</td><td><a href="#531-consignees-api">Consignees API</a></td><td>79</td></tr>
 <tr class="toc-subsubsection"><td>5.3.2</td><td><a href="#532-attachment-names-api">Attachment Names API</a></td><td>81</td></tr>
@@ -233,6 +226,11 @@ pre {
 <tr class="toc-subsection"><td>8.1</td><td><a href="#81-field-level-validation-rules">Field-Level Validation Rules</a></td><td>97</td></tr>
 <tr class="toc-subsection"><td>8.2</td><td><a href="#82-business-validation-rules">Business Validation Rules</a></td><td>99</td></tr>
 <tr class="toc-subsection"><td>8.3</td><td><a href="#83-authentication-and-authorization">Authentication and Authorization</a></td><td>101</td></tr>
+<tr class="toc-subsubsection"><td>8.3.1</td><td><a href="#831-sso-solution---keycloak">SSO Solution - Keycloak</a></td><td>101</td></tr>
+<tr class="toc-subsubsection"><td>8.3.2</td><td><a href="#832-supported-authentication-protocols">Supported Authentication Protocols</a></td><td>102</td></tr>
+<tr class="toc-subsubsection"><td>8.3.3</td><td><a href="#833-client-integration-capabilities">Client Integration Capabilities</a></td><td>103</td></tr>
+<tr class="toc-subsubsection"><td>8.3.4</td><td><a href="#834-jwt-token-management">JWT Token Management</a></td><td>104</td></tr>
+<tr class="toc-subsubsection"><td>8.3.5</td><td><a href="#835-integration-requirements">Integration Requirements</a></td><td>106</td></tr>
 </tbody>
 </table>
 
@@ -304,14 +302,14 @@ This Interface Control Document (ICD) defines the technical specifications and i
 - Trader portal for CNCA certificate management
 - User interface for request creation and document upload  
 - Amendment/cancellation request capabilities
-- Payment processing and certificate download
+- Certificate download and status tracking
 - Real-time status tracking and notifications
 
 **SINTECE System (ARCCLA)**
 - Backend certificate processing and approval system
 - ARCCLA broker review workflow
 - Amendment/cancellation approval processes
-- Invoice generation and certificate issuance
+- Certificate issuance and status management
 - Master data management and reporting
 
 **Integration Layer**
@@ -330,18 +328,17 @@ This Interface Control Document (ICD) defines the technical specifications and i
 
 **Data Flow:**
 1. **Initial CTN Creation**: JUL creates basic CTN record with core information via POST /api/ctns
-2. **Section-wise Data Addition**: JUL adds detailed information in separate steps:
-   - **Addresses**: POST /api/ctnAddresses for shipper, consignee, forwarder, notify party details
-   - **Goods**: POST /api/ctnGoods for cargo descriptions, classifications, weights, values
-   - **Containers**: POST /api/ctnContainers for container types, numbers, seals
-   - **Tracking**: POST /api/ctnTracking for transport routes, vessels, ports, schedules
-   - **Attachments**: POST /api/ctnAttachments for supporting documents
+2. **Section-wise Data Addition**: JUL adds detailed information in separate steps (internal to JUL system):
+   - **Addresses**: Shipper, consignee, forwarder, notify party details
+   - **Goods**: Cargo descriptions, classifications, weights, values
+   - **Containers**: Container types, numbers, seals
+   - **Tracking**: Transport routes, vessels, ports, schedules
+   - **Attachments**: Supporting documents
 3. **Certificate Validation**: SINTECE validates complete certificate data with business rules
 4. **Visa Request Submission**: JUL submits for approval via POST /api/ctns/actions/requestvisa/{id}
 5. **ARCCLA Review**: ARCCLA broker reviews and approves/rejects certificate
-6. **Invoice & Payment**: SINTECE generates invoice and processes payment
-7. **Certificate Issuance**: Certificate issued with amendment/cancellation capabilities
-8. **Status Updates**: Status communicated via API polling and notifications
+6. **Certificate Issuance**: Certificate issued with amendment/cancellation capabilities
+7. **Status Updates**: Status communicated via API polling and notifications
 
 ---
 
@@ -351,8 +348,8 @@ This Interface Control Document (ICD) defines the technical specifications and i
 3. SINTECE validates amendment request and notifies ARCCLA broker
 4. ARCCLA broker reviews amendment in SINTECE with impact analysis
 5. SINTECE sends amendment approval/rejection to JUL via notifications
-6. If approved, SINTECE updates certificate and generates amendment invoice if applicable
-7. JUL processes any additional payments and updates certificate status
+6. If approved, SINTECE updates certificate and certificate status
+7. JUL updates certificate status and notifies stakeholders
 
 *Cancellation Flow:*
 1. JUL validates cancellation eligibility using canCancel status flag
@@ -360,40 +357,37 @@ This Interface Control Document (ICD) defines the technical specifications and i
 3. SINTECE validates cancellation request and calculates financial impact
 4. ARCCLA broker reviews cancellation in SINTECE with impact analysis
 5. SINTECE sends cancellation approval/rejection to JUL via notifications
-6. If approved, SINTECE processes cancellation including any refunds and updates certificate status
+6. If approved, SINTECE processes cancellation and updates certificate status
 
 ### 2.3 System Actors
 
 The following actors interact with the integrated system:
 
-| **Actor** | **Role** | **Responsibilities** | **System Access** |
-|-----------|----------|------------------------------|-------------------|
-| **Trader (Importer/Exporter)** | Business entity shipping goods to/from Angola | • Initiates CNCA certificate requests<br>• Uploads required documents (BL, DUP)<br>• Nominates customs broker<br>• Reviews and approves certificate details<br>• Makes payment for certificate issuance<br>• Downloads issued certificates<br>• Views amendment/cancellation history and status | JUL System (Web Portal) |
-| **Customs Broker / Freight Forwarder** | Licensed agent representing trader with amendment/cancellation capabilities | • Accepts nomination from trader<br>• Completes certificate application<br>• Submits request for approval<br>• Creates amendment requests with change tracking<br>• Creates cancellation requests with reason documentation<br>• Tracks amendment/cancellation status<br>• Receives and forwards certificates to trader<br>• Handles communication with authorities | JUL System (Web Portal with Amendment/Cancellation Features) |
-| **ARCCLA Broker** | Government official authorized to approve certificates, amendments, and cancellations | • Reviews submitted certificate requests<br>• Validates data accuracy and completeness<br>• Approves or rejects requests with detailed reasoning<br>• Reviews and approves/rejects amendment requests<br>• Reviews and approves/rejects cancellation requests<br>• Performs impact analysis for amendments/cancellations<br>• Provides rejection reasons/comments<br>• Issues official CNCA certificates<br>• Monitors compliance | SINTECE System (Internal Portal with Amendment/Cancellation Workflows) |
-| **Payment Processor** | Financial institution/payment gateway with enhanced capabilities | • Processes payment transactions including amendment fees<br>• Provides payment confirmations<br>• **Enhanced:** Handles refunds for approved cancellations<br>• **Enhanced:** Manages amendment fee processing<br>• Supports multiple currencies and payment methods | Payment Gateway System (Enhanced Integration) |
+| **Actor** | **Role** | **System Access** |
+|-----------|----------|-------------------|
+| **Trader (Importer/Exporter)** | Business entity shipping goods to/from Angola | JUL System (Web Portal) |
+| **Customs Broker / Freight Forwarder** | Licensed agent representing trader with amendment/cancellation capabilities | JUL System (Web Portal with Amendment/Cancellation Features) |
+| **ARCCLA Broker** | Government official authorized to approve certificates, amendments, and cancellations | SINTECE System (Internal Portal with Amendment/Cancellation Workflows) |
 
 **Enhanced User Interaction Flow:**
 
 *Standard Certificate Flow:*
 1. **Trader** logs into enhanced JUL → Creates certificate request → Uploads documents → Nominates broker
 2. **Customs Broker** logs into enhanced JUL → Accepts nomination → Completes application with real-time validation → Submits to SINTECE
-3. **ARCCLA Broker** logs into enhanced SINTECE → Reviews request with decision support tools → Approves/Rejects → Generates invoice (if approved)
-4. **Customs Broker** receives notification in JUL → Reviews invoice → Processes payment
-5. **ARCCLA Broker** receives payment confirmation → Issues certificate with amendment/cancellation capabilities
-6. **Trader** and **Customs Broker** receive certificate in JUL → Download and use for customs clearance
+3. **ARCCLA Broker** logs into enhanced SINTECE → Reviews request with decision support tools → Approves/Rejects → Generates certificate (if approved)
+4. **Trader** and **Customs Broker** receive certificate in JUL → Download and use for customs clearance
 
 *Amendment Flow:*
 1. **Customs Broker** checks amendment eligibility in JUL → Creates amendment request → Documents changes
 2. **ARCCLA Broker** receives amendment notification in SINTECE → Reviews changes with impact analysis → Approves/Rejects
-3. **Customs Broker** receives amendment decision in JUL → Processes any additional payments → Updates stakeholders
+3. **Customs Broker** receives amendment decision in JUL → Updates stakeholders
 4. **Trader** receives updated certificate with amendment history in JUL
 
 *Cancellation Flow:*
 1. **Customs Broker** checks cancellation eligibility in JUL → Creates cancellation request → Documents reasons
-2. **ARCCLA Broker** receives cancellation notification in SINTECE → Reviews with financial impact analysis → Approves/Rejects
-3. **Customs Broker** receives cancellation decision in JUL → Processes any refunds → Updates stakeholders
-4. **Trader** receives cancellation confirmation and any applicable refunds
+2. **ARCCLA Broker** receives cancellation notification in SINTECE → Reviews with impact analysis → Approves/Rejects
+3. **Customs Broker** receives cancellation decision in JUL → Updates stakeholders
+4. **Trader** receives cancellation confirmation
 
 ### 2.4 Amendment and Cancellation Capabilities
 
@@ -402,21 +396,18 @@ The following actors interact with the integrated system:
 - Change tracking with before/after value comparison
 - Impact analysis for proposed amendments
 - Role-based approval workflow
-- Amendment fee calculation and payment processing
 - Complete audit trail with history
 
 **Cancellation Management:**
 - Real-time eligibility validation with financial impact assessment
 - Reason code documentation
-- Automated refund calculation based on cancellation timing
 - Role-based approval workflow with escalation
-- Integration with payment systems for refund processing
-- Complete audit trail with financial reconciliation
+- Complete audit trail
 
 **Enhanced Status Management:**
 - Dynamic eligibility flags (canAmend, canCancel) based on real-time business rules
 - Enhanced status workflow supporting amendment/cancellation states
-- Real-time status updates with webhook notifications
+- Real-time status tracking and notifications
 - Comprehensive status history with audit trail
 - Status-based UI enhancements for improved user experience
 
@@ -437,12 +428,7 @@ The following actors interact with the integrated system:
 
 The current SINTECE workflow consists of 15 distinct steps (LC-AR-CNCA-01 through LC-AR-CNCA-15) that involve multiple manual handoffs between traders, customs brokers, and ARCCLA staff. 
 
-#### 3.1.1 Current State Process Flow Diagram
 
-<div class="process-flow-container">
-<img src="./images/svg/Traditional SINTECE Workflow.svg" alt="Traditional SINTECE Workflow" />
-<p>Figure 3.1: Traditional SINTECE Workflow Process</p>
-</div>
 
 > **🚨 Process Inefficiencies:**
 > - Multiple email-based communications causing delays
@@ -526,12 +512,7 @@ The JUL-SINTECE integration introduces a fully digital workflow with section-by-
 └─────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-#### 3.2.2 Future State Process Flow Diagram
 
-<div class="process-flow-container">
-<img src="./images/svg/EnhancedFutureStateCoreCertificateWorkflow.svg" alt="Enhanced Future State Core Certificate Workflow" />
-<p>Figure 3.2: Enhanced Future State Core Certificate Workflow</p>
-</div>
 
 > **✅ Core Certificate Process Improvements:**
 > 1. **Digital Initiation**: Traders initiate requests directly through JUL system with section-by-section data entry
@@ -555,16 +536,67 @@ The JUL-SINTECE integration introduces a fully digital workflow with section-by-
 - Single data entry point
 - Complete audit trail
 
-### 3.3 Integration Touchpoints
+### 3.3 System Integration Architecture
 
-The integration establishes comprehensive touchpoints between JUL and SINTECE systems with a modern API-driven architecture.
+The integration establishes comprehensive touchpoints between JUL and SINTECE systems with a modern API-driven architecture and centralized authentication.
 
-#### 3.3.1 API Integration Architecture Diagram
+**System Integration Overview:**
 
-<div class="process-flow-container">
-<img src="./images/svg/Integration API Flow Diagram.svg" alt="Integration API Flow Diagram" />
-<p>Figure 3.3: Integration API Flow Architecture</p>
-</div>
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    SYSTEM INTEGRATION ARCHITECTURE               │
+└─────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────┐         ┌──────────────────────┐
+│   JUL SYSTEM         │         │  KEYCLOAK SSO        │
+│   (Owner: ADP)       │◄────────┤  (Owner: ADP)        │
+│                      │  Auth   │                      │
+│  • Certificate UI    │         │  • Authentication    │
+│  • Document Mgmt     │         │  • Authorization     │
+│  • Status Tracking   │         │  • JWT Token Mgmt    │
+│  • User Portal       │         │  • Role Management   │
+└──────────┬───────────┘         └──────────────────────┘
+           │                              ▲
+           │ REST APIs                    │ Auth
+           │ (HTTPS/TLS)                  │
+           ▼                              │
+┌──────────────────────┐         ┌──────────────────────┐
+│  INTEGRATION LAYER   │         │  SINTECE SYSTEM      │
+│  (Owner: Shared)     │◄────────┤  (Owner: ARCCLA)     │
+│                      │  Auth   │                      │
+│  • API Gateway       │         │  • Certificate       │
+│  • Data Transform    │         │    Processing        │
+│  • Validation        │         │  • Approval Workflow │
+│  • Error Handling    │         │  • Master Data Mgmt  │
+└──────────────────────┘         │  • Status Management │
+                                 └──────────────────────┘
+
+KEY INTEGRATION POINTS:
+─────────────────────────────────────────────────────────
+• Authentication: Keycloak SSO with JWT tokens
+• Master Data Sync: Real-time via REST APIs
+• Certificate Submission: Section-by-section APIs
+• Status Updates: Polling-based status retrieval
+• Document Exchange: Secure file transfer APIs
+```
+
+**Component Ownership Table:**
+
+| Component | Owner | Responsibilities |
+|-----------|-------|------------------|
+| **JUL System** | Abu Dhabi Ports (ADP) | User interface, certificate request initiation, document upload, status display, user notifications, certificate download |
+| **Keycloak SSO** | Abu Dhabi Ports (ADP) | User authentication, authorization, JWT token issuance and validation, session management, role-based access control |
+| **Integration Layer** | Shared (ADP + ARCCLA) | API gateway, request/response transformation, data validation, error handling, logging and monitoring |
+| **SINTECE System** | ARCCLA (Angola) | Certificate processing, approval workflows, master data management, certificate issuance, status management |
+
+**Integration Flow Description:**
+1. User authenticates via Keycloak SSO (OpenID Connect/OAuth2)
+2. JUL obtains JWT access token for API authorization
+3. JUL sends certificate data to SINTECE via REST APIs
+4. Integration layer validates and transforms requests
+5. SINTECE processes certificate and updates status
+6. JUL polls SINTECE for status updates
+7. Certificate issued and available for download
 
 **Data Synchronization Points:**
 - Master data synchronization (countries, ports, cargo types)
@@ -581,20 +613,12 @@ The integration establishes comprehensive touchpoints between JUL and SINTECE sy
 
 **Business Process Touchpoints:**
 - ARCCLA broker approval workflows
-- Payment processing and invoice generation
 - Document management and storage
 - Audit logging and compliance reporting
 
 ### 3.4 Amendment Workflow Process
 
 The amendment workflow provides controlled modification capabilities for issued certificates with comprehensive ARCCLA approval processes.
-
-#### 3.4.1 Enhanced Amendment Workflow Diagram
-
-<div class="process-flow-container">
-<img src="./images/svg/Enhanced Amendment Workflow.svg" alt="Enhanced Amendment Workflow" />
-<p>Figure 3.4: Enhanced Amendment Workflow Process</p>
-</div>
 
 **Amendment Request Initiation:**
 1. **Eligibility Check**: System validates certificate status and amendment permissions
@@ -619,29 +643,21 @@ The amendment workflow provides controlled modification capabilities for issued 
 
 The cancellation workflow provides controlled termination of certificate requests with comprehensive financial impact management and refund processing.
 
-#### 3.5.1 Enhanced Cancellation Workflow Diagram
-
-<div class="process-flow-container">
-<img src="./images/svg/Enhanced Cancellation Workflow.svg" alt="Enhanced Cancellation Workflow" />
-<p>Figure 3.5: Enhanced Cancellation Workflow Process</p>
-</div>
-
 **Cancellation Request Initiation:**
 1. **Eligibility Check**: System validates certificate status and cancellation permissions
-2. **Impact Assessment**: System calculates financial impact and refund eligibility
+2. **Impact Assessment**: System calculates impact and eligibility
 3. **Request Creation**: Customs broker provides cancellation reason and additional details
 4. **Submission**: Cancellation request is submitted to ARCCLA for review
 
 **ARCCLA Review and Processing:**
 1. **Notification**: ARCCLA broker receives cancellation request notification
 2. **Review**: Validation of cancellation reason and business justification
-3. **Financial Analysis**: Calculation of appropriate refund amount based on timing and status
+3. **Analysis**: Review of cancellation impact and timing
 4. **Decision**: Approval or rejection of cancellation request
-5. **Processing**: For approved cancellations, certificate is cancelled and refund initiated
+5. **Processing**: For approved cancellations, certificate is cancelled
 
 **Cancellation Eligibility Rules:**
 - Certificate status allows cancellation (not yet issued or used for customs clearance)
-- Payment status allows refund processing
 - Cancellation requested within allowed timeframe
 - No active amendments in progress
 - Valid business reason for cancellation provided
@@ -671,7 +687,6 @@ The ARCCLA approval workflows are enhanced to support the new amendment and canc
 **Enhanced Notification System:**
 - Real-time notifications to all stakeholders
 - Email and system notifications with rich content
-- Webhook support for external system integration
 - Configurable notification preferences by user role
 
 ---
@@ -2284,7 +2299,11 @@ Accept: application/json
 
 Certificate management APIs handle the core CTN certificate lifecycle operations, enabling the creation, retrieval, and management of CNCA certificates throughout their entire lifecycle from draft to completion.
 
-#### 5.2.1 CTN List API
+**Note:** APIs marked as "Internal to JUL" are handled within the JUL system and do not require SINTECE implementation.
+
+#### 5.2.1 CTN List API (Internal to JUL)
+
+**Note:** This API is internal to the JUL system and does not require implementation by SINTECE.
 
 **Business Purpose:** Provides comprehensive listing and filtering capabilities for CTN certificates. Essential for dashboard displays, search functionality, status tracking, and bulk operations. Supports real-time monitoring of certificate processing status and enables efficient certificate portfolio management for traders and customs brokers.
 
@@ -2392,44 +2411,10 @@ Accept: application/json
   }
 ]
 ```
-- **CTN_E003**: "No data found" (HTTP 404)
 
-**Sample JSON Response:**
-```json
-[
-  {
-    "Id": 503808,
-    "CTN_Reference_Number": "AO-CNT-503808-2023",
-    "StatusId": 1,
-    "BL_number": "vc568009iujh",
-    "UniqueTradeNumber": "56789098765",
-    "DCNumber": "7777777",
-    "CargoTypeId": 1,
-    "ETD": "2023-12-15T10:00:00Z",
-    "ETA": "2023-12-20T15:30:00Z",
-    "Total_Value_Of_Goods": 15000.00,
-    "View_CurrencyId": 2,
-    "IsExport": true,
-    "IsImport": false,
-    "CreatedOn": "2025-11-12T18:49:30.8817831Z",
-    "CreatedById": 1,
-    "ModifiedOn": "2025-11-12T19:15:45.2345678Z",
-    "ModifiedById": 1,
-    "Status": {
-      "Id": 1,
-      "Status_Desc": "Draft",
-      "Active": true
-    },
-    "CargoType": {
-      "Id": 1,
-      "CargoType_Code": "CONT",
-      "CargoType_Desc": "CONTAINER"
-    }
-  }
-]
-```
+#### 5.2.2 CTN Details API (Internal to JUL)
 
-#### 5.2.2 CTN Details API
+**Note:** This API is internal to the JUL system and does not require implementation by SINTECE.
 
 **Business Purpose:** Retrieves comprehensive CTN certificate details including all related entities and status information essential for certificate management and processing. Critical for viewing complete CTN records, managing certificate lifecycle, tracking status changes, and providing detailed information for customs clearance and logistics coordination.
 
@@ -2616,109 +2601,12 @@ Accept: application/json
   }
 ]
 ```
-{
-  "BL_number": "vc568009iujh",
-  "UniqueTradeNumber": "56789098765", 
-  "CargoTypeId": 1,
-  "IncotermId": 2,
-  "OriginCountryId": 10,
-  "FinalDestinationCountryId": 85,
-  "Total_Value_Of_Goods": 15000.00,
-  "View_CurrencyId": 2,
-  "IsExport": true,
-  "IsImport": false,
-  "ETD": "2023-12-15T10:00:00Z",
-  "ETA": "2023-12-20T15:30:00Z",
-  "VoyageNo": "VOY123",
-  "VesselName": "MSC MEDITERRANEAN",
-  "ConsigneeId": 12345
-}
-```
 
-**Response Elements:**
+#### 5.2.4 CTN Creation API (Certificate Submission)
 
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | M | Generated CTN unique identifier | 503809 |
-| 2 | CTN_Reference_Number | String - 50 | M | Auto-generated CTN reference | AO-CNT-503809-2023 |
-| 3 | StatusId | Integer | M | Initial status (typically 1 for Draft) | 1 |
-| 4 | CreatedOn | DateTime | M | Record creation timestamp | 2025-11-13T10:30:00Z |
-| 5 | CreatedById | Integer | M | User who created the record | 13345 |
+**Note:** This unified API consolidates what was previously multiple separate operations (creation, addresses, goods, containers, tracking, attachments) into one comprehensive submission. JUL will handle all data processing internally and save as draft, eliminating the need for multiple API calls from SINTECE.
 
-#### 5.2.4 Freight Payment Types API
-
-**Business Purpose:** Manages freight payment type classifications essential for financial processing and customs compliance. Critical for determining payment responsibilities, cash flow planning, and ensuring proper documentation of freight charges in certificates and shipping agreements.
-
-**Endpoint:** `GET /api/FreightPaymentTypes`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | $sort | String - 100 | O | OData sort parameter | FreightPaymentType_Desc |
-| 2 | FreightPaymentType_Desc | String - 200 | O | Filter by payment type | Prepaid |
-| 3 | active | Boolean | O | Filter active records only | 1 |
-
-**UI Validation Rules:**
-- **FREIGHT_UI_001**: Payment type filter optional, 3-50 characters
-- **FREIGHT_UI_002**: Display with payment responsibility clarification
-- **FREIGHT_UI_003**: Group by prepaid vs collect options
-
-**Business Validation Rules:**
-- **FREIGHT_BV_001**: Payment type must match Incoterm requirements
-- **FREIGHT_BV_002**: Some payment types require credit approval
-- **FREIGHT_BV_003**: Payment method must be supported by carrier
-
-**Response Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | M | Unique payment type identifier | 1 |
-| 2 | FreightPaymentType_Desc | String - 200 | M | Payment type description | Prepaid |
-| 3 | Code | String - 10 | O | Payment type code | PP |
-| 4 | Active | Boolean | M | Active status indicator | true |
-
-**Error Codes:**
-- **FREIGHT_E001**: "Invalid payment type parameters" (HTTP 400)
-- **FREIGHT_E002**: "Payment type not found" (HTTP 404)
-- **FREIGHT_E003**: "Payment type not supported" (HTTP 422)
-
-**Sample JSON Request:**
-```json
-GET /api/FreightPaymentTypes?$sort=FreightPaymentType_Desc&active=1
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
-Accept: application/json
-```
-
-**Sample JSON Response:**
-```json
-[
-  {
-    "Id": 1,
-    "FreightPaymentType_Desc": "Prepaid",
-    "Code": "PP",
-    "Active": true,
-    "CreatedOn": "2023-01-15T10:30:00Z",
-    "CreatedById": 1,
-    "ModifiedOn": null,
-    "ModifiedById": null
-  },
-  {
-    "Id": 2,
-    "FreightPaymentType_Desc": "Collect",
-    "Code": "CC",
-    "Active": true,
-    "CreatedOn": "2023-01-15T10:30:00Z",
-    "CreatedById": 1,
-    "ModifiedOn": null,
-    "ModifiedById": null
-  }
-]
-```
-
-#### 5.2.5 CTN Creation API (Certificate Submission)
-
-**Business Purpose:** Creates new CTN certificate records for CNCA certificate applications essential for initiating the certificate issuance process. Critical for submitting initial certificate requests, establishing certificate records, validating submission data, and enabling the certificate approval workflow.
+**Business Purpose:** Creates new CTN certificate records with complete information for CNCA certificate applications in a single comprehensive request. This unified API combines what was previously multiple separate operations (creation, addresses, goods, containers, tracking, attachments) into one streamlined submission. Critical for submitting complete certificate requests, establishing certificate records with all required data, validating comprehensive submission data, and enabling the certificate approval workflow efficiently.
 
 **Endpoint:** `POST /api/ctns`
 
@@ -2726,85 +2614,157 @@ Accept: application/json
 
 | S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
 |-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | CTN_Addresses | Array | O | Initial empty array for addresses | [] |
-| 2 | CTN_Containers | Array | O | Initial empty array for containers | [] |
-| 3 | CTN_Goods | Array | O | Initial empty array for goods | [] |
-| 4 | CTN_RORO | Array | O | Initial empty array for RORO cargo | [] |
-| 5 | CTN_Tracking | Array | O | Initial empty array for tracking | [] |
-| 6 | Id | Integer | O | CTN identifier (null for new) | null |
-| 7 | CTN_Reference_Number | String - 50 | O | System generated reference | "" |
-| 8 | StatusId | Integer | M | Status identifier (1=Created) | 1 |
-| 9 | Groupage | Boolean | O | Groupage indicator | false |
-| 10 | ParentCTNId | Integer | O | Parent CTN identifier | null |
-| 11 | CargoTypeId | Integer | M | Cargo type identifier | 1 |
-| 12 | ETD | DateTime | O | Estimated time departure | null |
-| 13 | ETA | DateTime | O | Estimated time arrival | null |
-| 14 | BL_number | String - 50 | M | Bill of lading number | vc568009iujh |
-| 15 | IncotermId | Integer | M | Incoterm identifier | 2 |
-| 16 | OriginCountryId | Integer | M | Origin country identifier | 10 |
-| 17 | FinalDestinationCountryId | Integer | M | Destination country identifier | 4 |
-| 18 | FreightPaymentTypeId | Integer | M | Freight payment type identifier | 1 |
-| 19 | Total_number_containers | Integer | O | Total containers count | 0 |
-| 20 | Total_number_vehicles | Integer | O | Total vehicles count | 0 |
-| 21 | Total_Ocean_Freight | Decimal | O | Total ocean freight value | 0 |
-| 22 | Total_Value_Of_Goods | Decimal | O | Total goods value | 0 |
-| 23 | Total_Charges | Decimal | O | Total charges amount | 0 |
-| 24 | General_Total | Decimal | O | General total amount | 0 |
-| 25 | View_CurrencyId | Integer | M | Currency identifier | 1 |
-| 26 | Exchange_Rate | Decimal | O | Exchange rate | 1 |
-| 27 | Visum_Location | String - 100 | O | Visa location | null |
-| 28 | Visum_Reference_number | String - 50 | O | Visa reference number | null |
-| 29 | Visum_Cost | Decimal | O | Visa cost | 1 |
-| 30 | Visum_Date | DateTime | O | Visa date | null |
-| 31 | Visum_AgentId | Integer | O | Visa agent identifier | null |
-| 32 | Invoicer_to_agent | String - 100 | O | Invoicing agent | null |
-| 33 | VoyageNo | String - 50 | O | Voyage number | null |
-| 34 | RegularisationCTN | Boolean | O | Regularisation flag | false |
-| 35 | IsExport | Boolean | M | Export indicator | true |
-| 36 | IsImport | Boolean | O | Import indicator | false |
-| 37 | Origin_CityId | Integer | M | Origin city identifier | 262 |
-| 38 | Final_Destination_CityId | Integer | O | Final destination city | null |
-| 39 | CarrierId | Integer | M | Carrier identifier | 789 |
-| 40 | UniqueTradeNumber | String - 50 | M | Unique trade number | 56789098765 |
-| 41 | Commission | Decimal | O | Commission amount | 0 |
-| 42 | CommissionCNC | Decimal | O | CNC commission | 0 |
-| 43 | CTNExchangeRate | Decimal | O | CTN exchange rate | null |
-| 44 | MarkedForUpdate | Boolean | O | Update marker | false |
-| 45 | ReceivedByGumar | Boolean | O | Gumar receipt flag | false |
-| 46 | ErrorSendToGumar | Boolean | O | Gumar error flag | false |
-| 47 | BankId | Integer | O | Bank identifier | 2 |
-| 48 | ConsigneeId | Integer | M | Consignee identifier | 43214 |
-| 49 | ReExport | Boolean | O | Re-export indicator | false |
-| 50 | DCNumber | String - 50 | O | Document control number | 7777777 |
-| 51 | CreatedOn | DateTime | O | Creation timestamp | 2025-11-12T18:49:30.88Z |
-| 52 | CreatedById | Integer | O | Creator identifier | 1 |
+| **Core CTN Information** |
+| 1 | Id | Integer | O | CTN identifier (null for new) | null |
+| 2 | CTN_Reference_Number | String - 50 | O | System generated reference | "" |
+| 3 | StatusId | Integer | M | Status identifier (1=Created) | 1 |
+| 4 | Groupage | Boolean | O | Groupage indicator | false |
+| 5 | ParentCTNId | Integer | O | Parent CTN identifier | null |
+| 6 | CargoTypeId | Integer | M | Cargo type identifier | 1 |
+| 7 | ETD | DateTime | O | Estimated time departure | null |
+| 8 | ETA | DateTime | O | Estimated time arrival | null |
+| 9 | BL_number | String - 50 | M | Bill of lading number | vc568009iujh |
+| 10 | IncotermId | Integer | M | Incoterm identifier | 2 |
+| 11 | OriginCountryId | Integer | M | Origin country identifier | 10 |
+| 12 | FinalDestinationCountryId | Integer | M | Destination country identifier | 4 |
+| 13 | FreightPaymentTypeId | Integer | M | Freight payment type identifier | 1 |
+| 14 | Total_number_containers | Integer | O | Total containers count | 0 |
+| 15 | Total_number_vehicles | Integer | O | Total vehicles count | 0 |
+| 16 | Total_Ocean_Freight | Decimal | O | Total ocean freight value | 0 |
+| 17 | Total_Value_Of_Goods | Decimal | O | Total goods value | 0 |
+| 18 | Total_Charges | Decimal | O | Total charges amount | 0 |
+| 19 | General_Total | Decimal | O | General total amount | 0 |
+| 20 | View_CurrencyId | Integer | M | Currency identifier | 1 |
+| 21 | Exchange_Rate | Decimal | O | Exchange rate | 1 |
+| 22 | Visum_Location | String - 100 | O | Visa location | null |
+| 23 | Visum_Reference_number | String - 50 | O | Visa reference number | null |
+| 24 | Visum_Cost | Decimal | O | Visa cost | 1 |
+| 25 | Visum_Date | DateTime | O | Visa date | null |
+| 26 | Visum_AgentId | Integer | O | Visa agent identifier | null |
+| 27 | Invoicer_to_agent | String - 100 | O | Invoicing agent | null |
+| 28 | VoyageNo | String - 50 | O | Voyage number | null |
+| 29 | RegularisationCTN | Boolean | O | Regularisation flag | false |
+| 30 | IsExport | Boolean | M | Export indicator | true |
+| 31 | IsImport | Boolean | O | Import indicator | false |
+| 32 | Origin_CityId | Integer | M | Origin city identifier | 262 |
+| 33 | Final_Destination_CityId | Integer | O | Final destination city | null |
+| 34 | CarrierId | Integer | M | Carrier identifier | 789 |
+| 35 | UniqueTradeNumber | String - 50 | M | Unique trade number | 56789098765 |
+| 36 | Commission | Decimal | O | Commission amount | 0 |
+| 37 | CommissionCNC | Decimal | O | CNC commission | 0 |
+| 38 | CTNExchangeRate | Decimal | O | CTN exchange rate | null |
+| 39 | MarkedForUpdate | Boolean | O | Update marker | false |
+| 40 | ReceivedByGumar | Boolean | O | Gumar receipt flag | false |
+| 41 | ErrorSendToGumar | Boolean | O | Gumar error flag | false |
+| 42 | BankId | Integer | O | Bank identifier | 2 |
+| 43 | ConsigneeId | Integer | M | Consignee identifier | 43214 |
+| 44 | ReExport | Boolean | O | Re-export indicator | false |
+| 45 | DCNumber | String - 50 | O | Document control number | 7777777 |
+| 46 | CreatedOn | DateTime | O | Creation timestamp | 2025-11-12T18:49:30.88Z |
+| 47 | CreatedById | Integer | O | Creator identifier | 1 |
+| **Address Information** |
+| 48 | CTN_Addresses | Array | O | Array of address objects for shipper, consignee, forwarder, notify party | [...] |
+| 48.1 | - Id | Integer | O | Address identifier (null for new) | null |
+| 48.2 | - QryAddressTypeId | Integer | M | Address type (1=Shipper, 2=Consignee, 3=Forwarder, 4=Notify) | 2 |
+| 48.3 | - Name | String - 200 | M | Company/Person name | M.A.C.S AS.TEC.N. E IND |
+| 48.4 | - Address | String - 500 | M | Physical address | maculusso rua comandate |
+| 48.5 | - City | String - 100 | M | City name | kwenhan |
+| 48.6 | - CountryId | Integer | M | Country identifier | 10 |
+| 48.7 | - Email | String - 100 | O | Email address | contact@company.com |
+| 48.8 | - Telephone | String - 50 | M | Phone number | 923798669 |
+| 48.9 | - NIFNumber | String - 50 | M | Tax identification number | 0000000458608 |
+| **Goods Information** |
+| 49 | CTN_Goods | Array | O | Array of goods/cargo objects | [...] |
+| 49.1 | - Id | Integer | O | Goods identifier (null for new) | null |
+| 49.2 | - GoodsClassificationId | Integer | M | Goods classification identifier | 16882 |
+| 49.3 | - IMOId | Integer | M | IMO hazardous code identifier | 2 |
+| 49.4 | - CargoTypeId | Integer | M | Cargo type identifier | 1 |
+| 49.5 | - DescriptionGoods | String - 500 | M | Goods description | test |
+| 49.6 | - GrossWeightKG | Decimal | M | Gross weight in kg | 10.0 |
+| 49.7 | - VolumeCBM | Decimal | M | Volume in cubic meters | 11.0 |
+| 49.8 | - OceanFreight | Decimal | M | Ocean freight cost | 22.0 |
+| 49.9 | - ValueOfGoods | Decimal | M | Value of goods | 33.0 |
+| 49.10 | - NumberOfPackages | Integer | M | Number of packages | 3 |
+| **Container Information** |
+| 50 | CTN_Containers | Array | O | Array of container objects | [...] |
+| 50.1 | - Id | Integer | O | Container identifier (null for new) | null |
+| 50.2 | - ContainerTypeId | Integer | M | Container type identifier | 31 |
+| 50.3 | - Number_of_Containers | Integer | M | Number of containers | 1 |
+| 50.4 | - ContainerNumbers | String - 100 | M | Container number(s) | MSCU1234567 |
+| 50.5 | - SealNumbers | String - 100 | M | Seal number(s) | 23234 |
+| 50.6 | - Groupage | Boolean | O | Groupage indicator | false |
+| 50.7 | - IsEmpty | Boolean | O | Empty container indicator | false |
+| 50.8 | - OwnedByShipper | Boolean | O | Shipper owned indicator | false |
+| **Transport/Tracking Information** |
+| 51 | CTN_Tracking | Array | O | Array of transport route objects | [...] |
+| 51.1 | - Id | Integer | O | Tracking identifier | null |
+| 51.2 | - SourceCountryId | Integer | M | Source country identifier | 10 |
+| 51.3 | - SourcePortId | Integer | M | Source port identifier | 80 |
+| 51.4 | - ETD | DateTime | M | Estimated time departure | 2025-11-12T00:00:00.000Z |
+| 51.5 | - TransportTypeId | Integer | M | Transport type identifier | 1 |
+| 51.6 | - VoyageNumber | String - 50 | M | Voyage number | 546894 |
+| 51.7 | - CarrierId | Integer | M | Carrier identifier | 789 |
+| 51.8 | - VesselId | Integer | M | Vessel identifier | 5163 |
+| 51.9 | - DestinationCountryId | Integer | M | Destination country identifier | 4 |
+| 51.10 | - DestinationPortId | Integer | M | Destination port identifier | 35 |
+| 51.11 | - ETA | DateTime | M | Estimated time arrival | 2025-12-09T00:00:00.000Z |
+| 51.12 | - Sequence | Integer | M | Sequence number | 1 |
+| **RORO Information** |
+| 52 | CTN_RORO | Array | O | Array of RORO cargo objects (for roll-on/roll-off cargo) | [...] |
+| **Attachment Information** |
+| 53 | CTN_Attachments | Array | O | Array of document attachment objects | [...] |
+| 53.1 | - Id | Integer | O | Attachment identifier (null for new) | null |
+| 53.2 | - AttachmentGuid | String - 50 | M | File upload GUID from fileupload API | 0da7461c-2155-4d20-a695-6b7463367327 |
+| 53.3 | - NameId | Integer | M | Attachment name type identifier | 4 |
 
 **UI Validation Rules:**
-- **CTNCRE_UI_001**: All mandatory fields must be completed
+- **CTNCRE_UI_001**: All mandatory fields must be completed for core CTN information
 - **CTNCRE_UI_002**: BL number must be unique and valid format
 - **CTNCRE_UI_003**: Trade number must follow required pattern
+- **CTNCRE_UI_004**: At least one address must be provided (typically consignee)
+- **CTNCRE_UI_005**: All address fields must be complete when address is provided
+- **CTNCRE_UI_006**: At least one goods entry must be provided for the shipment
+- **CTNCRE_UI_007**: Container information must match declared container count
+- **CTNCRE_UI_008**: Transport route must have valid origin and destination
+- **CTNCRE_UI_009**: Attachment GUIDs must be valid from fileupload API
 
 **Business Validation Rules:**
 - **CTNCRE_BV_001**: BL number must not exist in system
-- **CTNCRE_BV_002**: All referenced entities must be valid and active
+- **CTNCRE_BV_002**: All referenced entities (countries, ports, carriers, etc.) must be valid and active
 - **CTNCRE_BV_003**: User must have permission to create CTNs
+- **CTNCRE_BV_004**: NIFNumber validation must pass for Angola addresses
+- **CTNCRE_BV_005**: Total values must match sum of individual goods values
+- **CTNCRE_BV_006**: Container count must match actual container entries
+- **CTNCRE_BV_007**: Transport sequence must be logical (ETD before ETA)
+- **CTNCRE_BV_008**: Required attachments must be present based on trade type
 
 **Response Elements:**
 
 | S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
 |-------|------------|------------------|-----------|------------------------|--------------|
 | 1 | Id | Integer | M | New CTN identifier | 503808 |
-| 2 | CTN_Reference_Number | String - 50 | M | System generated reference | 170543 |
-| 3 | StatusId | Integer | M | Initial status (Created) | 1 |
+| 2 | CTN_Reference_Number | String - 50 | M | System generated reference | AO-CNT-503808-2025 |
+| 3 | StatusId | Integer | M | Initial status (1=Draft) | 1 |
 | 4 | BL_number | String - 50 | M | Confirmed BL number | vc568009iujh |
 | 5 | UniqueTradeNumber | String - 50 | M | Confirmed trade number | 56789098765 |
-| 6 | CreatedOn | DateTime | M | Creation timestamp | 2025-11-12T18:49:30.88Z |
+| 6 | CreatedOn | DateTime | M | Creation timestamp | 2025-11-14T10:30:00Z |
 | 7 | CreatedById | Integer | M | Creator user identifier | 1 |
+| 8 | AddressesCreated | Integer | M | Number of addresses created | 2 |
+| 9 | GoodsCreated | Integer | M | Number of goods entries created | 1 |
+| 10 | ContainersCreated | Integer | M | Number of container entries created | 1 |
+| 11 | TrackingCreated | Integer | M | Number of tracking entries created | 1 |
+| 12 | AttachmentsCreated | Integer | M | Number of attachments created | 2 |
 
 **Error Codes:**
 - **CTNCRE_E001**: "BL number already exists" (HTTP 409)
 - **CTNCRE_E002**: "Invalid reference data" (HTTP 400)
 - **CTNCRE_E003**: "Insufficient permissions" (HTTP 403)
+- **CTNCRE_E004**: "Invalid address information" (HTTP 422)
+- **CTNCRE_E005**: "Invalid goods information" (HTTP 422)
+- **CTNCRE_E006**: "Invalid container information" (HTTP 422)
+- **CTNCRE_E007**: "Invalid tracking information" (HTTP 422)
+- **CTNCRE_E008**: "Invalid attachment information" (HTTP 422)
+- **CTNCRE_E009**: "NIF validation failed" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -2813,11 +2773,6 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 
 {
-  "CTN_Addresses": [],
-  "CTN_Containers": [],
-  "CTN_Goods": [],
-  "CTN_RORO": [],
-  "CTN_Tracking": [],
   "Id": null,
   "CTN_Reference_Number": "",
   "StatusId": 1,
@@ -2831,12 +2786,12 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
   "OriginCountryId": 10,
   "FinalDestinationCountryId": 4,
   "FreightPaymentTypeId": 1,
-  "Total_number_containers": 0,
+  "Total_number_containers": 1,
   "Total_number_vehicles": 0,
-  "Total_Ocean_Freight": 0,
-  "Total_Value_Of_Goods": 0,
-  "Total_Charges": 0,
-  "General_Total": 0,
+  "Total_Ocean_Freight": 22.0,
+  "Total_Value_Of_Goods": 33.0,
+  "Total_Charges": 55.0,
+  "General_Total": 55.0,
   "View_CurrencyId": 1,
   "Exchange_Rate": 1,
   "Visum_Location": null,
@@ -2845,322 +2800,128 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
   "Visum_Date": null,
   "Visum_AgentId": null,
   "Invoicer_to_agent": null,
-  "VoyageNo": null,
+  "VoyageNo": "546894",
   "RegularisationCTN": false,
-  "Corrected": null,
-  "Original_Amount": null,
-  "DateAccepted": null,
-  "AcceptedBy": null,
-  "DateGranted": null,
-  "GrantedBy": null,
-  "DateRejected": null,
-  "RejectedById": null,
-  "Gumar_Ref": null,
-  "RequiredVisa": null,
-  "DateRequestVisa": null,
-  "DateRequestCorrection": null,
   "IsExport": true,
   "IsImport": false,
-  "DateSuspended": null,
-  "DateRefused": null,
-  "PrintDate": null,
-  "RequestedBy": null,
-  "SuspendedBy": null,
-  "RefusedBy": null,
-  "RefusedById": null,
-  "PrintedBy": null,
-  "PrintNumber": null,
-  "CTNCost": null,
-  "CommissionCNC": 0,
-  "CTNExchangeRate": null,
-  "MarkedForUpdate": false,
-  "ReceivedByGumar": false,
-  "ErrorSendToGumar": false,
   "Origin_CityId": 262,
   "Final_Destination_CityId": null,
   "CarrierId": 789,
   "UniqueTradeNumber": "56789098765",
   "Commission": 0,
-  "Origin_City": null,
-  "Final_Destination_City": null,
-  "Status": null,
-  "CargoType": null,
-  "FreightPaymentType": null,
-  "Incoterm": null,
-  "View_Currency": null,
-  "Created_User_Currency": null,
-  "OriginCountry": null,
-  "FinalDestinationCountry": null,
-  "CreatedBy": null,
-  "RejectedBy": null,
-  "ModifiedBy": null,
-  "Visum_Agent": null,
-  "Carrier": null,
-  "ParentCTN": null,
+  "CommissionCNC": 0,
+  "CTNExchangeRate": null,
+  "MarkedForUpdate": false,
+  "ReceivedByGumar": false,
+  "ErrorSendToGumar": false,
   "BankId": 2,
-  "Bank": null,
   "ConsigneeId": 43214,
-  "Consignee": null,
   "ReExport": false,
   "DCNumber": "7777777",
-  "CreatedOn": "2025-11-12T18:49:30.8817831+01:00",
+  "CreatedOn": "2025-11-14T10:30:00Z",
   "CreatedById": 1,
-  "CreatedByLogin": null,
-  "ModifiedOn": null,
-  "ModifiedById": null,
-  "ModifiedByLogin": null
+  "CTN_Addresses": [
+    {
+      "Id": null,
+      "QryAddressTypeId": 1,
+      "Name": "EXPORTER COMPANY LTD",
+      "Address": "123 Export Street",
+      "City": "Export City", 
+      "CountryId": 10,
+      "Email": "exporter@company.com",
+      "Telephone": "244123456789",
+      "NIFNumber": "1234567890"
+    },
+    {
+      "Id": null,
+      "QryAddressTypeId": 2,
+      "Name": "M.A.C.S AS.TEC.N. E IND",
+      "Address": "maculusso rua comandate",
+      "City": "kwenhan",
+      "CountryId": 4,
+      "Email": "contact@company.com",
+      "Telephone": "923798669",
+      "NIFNumber": "0000000458608"
+    }
+  ],
+  "CTN_Goods": [
+    {
+      "Id": null,
+      "GoodsClassificationId": 16882,
+      "IMOId": 2,
+      "CargoTypeId": 1,
+      "DescriptionGoods": "Electronic Components and Parts",
+      "GrossWeightKG": 1000.0,
+      "VolumeCBM": 11.0,
+      "OceanFreight": 22.0,
+      "ValueOfGoods": 33.0,
+      "NumberOfPackages": 3
+    }
+  ],
+  "CTN_Containers": [
+    {
+      "Id": null,
+      "ContainerTypeId": 31,
+      "Number_of_Containers": 1,
+      "ContainerNumbers": "MSCU1234567",
+      "SealNumbers": "23234",
+      "Groupage": false,
+      "IsEmpty": false,
+      "OwnedByShipper": false
+    }
+  ],
+  "CTN_Tracking": [
+    {
+      "Id": null,
+      "SourceCountryId": 10,
+      "SourcePortId": 80,
+      "ETD": "2025-11-15T00:00:00.000Z",
+      "TransportTypeId": 1,
+      "VoyageNumber": "546894",
+      "CarrierId": 789,
+      "VesselId": 5163,
+      "DestinationCountryId": 4,
+      "DestinationPortId": 35,
+      "ETA": "2025-12-09T00:00:00.000Z",
+      "Sequence": 1
+    }
+  ],
+  "CTN_RORO": [],
+  "CTN_Attachments": [
+    {
+      "Id": null,
+      "AttachmentGuid": "0da7461c-2155-4d20-a695-6b7463367327",
+      "NameId": 4
+    },
+    {
+      "Id": null,
+      "AttachmentGuid": "1eb8572d-3266-5e31-b7a6-7c8574468438",
+      "NameId": 1
+    }
+  ]
 }
 ```
 
 **Sample JSON Response:**
 ```json
 {
-  "CTN_Addresses": [],
-  "CTN_Containers": [],
-  "CTN_Goods": [],
-  "CTN_RORO": [],
-  "CTN_Tracking": [],
   "Id": 503808,
-  "CTN_Reference_Number": "170543",
+  "CTN_Reference_Number": "AO-CNT-503808-2025",
   "StatusId": 1,
-  "Groupage": false,
-  "ParentCTNId": null,
-  "CargoTypeId": 1,
-  "ETD": null,
-  "ETA": null,
   "BL_number": "vc568009iujh",
-  "IncotermId": 2,
-  "OriginCountryId": 10,
-  "FinalDestinationCountryId": 4,
-  "FreightPaymentTypeId": 1,
-  "Total_number_containers": 0,
-  "Total_number_vehicles": 0,
-  "Total_Ocean_Freight": 0.0,
-  "Total_Value_Of_Goods": 0.0,
-  "Total_Charges": 0.0,
-  "General_Total": 0.0,
-  "View_CurrencyId": 1,
-  "Exchange_Rate": 1.0,
-  "Visum_Cost": 1,
-  "IsExport": true,
-  "IsImport": false,
-  "Origin_CityId": 262,
-  "CarrierId": 789,
   "UniqueTradeNumber": "56789098765",
-  "BankId": 2,
-  "ConsigneeId": 43214,
-  "ReExport": false,
-  "DCNumber": "7777777",
-  "CreatedOn": "2025-11-12T18:49:30.8817831+01:00",
-  "CreatedById": 1
+  "CreatedOn": "2025-11-14T10:30:00Z",
+  "CreatedById": 1,
+  "AddressesCreated": 2,
+  "GoodsCreated": 1,
+  "ContainersCreated": 1,
+  "TrackingCreated": 1,
+  "AttachmentsCreated": 2,
+  "Message": "CTN certificate created successfully with all associated data"
 }
 ```
 
-#### 5.2.6 CTN Addresses API (Add Address Information)
-
-**Business Purpose:** Adds address information to CTN certificates for complete certificate data submission essential for providing shipper, consignee, forwarder, and notify party details. Critical for ensuring complete party information, supporting trade documentation requirements, and enabling proper certificate validation.
-
-**Endpoint:** `POST /api/ctnAddresses`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | O | Address identifier (null for new) | null |
-| 2 | CTNId | Integer | M | CTN identifier | 503808 |
-| 3 | QryAddressTypeId | Integer | M | Address type (1=Shipper, 2=Consignee, 3=Forwarder, 4=Notify) | 2 |
-| 4 | Name | String - 200 | M | Company/Person name | -M.A.C.S AS.TEC.N. E IND |
-| 5 | Address | String - 500 | M | Physical address | maculusso rua comandate |
-| 6 | City | String - 100 | M | City name | kwenhan |
-| 7 | CountryId | Integer | M | Country identifier | 10 |
-| 8 | Email | String - 100 | O | Email address | contact@company.com |
-| 9 | Telephone | String - 50 | M | Phone number | 923798669 |
-| 10 | NIFNumber | String - 50 | M | Tax identification number | 0000000458608 |
-
-**Sample JSON Request:**
-```json
-POST /api/ctnAddresses
-Content-Type: application/json
-
-{
-  "Id": null,
-  "CTNId": 503808,
-  "QryAddressTypeId": 2,
-  "Name": "-M.A.C.S AS.TEC.N. E INDMANUEL A CARVALHO DA SILVA",
-  "Address": "maculusso rua comandate",
-  "City": "kwenhan",
-  "CountryId": 10,
-  "Email": null,
-  "Website": null,
-  "Telephone": "923798669",
-  "CardNumber": null,
-  "NIFNumber": "0000000458608"
-}
-```
-
-#### 5.2.7 CTN Goods API (Add Goods Information)
-
-**Business Purpose:** Adds goods information to CTN certificates for complete cargo documentation essential for providing cargo descriptions, classifications, weights, and values. Critical for customs documentation, duty calculations, and trade compliance requirements.
-
-**Endpoint:** `POST /api/ctnGoods`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | O | Goods identifier (null for new) | null |
-| 2 | CTNId | Integer | M | CTN identifier | 503808 |
-| 3 | GoodsClassificationId | Integer | M | Goods classification identifier | 16882 |
-| 4 | IMOId | Integer | M | IMO hazardous code identifier | 2 |
-| 5 | CargoTypeId | Integer | M | Cargo type identifier | 1 |
-| 6 | DescriptionGoods | String - 500 | M | Goods description | test |
-| 7 | GrossWeightKG | Decimal | M | Gross weight in kg | 10.0 |
-| 8 | VolumeCBM | Decimal | M | Volume in cubic meters | 11.0 |
-| 9 | OceanFreight | Decimal | M | Ocean freight cost | 22.0 |
-| 10 | ValueOfGoods | Decimal | M | Value of goods | 33.0 |
-| 11 | NumberOfPackages | Integer | M | Number of packages | 3 |
-
-**Sample JSON Request:**
-```json
-POST /api/ctnGoods
-Content-Type: application/json
-
-{
-  "Id": null,
-  "CTNId": 503808,
-  "GoodsClassificationId": 16882,
-  "IMOId": 2,
-  "CargoTypeId": 1,
-  "DescriptionGoods": "test",
-  "GrossWeightKG": 10,
-  "VolumeCBM": 11,
-  "OceanFreight": 22,
-  "ValueOfGoods": 33,
-  "NumberOfPackages": 3,
-  "GumarRef": null
-}
-```
-
-#### 5.2.8 CTN Containers API (Add Container Information)
-
-**Business Purpose:** Adds container information to CTN certificates for complete container documentation essential for providing container types, numbers, seals, and specifications. Critical for customs clearance, security verification, and shipping documentation requirements.
-
-**Endpoint:** `POST /api/ctnContainers`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | O | Container identifier (null for new) | null |
-| 2 | CTNId | Integer | M | CTN identifier | 503808 |
-| 3 | ContainerTypeId | Integer | M | Container type identifier | 31 |
-| 4 | Number_of_Containers | Integer | M | Number of containers | 1 |
-| 5 | ContainerNumbers | String - 100 | M | Container number(s) | MSCU1234567 |
-| 6 | SealNumbers | String - 100 | M | Seal number(s) | 23234 |
-| 7 | Groupage | Boolean | O | Groupage indicator | false |
-| 8 | IsEmpty | Boolean | O | Empty container indicator | false |
-| 9 | OwnedByShipper | Boolean | O | Shipper owned indicator | false |
-
-**Sample JSON Request:**
-```json
-POST /api/ctnContainers
-Content-Type: application/json
-
-{
-  "Id": null,
-  "CTNId": 503808,
-  "ContainerTypeId": 31,
-  "Number_of_Containers": 1,
-  "ContainerNumbers": "MSCU1234567",
-  "SealNumbers": "23234",
-  "Groupage": false,
-  "IsEmpty": false,
-  "OwnedByShipper": false
-}
-```
-
-#### 5.2.9 CTN Tracking API (Add Transport Information)
-
-**Business Purpose:** Adds transport route information to CTN certificates for complete journey documentation essential for providing vessel, voyage, ports, and schedule details. Critical for tracking cargo movement, customs documentation, and logistics coordination requirements.
-
-**Endpoint:** `POST /api/ctnTracking`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | O | Tracking identifier | 71898 |
-| 2 | CTNId | Integer | M | CTN identifier | 503808 |
-| 3 | SourceCountryId | Integer | M | Source country identifier | 10 |
-| 4 | SourcePortId | Integer | M | Source port identifier | 80 |
-| 5 | ETD | DateTime | M | Estimated time departure | 2025-11-12T00:00:00.000Z |
-| 6 | TransportTypeId | Integer | M | Transport type identifier | 1 |
-| 7 | VoyageNumber | String - 50 | M | Voyage number | 546894 |
-| 8 | CarrierId | Integer | M | Carrier identifier | 789 |
-| 9 | VesselId | Integer | M | Vessel identifier | 5163 |
-| 10 | DestinationCountryId | Integer | M | Destination country identifier | 4 |
-| 11 | DestinationPortId | Integer | M | Destination port identifier | 35 |
-| 12 | ETA | DateTime | M | Estimated time arrival | 2025-12-09T00:00:00.000Z |
-| 13 | Sequence | Integer | M | Sequence number | 1 |
-
-**Sample JSON Request:**
-```json
-POST /api/ctnTracking
-Content-Type: application/json
-
-{
-  "Id": 71898,
-  "CTNId": 503808,
-  "SourceCountryId": 10,
-  "SourcePortId": 80,
-  "ATD": null,
-  "ETD": "2025-11-12T00:00:00.000Z",
-  "TransportTypeId": 1,
-  "VesselName": "",
-  "VoyageNumber": "546894",
-  "CarrierId": 789,
-  "VesselId": 5163,
-  "DestinationCountryId": 4,
-  "DestinationPortId": 35,
-  "ATA": null,
-  "ETA": "2025-12-09T00:00:00.000Z",
-  "Sequence": 1
-}
-```
-
-#### 5.2.10 CTN Attachments API (Add Document Attachments)
-
-**Business Purpose:** Adds document attachments to CTN certificates for complete supporting documentation essential for providing commercial invoices, packing lists, certificates, and other required documents. Critical for customs clearance, trade compliance, and certificate validation requirements.
-
-**Endpoint:** `POST /api/ctnAttachments`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | O | Attachment identifier (null for new) | null |
-| 2 | CTNId | Integer | M | CTN identifier | 503808 |
-| 3 | AttachmentGuid | String - 50 | M | File upload GUID from fileupload API | 0da7461c-2155-4d20-a695-6b7463367327 |
-| 4 | NameId | Integer | M | Attachment name type identifier | 4 |
-
-**Sample JSON Request:**
-```json
-POST /api/ctnAttachments
-Content-Type: application/json
-
-{
-  "Id": null,
-  "CTNId": 503808,
-  "CTN": null,
-  "AttachmentGuid": "0da7461c-2155-4d20-a695-6b7463367327",
-  "Attachment": null,
-  "NameId": 4,
-  "MarkedForUpdate": false,
-  "MarkedAsError": false
-}
-```
-
-#### 5.2.11 Request Visa API (Certificate Issuance Submission)
+#### 5.2.5 Request Visa API (Certificate Issuance Submission)
 
 **Business Purpose:** Submits completed CTN certificates for approval and visa issuance essential for finalizing the certificate approval process. Critical for triggering certificate review, validating completeness requirements, initiating approval workflow, and moving certificates from draft to approval status.
 
@@ -3211,16 +2972,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 Accept: application/json
 ```
 
-**Sample JSON Response (Validation Error):**
-```json
-{
-  "rowsAffected": -1,
-  "error": "Missing or incomplete Shipper Address<br/>Missing or incomplete Forwarder Address<br/>At least 1 attachment must be uploaded.<br/>",
-  "newCtnId": 0
-}
-```
-
-**Sample JSON Response (Success):**
+**Sample JSON Response:**
 ```json
 {
   "rowsAffected": -1,
@@ -3228,6 +2980,370 @@ Accept: application/json
   "newCtnId": 0
 }
 ```
+
+#### 5.2.5.1 Document Upload API for Request Visa
+
+**Business Purpose:** Enables SINTECE to upload documents specifically for the Request Visa process, providing document management capabilities separate from the general file upload API. Critical for visa application documentation, compliance verification, and regulatory submission requirements.
+
+**Endpoint:** `POST /api/ctns/{ctnId}/documents/upload`
+
+**Request Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | ctnId | Integer | M | CTN identifier from URL path | 503808 |
+| 2 | file | Binary | M | Document file (multipart/form-data) | [binary file data] |
+| 3 | documentType | String - 50 | M | Type of document being uploaded | BILL_OF_LADING |
+| 4 | documentName | String - 256 | M | Document name/title | Bill of Lading Original |
+| 5 | description | String - 500 | O | Document description | Original shipping document for visa application |
+| 6 | isRequired | Boolean | M | Whether document is mandatory | true |
+
+**UI Validation Rules:**
+- **DOCUP_UI_001**: File size must not exceed 25MB for visa documents
+- **DOCUP_UI_002**: Document type must be from approved list
+- **DOCUP_UI_003**: Document name required, max 256 characters
+- **DOCUP_UI_004**: File types allowed: PDF, JPG, PNG, DOC, DOCX, XLS, XLSX
+
+**Business Validation Rules:**
+- **DOCUP_BV_001**: CTN must exist and be accessible
+- **DOCUP_BV_002**: Document type must be valid for visa application
+- **DOCUP_BV_003**: User must have permission to upload documents
+- **DOCUP_BV_004**: Duplicate documents should be detected
+
+**Response Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | documentId | String (UUID) | M | Unique document identifier | f47ac10b-58cc-4372-a567-0e02b2c3d479 |
+| 2 | documentName | String - 256 | M | Uploaded document name | Bill of Lading Original |
+| 3 | fileName | String - 256 | M | Original file name | BOL_ABC123.pdf |
+| 4 | fileSize | Integer | M | File size in bytes | 1048576 |
+| 5 | mimeType | String - 100 | M | File MIME type | application/pdf |
+| 6 | downloadUrl | String - 500 | M | URL to download document | /api/ctns/503808/documents/f47ac10b-58cc-4372-a567-0e02b2c3d479/download |
+| 7 | uploadDate | DateTime | M | Upload timestamp | 2025-11-14T15:30:00Z |
+| 8 | documentType | String - 50 | M | Document type | BILL_OF_LADING |
+| 9 | status | String - 20 | M | Document status | UPLOADED |
+| 10 | ctnId | Integer | M | Associated CTN ID | 503808 |
+
+**Error Codes:**
+- **DOCUP_E001**: "CTN not found" (HTTP 404)
+- **DOCUP_E002**: "Invalid document type" (HTTP 400)
+- **DOCUP_E003**: "File size exceeds limit" (HTTP 413)
+- **DOCUP_E004**: "Invalid file type" (HTTP 415)
+- **DOCUP_E005**: "Document upload failed" (HTTP 500)
+
+**Sample Multipart Request:**
+```
+POST /api/ctns/503808/documents/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="BOL_ABC123.pdf"
+Content-Type: application/pdf
+
+[Binary PDF file content]
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="documentType"
+
+BILL_OF_LADING
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="documentName"
+
+Bill of Lading Original
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+Original shipping document for visa application
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="isRequired"
+
+true
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+```
+
+**Sample JSON Response:**
+```json
+{
+  "documentId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  "documentName": "Bill of Lading Original",
+  "fileName": "BOL_ABC123.pdf",
+  "fileSize": 1048576,
+  "mimeType": "application/pdf",
+  "downloadUrl": "/api/ctns/503808/documents/f47ac10b-58cc-4372-a567-0e02b2c3d479/download",
+  "uploadDate": "2025-11-14T15:30:00Z",
+  "documentType": "BILL_OF_LADING",
+  "status": "UPLOADED",
+  "ctnId": 503808
+}
+```
+
+#### 5.2.5.2 Document Delete API for Request Visa
+
+**Business Purpose:** Allows SINTECE to delete uploaded documents from CTN certificates before visa submission. Critical for document management, correcting upload mistakes, replacing outdated documents, and maintaining clean documentation sets.
+
+**Endpoint:** `DELETE /api/ctns/{ctnId}/documents/{documentId}`
+
+**Request Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | ctnId | Integer | M | CTN identifier from URL path | 503808 |
+| 2 | documentId | String (UUID) | M | Document identifier from URL path | f47ac10b-58cc-4372-a567-0e02b2c3d479 |
+| 3 | reason | String - 200 | O | Deletion reason (in request body) | Incorrect document uploaded |
+
+**UI Validation Rules:**
+- **DOCDEL_UI_001**: Confirm deletion with user before proceeding
+- **DOCDEL_UI_002**: Display document details before deletion
+- **DOCDEL_UI_003**: Reason for deletion optional but recommended
+
+**Business Validation Rules:**
+- **DOCDEL_BV_001**: CTN must exist and be accessible
+- **DOCDEL_BV_002**: Document must exist and belong to CTN
+- **DOCDEL_BV_003**: User must have permission to delete documents
+- **DOCDEL_BV_004**: Cannot delete documents after visa submission
+- **DOCDEL_BV_005**: Cannot delete required documents unless replacing
+
+**Response Elements:**
+
+| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
+|-------|------------|------------------|-----------|------------------------|--------------|
+| 1 | success | Boolean | M | Deletion success indicator | true |
+| 2 | documentId | String (UUID) | M | Deleted document identifier | f47ac10b-58cc-4372-a567-0e02b2c3d479 |
+| 3 | documentName | String - 256 | M | Name of deleted document | Bill of Lading Original |
+| 4 | deletedAt | DateTime | M | Deletion timestamp | 2025-11-14T16:45:00Z |
+| 5 | deletedBy | Integer | M | User who deleted document | 13345 |
+| 6 | message | String - 200 | M | Confirmation message | Document successfully deleted |
+
+**Error Codes:**
+- **DOCDEL_E001**: "CTN not found" (HTTP 404)
+- **DOCDEL_E002**: "Document not found" (HTTP 404)
+- **DOCDEL_E003**: "Cannot delete after visa submission" (HTTP 409)
+- **DOCDEL_E004**: "Cannot delete required document" (HTTP 409)
+- **DOCDEL_E005**: "Insufficient permissions" (HTTP 403)
+
+**Sample JSON Request:**
+```json
+DELETE /api/ctns/503808/documents/f47ac10b-58cc-4372-a567-0e02b2c3d479
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+
+{
+  "reason": "Incorrect document uploaded, need to replace with updated version"
+}
+```
+
+**Sample JSON Response:**
+```json
+{
+  "success": true,
+  "documentId": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  "documentName": "Bill of Lading Original",
+  "deletedAt": "2025-11-14T16:45:00Z",
+  "deletedBy": 13345,
+  "message": "Document successfully deleted"
+}
+```
+
+#### 5.2.6 NIF Validation API (Angola Tax Registration Number)
+
+**Business Purpose:** Validates NIF (Número de Identificação Fiscal) - Angola Tax Registration Number for importers, exporters, and consignees. Critical for ensuring tax compliance, preventing fraud, validating business entities, and meeting ARCCLA regulatory requirements for CNCA certificate processing.
+
+**Endpoint:** `POST /api/validation/nif`
+
+**Request Elements:**
+
+| S. No | Attributes | Data Type - Length | Condition (M/O) | Format/Derivation logic for fields | Data Example |
+|-------|------------|-------------------|-----------------|-----------------------------------|--------------|
+| 1 | nifNumber | String - 14 | M | Angola Tax Registration Number (9-14 digits) | 5000000000 |
+| 2 | entityName | String - 200 | O | Name of entity for cross-validation | ABC Trading Company |
+| 3 | entityType | String - 20 | O | Type of entity (IMPORTER, EXPORTER, CONSIGNEE) | IMPORTER |
+| 4 | validationType | String - 20 | O | Validation type (STANDARD, ENHANCED) | STANDARD |
+
+**UI Validation Rules:**
+- **NIF_UI_001**: NIF number mandatory, 9-14 alphanumeric characters
+- **NIF_UI_002**: Entity name optional, max 200 characters
+- **NIF_UI_003**: Entity type from predefined list only
+- **NIF_UI_004**: Remove leading/trailing spaces from NIF
+
+**Business Validation Rules:**
+- **NIF_BV_001**: NIF must follow Angola tax authority format
+- **NIF_BV_002**: NIF must be active and valid in ARCCLA system
+- **NIF_BV_003**: Entity name must match registered name if provided
+- **NIF_BV_004**: Suspended or blacklisted NIFs cannot be used
+- **NIF_BV_005**: NIF entity type must match certificate type (import/export)
+
+**Response Elements:**
+
+| S. No | Attributes | Data Type - Length | Condition (M/O) | Format/Derivation logic for fields | Data Example |
+|-------|------------|-------------------|-----------------|-----------------------------------|--------------|
+| 1 | validationStatus | String - 20 | M | Validation result (VALID, INVALID, SUSPENDED) | VALID |
+| 2 | nifNumber | String - 14 | M | Validated NIF number | 5000000000 |
+| 3 | registeredName | String - 200 | O | Official registered name from tax authority | ABC Trading Company Lda |
+| 4 | entityStatus | String - 20 | O | Entity status (ACTIVE, INACTIVE, SUSPENDED) | ACTIVE |
+| 5 | registrationDate | Date | O | NIF registration date | 2020-05-15 |
+| 6 | validationCode | String - 10 | M | Validation result code | NIF_VALID |
+| 7 | validationMessage | String - 500 | M | Detailed validation message | NIF is valid and active |
+| 8 | errorDetails | Array | O | Array of validation errors if any | [] |
+
+**Error Codes:**
+- **NIF_E001**: "Invalid NIF format" (HTTP 400)
+- **NIF_E002**: "NIF not found in ARCCLA system" (HTTP 404)
+- **NIF_E003**: "NIF suspended or blacklisted" (HTTP 403)
+- **NIF_E004**: "Entity name mismatch" (HTTP 400)
+- **NIF_E005**: "NIF validation service unavailable" (HTTP 503)
+- **NIF_E006**: "Invalid entity type for certificate" (HTTP 400)
+
+**Sample JSON Request:**
+```json
+POST /api/validation/nif
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+
+{
+  "nifNumber": "5000000000",
+  "entityName": "ABC Trading Company",
+  "entityType": "IMPORTER",
+  "validationType": "STANDARD"
+}
+```
+
+**Sample JSON Response (Success):**
+```json
+{
+  "validationStatus": "VALID",
+  "nifNumber": "5000000000",
+  "registeredName": "ABC Trading Company Lda",
+  "entityStatus": "ACTIVE",
+  "registrationDate": "2020-05-15",
+  "validationCode": "NIF_VALID",
+  "validationMessage": "NIF is valid and active in ARCCLA system",
+  "errorDetails": []
+}
+```
+
+**Sample JSON Response (Error):**
+```json
+{
+  "validationStatus": "INVALID",
+  "nifNumber": "5000000000",
+  "registeredName": null,
+  "entityStatus": null,
+  "registrationDate": null,
+  "validationCode": "NIF_NOT_FOUND",
+  "validationMessage": "NIF not found in ARCCLA tax registration system",
+  "errorDetails": [
+    {
+      "field": "nifNumber",
+      "code": "NIF_E002",
+      "message": "The provided NIF does not exist in the Angola tax authority database"
+    }
+  ]
+}
+```
+
+**Integration Notes:**
+- NIF validation should be performed before CTN certificate creation
+- Cached validation results valid for 24 hours
+- Real-time validation with ARCCLA tax authority system
+- Supports bulk NIF validation (future enhancement)
+
+#### 5.2.7 Invoice Download API
+
+**Important Note on Invoice Applicability:**
+> **CRITICAL:** Invoices are ONLY applicable for IMPORT profiles. Export profiles do NOT require invoice generation or download functionality. The invoice download API should only be called for import certificate types.
+
+**Business Purpose:** Enables download of CNCA certificate invoices after certificate completion for import profiles only. Critical for financial record-keeping, customs documentation, and audit trail maintenance. **Not applicable for export certificates.**
+
+**Endpoint:** `GET /api/invoices/{invoiceId}/download`
+
+**Request Elements:**
+
+| S. No | Attributes | Data Type - Length | Condition (M/O) | Format/Derivation logic for fields | Data Example |
+|-------|------------|-------------------|-----------------|-----------------------------------|--------------|
+| 1 | invoiceId | String - 50 | M | Unique invoice identifier from certificate | INV-2024-001234 |
+| 2 | format | String - 10 | O | Invoice format (PDF, XML) - default PDF | PDF |
+| 3 | certificateType | String - 20 | O | Certificate type for validation (IMPORT/EXPORT) | IMPORT |
+
+**Path Parameters:**
+- `invoiceId`: Unique invoice identifier (mandatory)
+
+**Query Parameters:**
+- `format`: Desired file format (optional, defaults to PDF)
+
+**UI Validation Rules:**
+- **INV_UI_001**: Invoice ID mandatory, alphanumeric with hyphens
+- **INV_UI_002**: Format must be PDF or XML only
+- **INV_UI_003**: Download only available for import profiles
+- **INV_UI_004**: Display warning for export certificate requests
+
+**Business Validation Rules:**
+- **INV_BV_001**: Invoice must exist and be associated with authenticated user
+- **INV_BV_002**: Certificate must be in "Approved" or "Issued" status
+- **INV_BV_003**: User must have permission to access invoice
+- **INV_BV_004**: Invoice download only allowed for IMPORT certificates
+- **INV_BV_005**: Export certificates should not generate or download invoices
+
+**Response Elements:**
+
+| S. No | Attributes | Data Type - Length | Condition (M/O) | Format/Derivation logic for fields | Data Example |
+|-------|------------|-------------------|-----------------|-----------------------------------|--------------|
+| 1 | fileName | String - 100 | M | Generated file name | invoice_INV-2024-001234.pdf |
+| 2 | fileSize | Number | M | File size in bytes | 245678 |
+| 3 | contentType | String - 50 | M | MIME type of file | application/pdf |
+| 4 | downloadUrl | String - 500 | O | Direct download URL (if applicable) | https://jul.adports.ae/downloads/... |
+| 5 | invoiceData | Binary | M | Invoice file binary content (Base64 encoded) | [binary data] |
+| 6 | generatedDate | Date | M | Invoice generation timestamp | 2025-11-14T10:30:00Z |
+
+**Error Codes:**
+- **INV_E001**: "Invoice not found" (HTTP 404)
+- **INV_E002**: "Certificate not completed" (HTTP 400)
+- **INV_E003**: "Access denied" (HTTP 403)
+- **INV_E004**: "Invalid invoice format requested" (HTTP 400)
+- **INV_E005**: "Export certificates do not support invoices" (HTTP 400)
+- **INV_E006**: "Invoice generation in progress" (HTTP 202)
+
+**Sample API Request:**
+```http
+GET /api/invoices/INV-2024-001234/download?format=PDF
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+Accept: application/json
+```
+
+**Sample JSON Response:**
+```json
+{
+  "fileName": "invoice_INV-2024-001234.pdf",
+  "fileSize": 245678,
+  "contentType": "application/pdf",
+  "downloadUrl": "https://jul.adports.ae/api/files/download/abc123xyz",
+  "generatedDate": "2025-11-14T10:30:00Z",
+  "invoiceData": "JVBERi0xLjQKJeLjz9MKMSAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFI+..."
+}
+```
+
+**Invoice Applicability Rules:**
+
+| Certificate Type | Invoice Required | Invoice Download Available | Notes |
+|-----------------|------------------|---------------------------|-------|
+| **IMPORT** | ✅ Yes | ✅ Yes | Invoice generated after approval |
+| **EXPORT** | ❌ No | ❌ No | Export certificates do not require invoices |
+
+**Important Implementation Notes:**
+1. **Pre-Download Validation:** Always validate certificate type before allowing invoice download
+2. **UI Display:** Do not show invoice download button/option for export certificates
+3. **Error Handling:** Return specific error (INV_E005) when export certificate attempts invoice download
+4. **Business Logic:** Invoice generation workflow should only trigger for import certificates
+5. **Audit Trail:** Log all invoice download attempts with certificate type information
+
+**Integration Workflow:**
+1. Certificate approved by ARCCLA
+2. For IMPORT certificates: Invoice generated automatically
+3. Certificate becomes available for download
+4. User downloads invoice via API or UI
+5. For EXPORT certificates: Skip invoice generation entirely
+
+---
 
 ### 5.3 CTN Related Entity APIs
 
@@ -3693,6 +3809,54 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 | 4 | mimeType | String - 100 | M | File MIME type | application/pdf |
 | 5 | uploadDate | DateTime | M | Upload timestamp | 2023-11-12T14:30:00Z |
 
+**UI Validation Rules:**
+- **FILEUP_UI_001**: File size must not exceed 10MB
+- **FILEUP_UI_002**: Only approved file types allowed (PDF, JPG, PNG, DOC, DOCX)
+- **FILEUP_UI_003**: File name must not contain special characters
+
+**Business Validation Rules:**
+- **FILEUP_BV_001**: File must not be corrupted or malicious
+- **FILEUP_BV_002**: Duplicate files should be detected and warned
+- **FILEUP_BV_003**: User must have permission to upload files
+
+**Error Codes:**
+- **FILEUP_E001**: "File size exceeds maximum limit" (HTTP 413)
+- **FILEUP_E002**: "File type not supported" (HTTP 415)
+- **FILEUP_E003**: "File upload failed" (HTTP 500)
+
+**Sample Multipart Request:**
+```
+POST /api/fileupload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="Bill_of_Lading.pdf"
+Content-Type: application/pdf
+
+[Binary PDF file content]
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="fileName"
+
+Bill_of_Lading.pdf
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+Original shipping document for CTN certificate
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+```
+
+**Sample JSON Response:**
+```json
+{
+  "fileId": "0da7461c-2155-4d20-a695-6b7463367327",
+  "fileName": "Bill_of_Lading.pdf",
+  "fileSize": 245760,
+  "mimeType": "application/pdf",
+  "uploadDate": "2023-11-12T14:30:00Z"
+}
+```
+
 **GET /api/fileupload/{fileId} - Download File**
 
 **Request Elements:**
@@ -3700,6 +3864,13 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 | S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
 |-------|------------|------------------|-----------|------------------------|--------------|
 | 1 | fileId | String (UUID) | M | File identifier from URL path | 0da7461c-2155-4d20-a695-6b7463367327 |
+
+**Sample Download Request:**
+```
+GET /api/fileupload/0da7461c-2155-4d20-a695-6b7463367327
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+Accept: application/json
+```
 
 **Response Elements:**
 
@@ -3709,6 +3880,16 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 | 2 | fileName | String - 256 | M | Original file name | Bill_of_Lading.pdf |
 | 3 | mimeType | String - 100 | M | File MIME type | application/pdf |
 | 4 | fileSize | Integer | M | File size in bytes | 245760 |
+
+**Sample Download Response:**
+```json
+{
+  "contentStream": "JVBERi0xLjQKJeLjz9MKNSAwIG9iago8PC9MZW5ndGggNzggL0ZpbHRlciAvRmxhdGVEZWNvZGU+PnN0cmVhbQ==",
+  "fileName": "Bill_of_Lading.pdf",
+  "mimeType": "application/pdf",
+  "fileSize": 245760
+}
+```
 
 ### 5.6 Specialized CTN APIs
 
@@ -4033,46 +4214,143 @@ Status polling APIs provide real-time status updates with eligibility flags for 
 }
 ```
 
-#### 6.4.2 Webhook Notifications API
+#### 6.4.2 Status Retrieval API (Polling-Based Status Updates)
 
-**Endpoint:** `POST /api/webhooks/register`
+**Business Purpose:** Enables JUL system to retrieve current status of CNCA certificates by polling SINTECE system. Replaces webhook-based notifications with pull-based status updates, providing reliable status synchronization, eliminating callback URL management, and supporting firewall-friendly integration patterns.
+
+**Endpoint:** `GET /api/ctns/{ctnId}/status`
 
 **Request Elements:**
 
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | callbackUrl | String - 500 | M | URL to receive webhook notifications | https://jul.adports.ae/api/webhooks |
-| 2 | events | Array | M | Array of events to subscribe to | ["status_changed", "amendment_approved"] |
-| 3 | certificateIds | Array | O | Specific certificates to monitor | [503808, 503809] |
-| 4 | authToken | String - 100 | O | Authentication token for webhook | webhook_token_123 |
+| S. No | Attributes | Data Type - Length | Condition (M/O) | Format/Derivation logic for fields | Data Example |
+|-------|------------|-------------------|-----------------|-----------------------------------|--------------|
+| 1 | ctnId | Integer | M | CTN certificate identifier (path parameter) | 503808 |
+| 2 | includeHistory | Boolean | O | Include status change history (query param) | false |
+| 3 | includeDetails | Boolean | O | Include detailed status information (query param) | true |
 
-**Webhook Payload Elements:**
+**Path Parameters:**
+- `ctnId`: CTN certificate identifier (mandatory)
 
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | eventType | String - 50 | M | Type of event that occurred | status_changed |
-| 2 | certificateId | Integer | M | Certificate that triggered event | 503808 |
-| 3 | timestamp | DateTime | M | Event occurrence timestamp | 2025-11-13T16:30:00Z |
-| 4 | oldStatus | String - 20 | O | Previous status (for status changes) | Submitted |
-| 5 | newStatus | String - 20 | O | New status (for status changes) | Approved |
-| 6 | data | Object | O | Additional event-specific data | {...} |
+**Query Parameters:**
+- `includeHistory`: Set to true to get full status change history
+- `includeDetails`: Set to true to get detailed status information
 
-**Sample Webhook Payload:**
+**UI Validation Rules:**
+- **STATUS_UI_001**: CTN ID mandatory, positive integer
+- **STATUS_UI_002**: Boolean parameters only accept true/false
+- **STATUS_UI_003**: Display loading state during status retrieval
+
+**Business Validation Rules:**
+- **STATUS_BV_001**: CTN must exist in system
+- **STATUS_BV_002**: User must have permission to view CTN status
+- **STATUS_BV_003**: Status must be current (not stale data)
+
+**Response Elements:**
+
+| S. No | Attributes | Data Type - Length | Condition (M/O) | Format/Derivation logic for fields | Data Example |
+|-------|------------|-------------------|-----------------|-----------------------------------|--------------|
+| 1 | ctnId | Integer | M | CTN certificate identifier | 503808 |
+| 2 | ctnReferenceNumber | String - 50 | M | System generated CTN reference | 170543 |
+| 3 | currentStatus | String - 50 | M | Current certificate status | Approved |
+| 4 | statusId | Integer | M | Status identifier | 3 |
+| 5 | statusUpdatedAt | DateTime | M | Last status update timestamp | 2025-11-14T10:30:00Z |
+| 6 | statusUpdatedBy | String - 100 | O | User who updated status | ARCCLA_Broker_123 |
+| 7 | canAmend | Boolean | M | Amendment eligibility flag | true |
+| 8 | canCancel | Boolean | M | Cancellation eligibility flag | false |
+| 9 | statusMessage | String - 500 | O | Status description or notes | Certificate approved by ARCCLA |
+| 10 | nextAction | String - 200 | O | Recommended next action | Process payment and download certificate |
+| 11 | statusHistory | Array | O | Status change history (if requested) | [...] |
+
+**Status History Element (when includeHistory=true):**
+
+| S. No | Attributes | Data Type - Length | Condition (M/O) | Format/Derivation logic for fields | Data Example |
+|-------|------------|-------------------|-----------------|-----------------------------------|--------------|
+| 1 | statusId | Integer | M | Status identifier | 2 |
+| 2 | statusName | String - 50 | M | Status name | Submitted |
+| 3 | changedAt | DateTime | M | Status change timestamp | 2025-11-13T14:20:00Z |
+| 4 | changedBy | String - 100 | O | User who changed status | Customs_Broker_456 |
+| 5 | remarks | String - 500 | O | Status change remarks | Submitted for ARCCLA review |
+
+**Error Codes:**
+- **STATUS_E001**: "CTN not found" (HTTP 404)
+- **STATUS_E002**: "Access denied" (HTTP 403)
+- **STATUS_E003**: "Invalid CTN ID format" (HTTP 400)
+- **STATUS_E004**: "Status service temporarily unavailable" (HTTP 503)
+
+**Sample API Request:**
+```http
+GET /api/ctns/503808/status?includeHistory=true&includeDetails=true
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+Accept: application/json
+```
+
+**Sample JSON Response:**
 ```json
 {
-  "eventType": "status_changed",
-  "certificateId": 503808,
-  "timestamp": "2025-11-13T16:30:00Z",
-  "oldStatus": "Submitted",
-  "newStatus": "Approved",
-  "data": {
-    "approvedBy": "arccla_broker_456",
-    "approvalComments": "All documentation verified and approved",
-    "invoiceNumber": "INV-503808-2025",
-    "paymentDueDate": "2025-11-20T23:59:59Z"
-  }
+  "ctnId": 503808,
+  "ctnReferenceNumber": "170543",
+  "currentStatus": "Approved",
+  "statusId": 3,
+  "statusUpdatedAt": "2025-11-14T10:30:00Z",
+  "statusUpdatedBy": "ARCCLA_Broker_123",
+  "canAmend": true,
+  "canCancel": false,
+  "statusMessage": "Certificate approved by ARCCLA. Ready for payment processing.",
+  "nextAction": "Process payment and download certificate",
+  "statusHistory": [
+    {
+      "statusId": 1,
+      "statusName": "Created",
+      "changedAt": "2025-11-12T18:49:30Z",
+      "changedBy": "Customs_Broker_456",
+      "remarks": "Initial CTN creation"
+    },
+    {
+      "statusId": 2,
+      "statusName": "Submitted",
+      "changedAt": "2025-11-13T14:20:00Z",
+      "changedBy": "Customs_Broker_456",
+      "remarks": "Submitted for ARCCLA review"
+    },
+    {
+      "statusId": 3,
+      "statusName": "Approved",
+      "changedAt": "2025-11-14T10:30:00Z",
+      "changedBy": "ARCCLA_Broker_123",
+      "remarks": "Certificate approved by ARCCLA"
+    }
+  ]
 }
 ```
+
+**Polling Strategy Recommendations:**
+
+| Certificate Status | Recommended Polling Interval | Notes |
+|-------------------|------------------------------|-------|
+| **Created** | No polling needed | Local status |
+| **Submitted** | Every 5 minutes | Active review period |
+| **UnderReview** | Every 10 minutes | ARCCLA processing |
+| **PendingInfo** | Every 30 minutes | Waiting for trader response |
+| **Approved** | Every 2 minutes | Payment processing |
+| **Issued** | No polling needed | Final status |
+| **Cancelled** | No polling needed | Final status |
+
+**Implementation Guidelines:**
+1. **Efficient Polling:** Use appropriate intervals based on certificate status
+2. **Rate Limiting:** Respect API rate limits (max 120 requests/minute per user)
+3. **Caching:** Cache status responses for 30 seconds to reduce API calls
+4. **Error Handling:** Implement exponential backoff for failed polling attempts
+5. **User Experience:** Show real-time updates in UI based on polling results
+6. **Background Jobs:** Use scheduled jobs for polling instead of continuous loops
+7. **Notification:** Trigger user notifications when status changes detected
+
+**Advantages Over Webhooks:**
+- ✅ No callback URL configuration required
+- ✅ Firewall-friendly (outbound requests only)
+- ✅ Better control over update frequency
+- ✅ Simpler security model (no webhook signature validation)
+- ✅ Easier error handling and retry logic
+- ✅ No missed notifications due to network issues
 
 ---
 
@@ -4197,12 +4475,149 @@ The JUL-SINTECE Integration Control Document provides comprehensive API document
 - **PERF_002**: Business validations complete within 500ms
 - **PERF_003**: External validations complete within 2 seconds
 
+### 8.3 Authentication and Authorization
+
+The JUL-SINTECE integration uses Keycloak as the primary Single Sign-On (SSO) solution for centralized authentication and authorization management. Keycloak provides enterprise-grade identity and access management capabilities, ensuring secure and seamless authentication across both JUL and SINTECE systems.
+
+#### 8.3.1 SSO Solution - Keycloak
+
+**Overview:**
+The JUL-SINTECE integration uses Keycloak as the primary Single Sign-On (SSO) solution for centralized authentication and authorization management. Keycloak provides enterprise-grade identity and access management capabilities, ensuring secure and seamless authentication across both JUL and SINTECE systems.
+
+**Key Features:**
+- Centralized user authentication and session management
+- Single Sign-On (SSO) across multiple applications
+- Token-based authentication with JWT
+- Role-based access control (RBAC)
+- Multi-factor authentication (MFA) support
+- User federation and identity brokering
+
+#### 8.3.2 Supported Authentication Protocols
+
+The client authentication system has the capability to integrate with Keycloak using the following protocols:
+
+| Protocol | Description | Use Case |
+|----------|-------------|----------|
+| **OpenID Connect** | Authentication layer built on OAuth 2.0 | Recommended for user authentication and SSO |
+| **OAuth 2.0** | Authorization framework for delegated access | API authorization and service-to-service communication |
+| **SAML 2.0** | XML-based authentication protocol | Enterprise SSO integration (if required) |
+
+**Primary Protocol:** OpenID Connect (OIDC) is the recommended protocol for JUL-SINTECE integration.
+
+#### 8.3.3 Client Integration Capabilities
+
+**Current System Capabilities:**
+- JWT token support and validation
+- Token-based authentication flow
+- Support for Bearer token authentication
+- Client credentials flow for service-to-service communication
+- Authorization code flow for user authentication
+
+**Integration Approach:**
+1. **Client Registration:** Register JUL application in Keycloak realm
+2. **Client Credentials:** Obtain client ID and client secret
+3. **Token Endpoint:** Configure token endpoint for authentication
+4. **User Info Endpoint:** Configure user information retrieval
+5. **Logout Endpoint:** Implement proper logout and session management
+
+#### 8.3.4 JWT Token Management
+
+**Token Format and Structure:**
+The system uses JSON Web Tokens (JWT) for secure authentication. All API requests must include a valid JWT token in the Authorization header.
+
+**Token Request:**
+```http
+POST /auth/realms/{realm}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&
+client_id=jul-client&
+client_secret={client_secret}&
+username={username}&
+password={password}
+```
+
+**Token Response:**
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "expires_in": 3600,
+  "refresh_expires_in": 1800,
+  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "Bearer",
+  "not-before-policy": 0,
+  "session_state": "d2d2b3b4-4f5e-4f3e-9c1a-5f6e7d8e9f0a",
+  "scope": "profile email"
+}
+```
+
+**Token Usage in API Requests:**
+All API requests must include the access token in the Authorization header:
+```http
+GET /api/ctns
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+Accept: application/json
+```
+
+**Token Validation:**
+- Tokens are validated on every API request
+- Signature verification using public key from Keycloak
+- Expiration time validation
+- Issuer and audience claims validation
+- Required scopes/roles validation
+
+**Token Refresh:**
+When the access token expires, use the refresh token to obtain a new access token:
+```http
+POST /auth/realms/{realm}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=refresh_token&
+client_id=jul-client&
+client_secret={client_secret}&
+refresh_token={refresh_token}
+```
+
+**Token Lifecycle:**
+- **Access Token Lifetime:** 60 minutes (configurable)
+- **Refresh Token Lifetime:** 30 minutes (configurable)
+- **Session Timeout:** Configurable per realm
+- **Token Revocation:** Supported via logout endpoint
+
+#### 8.3.5 Integration Requirements
+
+**Technical Requirements:**
+1. **Keycloak Server:** Version 21.0 or higher
+2. **TLS/SSL:** All communication must use HTTPS
+3. **Network Access:** JUL system must have network access to Keycloak server
+4. **Client Configuration:** Proper client registration in Keycloak
+5. **Role Mapping:** Define and map user roles for authorization
+
+**Security Requirements:**
+- Secure storage of client credentials
+- Token encryption in transit
+- Token validation on every API call
+- Proper error handling for authentication failures
+- Session timeout and automatic logout
+
+**Implementation Checklist:**
+- [ ] Register JUL application as Keycloak client
+- [ ] Configure redirect URIs and valid origins
+- [ ] Set up user roles and permissions
+- [ ] Implement token acquisition flow
+- [ ] Implement token refresh mechanism
+- [ ] Add authorization header to all API calls
+- [ ] Implement proper logout functionality
+- [ ] Test token expiration and refresh
+- [ ] Implement error handling for auth failures
+- [ ] Document authentication flows for developers
+
 ---
 
 *End of Interface Control Document*
 
-**Document Status:** DRAFT v1.0  
-**Last Updated:** November 13, 2025  
-**Next Review:** December 13, 2025
+**Document Status:** DRAFT v3.0  
+**Last Updated:** November 14, 2025  
+**Next Review:** December 14, 2025
 
 ---
