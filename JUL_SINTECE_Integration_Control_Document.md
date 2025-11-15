@@ -200,17 +200,17 @@ pre {
 <tr class="toc-subsubsection"><td>5.1.14</td><td><a href="#5114-ctn-cities-api">CTN Cities API</a></td><td>51</td></tr>
 <tr class="toc-subsubsection"><td>5.1.15</td><td><a href="#5115-ctn-ports-api">CTN Ports API</a></td><td>53</td></tr>
 <tr class="toc-subsection"><td>5.2</td><td><strong><a href="#52-certificate-management-apis">Certificate Management APIs</a></strong></td><td>55</td></tr>
-<tr class="toc-subsubsection"><td>5.2.1</td><td><a href="#521-ctn-list-api">CTN List API</a></td><td>55</td></tr>
-<tr class="toc-subsubsection"><td>5.2.2</td><td><a href="#522-ctn-details-api">CTN Details API</a></td><td>57</td></tr>
-<tr class="toc-subsubsection"><td>5.2.3</td><td><a href="#523-ctn-attachments-api">CTN Attachments API</a></td><td>59</td></tr>
-<tr class="toc-subsubsection"><td>5.2.4</td><td><a href="#524-freight-payment-types-api">Freight Payment Types API</a></td><td>61</td></tr>
-<tr class="toc-subsubsection"><td>5.2.5</td><td><a href="#525-ctn-creation-api-certificate-submission">CTN Creation API (Certificate Submission)</a></td><td>63</td></tr>
-<tr class="toc-subsubsection"><td>5.2.6</td><td><a href="#526-nif-validation-api-angola-tax-registration-number">NIF Validation API (Angola Tax Registration Number)</a></td><td>67</td></tr>
-<tr class="toc-subsubsection"><td>5.2.7</td><td><a href="#527-invoice-download-api">Invoice Download API</a></td><td>69</td></tr>
-<tr class="toc-subsection"><td>5.3</td><td><strong><a href="#53-ctn-related-entity-apis">CTN Related Entity APIs</a></strong></td><td>79</td></tr>
-<tr class="toc-subsubsection"><td>5.3.1</td><td><a href="#531-consignees-api">Consignees API</a></td><td>79</td></tr>
-<tr class="toc-subsubsection"><td>5.3.2</td><td><a href="#532-attachment-names-api">Attachment Names API</a></td><td>81</td></tr>
-<tr class="toc-subsubsection"><td>5.3.3</td><td><a href="#533-ctn-tracking-api">CTN Tracking API</a></td><td>83</td></tr>
+<tr class="toc-subsubsection"><td>5.2.1</td><td><a href="#521-ctn-attachments-api">CTN Attachments API</a></td><td>55</td></tr>
+<tr class="toc-subsubsection"><td>5.2.2</td><td><a href="#522-ctn-creation-api-certificate-submission">CTN Creation API (Certificate Submission)</a></td><td>57</td></tr>
+<tr class="toc-subsubsection"><td>5.2.3</td><td><a href="#523-request-visa-api-certificate-issuance-submission">Request Visa API (Certificate Issuance Submission)</a></td><td>59</td></tr>
+<tr class="toc-subsubsection"><td>5.2.4</td><td><a href="#524-nif-validation-api-angola-tax-registration-number">NIF Validation API (Angola Tax Registration Number)</a></td><td>61</td></tr>
+<tr class="toc-subsubsection"><td>5.2.5</td><td><a href="#525-invoice-download-api">Invoice Download API</a></td><td>63</td></tr>
+<tr class="toc-subsection"><td>5.3</td><td><strong><a href="#53-file-management-apis">File Management APIs</a></strong></td><td>65</td></tr>
+<tr class="toc-subsubsection"><td>5.3.1</td><td><a href="#531-file-upload-api">File Upload API</a></td><td>65</td></tr>
+<tr class="toc-subsection"><td>5.4</td><td><strong><a href="#54-ctn-related-entity-apis">CTN Related Entity APIs</a></strong></td><td>67</td></tr>
+<tr class="toc-subsubsection"><td>5.4.1</td><td><a href="#541-consignees-api">Consignees API</a></td><td>67</td></tr>
+<tr class="toc-subsubsection"><td>5.4.2</td><td><a href="#542-attachment-names-api">Attachment Names API</a></td><td>69</td></tr>
+<tr class="toc-subsubsection"><td>5.4.3</td><td><a href="#543-ctn-tracking-api">CTN Tracking API</a></td><td>71</td></tr>
 
 <tr class="toc-section"><td>6</td><td><a href="#6-enhanced-api-capabilities-">Enhanced API Capabilities</a> ⚡</td><td>85</td></tr>
 <tr class="toc-subsection"><td>6.1</td><td><a href="#61-amendment-apis">Amendment APIs</a></td><td>85</td></tr>
@@ -1087,8 +1087,8 @@ Master data APIs provide essential reference data required for certificate creat
 - **CARGO_E002**: "No data found" (HTTP 404)
 - **CARGO_E003**: "Access denied" (HTTP 403)
 
-**Sample JSON Request:**
-```json
+**Sample HTTP Request:**
+```http
 GET /api/CargoTypes?$sort=CargoType_Desc&CargoType_Desc=&active=1
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 Accept: application/json
@@ -2299,15 +2299,11 @@ Accept: application/json
 
 Certificate management APIs handle the core CTN certificate lifecycle operations, enabling the creation, retrieval, and management of CNCA certificates throughout their entire lifecycle from draft to completion.
 
-**Note:** APIs marked as "Internal to JUL" are handled within the JUL system and do not require SINTECE implementation.
+#### 5.2.1 CTN Attachments API
 
-#### 5.2.1 CTN List API (Internal to JUL)
+**Business Purpose:** Manages CTN certificate attachments and supporting documents essential for compliance verification and audit trails. Critical for storing required documentation, enabling file downloads, maintaining document integrity, and ensuring complete certificate packages for customs and regulatory review.
 
-**Note:** This API is internal to the JUL system and does not require implementation by SINTECE.
-
-**Business Purpose:** Provides comprehensive listing and filtering capabilities for CTN certificates. Essential for dashboard displays, search functionality, status tracking, and bulk operations. Supports real-time monitoring of certificate processing status and enables efficient certificate portfolio management for traders and customs brokers.
-
-**Endpoint:** `GET /api/ctns`
+**Endpoint:** `GET /api/ctnAttachments`
 
 **Request Elements:**
 
@@ -2412,127 +2408,7 @@ Accept: application/json
 ]
 ```
 
-#### 5.2.2 CTN Details API (Internal to JUL)
-
-**Note:** This API is internal to the JUL system and does not require implementation by SINTECE.
-
-**Business Purpose:** Retrieves comprehensive CTN certificate details including all related entities and status information essential for certificate management and processing. Critical for viewing complete CTN records, managing certificate lifecycle, tracking status changes, and providing detailed information for customs clearance and logistics coordination.
-
-**Endpoint:** `GET /api/ctns/{id}`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | id | Integer | M | CTN unique identifier from URL path | 503808 |
-| 2 | $expand | String - 500 | O | OData expand for related entities | CargoType,ParentCTN,Status,Incoterm |
-
-**UI Validation Rules:**
-- **CTNDET_UI_001**: CTN ID must be valid integer for lookup
-- **CTNDET_UI_002**: Display expanded entities in structured format
-- **CTNDET_UI_003**: Show status progression and timeline
-
-**Business Validation Rules:**
-- **CTNDET_BV_001**: CTN must exist and be accessible to user
-- **CTNDET_BV_002**: User must have read permission for CTN
-- **CTNDET_BV_003**: Related entities must be properly expanded
-
-**Response Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | M | Unique CTN identifier | 503808 |
-| 2 | CTN_Reference_Number | String - 50 | M | System generated CTN reference | 170543 |
-| 3 | BL_number | String - 50 | M | Bill of lading number | vc568009iujh |
-| 4 | UniqueTradeNumber | String - 50 | M | Unique trade number | 56789098765 |
-| 5 | VoyageNo | String - 50 | O | Voyage number | VOY123 |
-| 6 | StatusId | Integer | M | Current status identifier | 2 |
-| 7 | Total_number_containers | Integer | M | Total number of containers | 1 |
-| 8 | Total_Value_Of_Goods | Decimal | M | Total value of goods | 33.0 |
-| 9 | CTNCost | Decimal | O | Certificate cost | 0.0 |
-| 10 | ETD | DateTime | M | Estimated time of departure | 2025-11-12T00:00:00 |
-| 11 | ETA | DateTime | M | Estimated time of arrival | 2025-12-09T00:00:00 |
-
-**Error Codes:**
-- **CTNDET_E001**: "CTN not found" (HTTP 404)
-- **CTNDET_E002**: "Access denied to CTN" (HTTP 403)
-- **CTNDET_E003**: "Invalid expand parameters" (HTTP 400)
-
-**Sample JSON Request:**
-```json
-GET /api/ctns/503808?$expand=CargoType,ParentCTN,Status,Incoterm,Carrier,OriginCountry,Origin_City,FinalDestinationCountry,FreightPaymentType,View_Currency,Visum_Agent,RefusedBy,RejectedBy,Bank,Consignee&$top=1
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
-Accept: application/json
-```
-
-**Sample JSON Response:**
-```json
-{
-  "CTN_Addresses": [],
-  "CTN_Containers": [],
-  "CTN_Goods": [],
-  "CTN_RORO": [],
-  "CTN_Tracking": [],
-  "Id": 503808,
-  "CTN_Reference_Number": "170543",
-  "StatusId": 2,
-  "Groupage": false,
-  "ParentCTNId": null,
-  "CargoTypeId": 1,
-  "ETD": "2025-11-12T00:00:00",
-  "ETA": "2025-12-09T00:00:00",
-  "BL_number": "vc568009iujh",
-  "IncotermId": 2,
-  "OriginCountryId": 10,
-  "FinalDestinationCountryId": 4,
-  "FreightPaymentTypeId": 1,
-  "Total_number_containers": 1,
-  "Total_number_vehicles": 0,
-  "Total_Ocean_Freight": 22.0,
-  "Total_Value_Of_Goods": 33.0,
-  "Total_Charges": 0.0,
-  "General_Total": 22.0,
-  "View_CurrencyId": 1,
-  "Exchange_Rate": 1.0,
-  "UniqueTradeNumber": "56789098765",
-  "CTNCost": 0.0,
-  "CommissionCNC": 0.00,
-  "Status": {
-    "Id": 2,
-    "MultiLingualDescription": {
-      "Id": 2195,
-      "Translations": [
-        {
-          "Id": 2211,
-          "LanguageISO": "en",
-          "MultiLingualTextId": 2195,
-          "Text": "Request Visa"
-        }
-      ]
-    },
-    "Code": "RequestVisa"
-  },
-  "Origin_City": {
-    "Id": 262,
-    "Active": true,
-    "CountryId": 10,
-    "Name": "Benguela"
-  },
-  "RefusedBy": {
-    "Id": 13267,
-    "Official_Name": "CNC LUANDA EXPORT SUBAGENT",
-    "Email": "helpdesk@tcnt.eu",
-    "Address": "LUANDA",
-    "Active": true
-  },
-  "CreatedOn": "2025-11-12T18:58:11.807",
-  "CreatedById": 13267,
-  "ModifiedOn": "2025-11-12T19:32:43.48",
-  "ModifiedById": 13267
-}
-```
-
-#### 5.2.3 CTN Attachments API
+#### 5.2.2 CTN Creation API (Certificate Submission)
 
 **Business Purpose:** Manages CTN certificate attachments and supporting documents essential for compliance verification and audit trails. Critical for storing required documentation, enabling file downloads, maintaining document integrity, and ensuring complete certificate packages for customs and regulatory review.
 
@@ -2602,7 +2478,7 @@ Accept: application/json
 ]
 ```
 
-#### 5.2.4 CTN Creation API (Certificate Submission)
+#### 5.2.2 CTN Creation API (Certificate Submission)
 
 **Note:** This unified API consolidates what was previously multiple separate operations (creation, addresses, goods, containers, tracking, attachments) into one comprehensive submission. JUL will handle all data processing internally and save as draft, eliminating the need for multiple API calls from SINTECE.
 
@@ -2766,8 +2642,8 @@ Accept: application/json
 - **CTNCRE_E008**: "Invalid attachment information" (HTTP 422)
 - **CTNCRE_E009**: "NIF validation failed" (HTTP 422)
 
-**Sample JSON Request:**
-```json
+**Sample HTTP Request:**
+```http
 POST /api/ctns
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -2921,7 +2797,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 }
 ```
 
-#### 5.2.5 Request Visa API (Certificate Issuance Submission)
+#### 5.2.4 Request Visa API (Certificate Issuance Submission)
 
 **Business Purpose:** Submits completed CTN certificates for approval and visa issuance essential for finalizing the certificate approval process. Critical for triggering certificate review, validating completeness requirements, initiating approval workflow, and moving certificates from draft to approval status.
 
@@ -2964,8 +2840,8 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 - **REQVISA_E003**: "At least 1 attachment must be uploaded" (HTTP 400)
 - **REQVISA_E004**: "CTN not found or not accessible" (HTTP 404)
 
-**Sample JSON Request:**
-```json
+**Sample HTTP Request:**
+```http
 POST /api/ctns/actions/requestvisa/503808
 Content-Length: 0
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -3033,7 +2909,7 @@ Accept: application/json
 - **DOCUP_E005**: "Document upload failed" (HTTP 500)
 
 **Sample Multipart Request:**
-```
+```http
 POST /api/ctns/503808/documents/upload
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -3122,8 +2998,8 @@ true
 - **DOCDEL_E004**: "Cannot delete required document" (HTTP 409)
 - **DOCDEL_E005**: "Insufficient permissions" (HTTP 403)
 
-**Sample JSON Request:**
-```json
+**Sample HTTP Request:**
+```http
 DELETE /api/ctns/503808/documents/f47ac10b-58cc-4372-a567-0e02b2c3d479
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -3145,7 +3021,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 }
 ```
 
-#### 5.2.6 NIF Validation API (Angola Tax Registration Number)
+#### 5.2.5 NIF Validation API (Angola Tax Registration Number)
 
 **Business Purpose:** Validates NIF (Número de Identificação Fiscal) - Angola Tax Registration Number for importers, exporters, and consignees. Critical for ensuring tax compliance, preventing fraud, validating business entities, and meeting ARCCLA regulatory requirements for CNCA certificate processing.
 
@@ -3194,8 +3070,8 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 - **NIF_E005**: "NIF validation service unavailable" (HTTP 503)
 - **NIF_E006**: "Invalid entity type for certificate" (HTTP 400)
 
-**Sample JSON Request:**
-```json
+**Sample HTTP Request:**
+```http
 POST /api/validation/nif
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -3248,7 +3124,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 - Real-time validation with ARCCLA tax authority system
 - Supports bulk NIF validation (future enhancement)
 
-#### 5.2.7 Invoice Download API
+#### 5.2.6 Invoice Download API
 
 **Important Note on Invoice Applicability:**
 > **CRITICAL:** Invoices are ONLY applicable for IMPORT profiles. Export profiles do NOT require invoice generation or download functionality. The invoice download API should only be called for import certificate types.
@@ -3345,11 +3221,11 @@ Accept: application/json
 
 ---
 
-### 5.3 CTN Related Entity APIs
+### 5.4 CTN Related Entity APIs
 
 CTN Related Entity APIs manage the specific entities and components that are directly associated with CTN certificate processing, including consignee information, attachment management, and tracking data.
 
-#### 5.3.1 Consignees API
+#### 5.4.1 Consignees API
 
 **Business Purpose:** Manages consignee information essential for CTN certificate processing and customs compliance. Critical for identifying cargo recipients, validating company details, ensuring proper documentation, and enabling accurate certificate issuance with verified consignee data.
 
@@ -3415,7 +3291,7 @@ Accept: application/json
 ]
 ```
 
-#### 5.3.2 Attachment Names API
+#### 5.4.2 Attachment Names API
 
 **Business Purpose:** Manages standardized attachment type classifications essential for CTN document management and compliance verification. Critical for organizing certificate documents, ensuring complete documentation, and maintaining audit trails for regulatory compliance.
 
@@ -3493,7 +3369,7 @@ Accept: application/json
 ]
 ```
 
-#### 5.3.3 CTN Tracking API
+#### 5.4.3 CTN Tracking API
 
 **Business Purpose:** Manages CTN shipment tracking information essential for logistics monitoring and cargo visibility. Critical for providing real-time shipment status, managing transport schedules, and enabling proactive logistics coordination throughout the shipping lifecycle.
 
@@ -3568,226 +3444,9 @@ Accept: application/json
 ]
 ```
 
-#### 5.3.4 CTN Containers API
+### 5.3 File Management APIs
 
-**Endpoint:** `GET /api/ctnContainers`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | $expand | String - 200 | O | OData expand parameter | ContainerType |
-| 2 | ctn | Integer | M | CTN identifier | 503808 |
-| 3 | ctnid | Integer | M | CTN identifier (duplicate) | 503808 |
-
-**Response Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | M | Container record ID | 510046 |
-| 2 | CTNId | Integer | M | Related CTN ID | 503808 |
-| 3 | ContainerNumber | String - 20 | M | Container number | MSCU1234567 |
-| 4 | ContainerTypeId | Integer | M | Container type ID | 1 |
-| 5 | SealNumbers | String - 200 | O | Container seal numbers | SEAL123,SEAL456 |
-| 6 | TareWeightKG | Decimal | M | Tare weight in kg | 2300.00 |
-| 7 | GrossWeightKG | Decimal | M | Gross weight in kg | 18500.00 |
-| 8 | NetWeightKG | Decimal | M | Net weight in kg | 16200.00 |
-
-**POST /api/ctnContainers - Create Container Record**
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | CTNId | Integer | M | Related CTN identifier | 503808 |
-| 2 | ContainerNumber | String - 20 | M | Container number | MSCU1234567 |
-| 3 | ContainerTypeId | Integer | M | Container type identifier | 1 |
-| 4 | SealNumbers | String - 200 | O | Container seal numbers | SEAL123,SEAL456 |
-| 5 | TareWeightKG | Decimal | M | Tare weight in kg | 2300.00 |
-| 6 | GrossWeightKG | Decimal | M | Gross weight in kg | 18500.00 |
-
-**GET /api/ctnContainers/new - Container Template**
-
-**Response Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | M | Template ID (null for new) | null |
-| 2 | CTNId | Integer | O | CTN ID (to be set) | null |
-| 3 | ContainerNumber | String - 20 | O | Empty container number | "" |
-| 4 | ContainerTypeId | Integer | O | Default container type | 1 |
-| 5 | TareWeightKG | Decimal | O | Default tare weight | 2300.00 |
-
-**Business Validation Rules:**
-- **CONTAINER_BV_001**: Container number must follow ISO 6346 standard
-- **CONTAINER_BV_002**: Container type must be valid and active
-- **CONTAINER_BV_003**: Seal numbers must be unique per container
-
-**Error Codes:**
-- **CONTAINER_E001**: "Invalid container number pattern" (HTTP 400)
-- **CONTAINER_E002**: "Container already exists" (HTTP 409)
-- **CONTAINER_E003**: "Invalid container type" (HTTP 422)
-
-**Sample JSON Request (GET):**
-```json
-GET /api/ctnContainers?$expand=ContainerType&ctn=503808&ctnid=503808
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
-Accept: application/json
-```
-
-**Sample JSON Response (GET):**
-```json
-[]
-```
-
-**Sample JSON Request (POST):**
-```json
-POST /api/ctnContainers
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
-
-{
-  "Id": null,
-  "CTNId": 503808,
-  "ContainerTypeId": 31,
-  "Number_of_Containers": 1,
-  "ContainerNumbers": "MSCU1234567",
-  "SealNumbers": "23234",
-  "Groupage": false,
-  "ContainerType": null,
-  "CTN": null,
-  "IsEmpty": false,
-  "OwnedByShipper": false
-}
-```
-
-**Sample JSON Response (POST Success):**
-```json
-{
-  "Id": 510046,
-  "CTNId": 503808,
-  "ContainerTypeId": 31,
-  "Number_of_Containers": 1,
-  "ContainerNumbers": "MSCU1234567", 
-  "SealNumbers": "23234",
-  "Groupage": false,
-  "ContainerType": null,
-  "CTN": null,
-  "IsEmpty": false,
-  "OwnedByShipper": false
-}
-```
-
-**Sample JSON Response (GET /new Template):**
-```json
-{
-  "Id": null,
-  "CTNId": null,
-  "ContainerTypeId": null,
-  "Number_of_Containers": 1,
-  "ContainerNumbers": null,
-  "SealNumbers": null,
-  "Groupage": false,
-  "ContainerType": null,
-  "CTN": null,
-  "IsEmpty": false,
-  "OwnedByShipper": false
-}
-```
-
-#### 5.3.5 CTN Addresses API
-
-**Endpoint:** `GET /api/ctnAddresses`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | $expand | String - 200 | O | OData expand parameter | QryAddressType,Country1 |
-| 2 | ctn | Integer | M | CTN identifier | 503808 |
-| 3 | ctnid | Integer | M | CTN identifier (duplicate) | 503808 |
-
-**Response Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | M | Address record ID | 426334 |
-| 2 | CTNId | Integer | M | Related CTN ID | 503808 |
-| 3 | AddressTypeId | Integer | M | Address type ID | 1 |
-| 4 | CompanyName | String - 200 | M | Company name | ABC Trading LLC |
-| 5 | ContactPerson | String - 100 | O | Contact person name | John Smith |
-| 6 | Address1 | String - 200 | M | Address line 1 | 123 Business Street |
-| 7 | Address2 | String - 200 | O | Address line 2 | Suite 456 |
-| 8 | City | String - 100 | M | City | Dubai |
-| 9 | CountryId | Integer | M | Country identifier | 4 |
-| 10 | PostalCode | String - 20 | O | Postal/ZIP code | 12345 |
-| 11 | Phone | String - 50 | O | Phone number | +971-4-1234567 |
-| 12 | Email | String - 200 | O | Email address | contact@abc-trading.com |
-
-#### 5.3.6 CTN Charges API
-
-**Endpoint:** `GET /api/ctnCharges`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | $expand | String - 200 | O | OData expand parameter | Charge,ctn.view_currency |
-| 2 | ctn | Integer | M | CTN identifier | 503808 |
-| 3 | ctnid | Integer | M | CTN identifier (duplicate) | 503808 |
-
-**Response Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | M | Charge record ID | 12345 |
-| 2 | CTNId | Integer | M | Related CTN ID | 503808 |
-| 3 | ChargeId | Integer | M | Charge type ID | 1 |
-| 4 | Amount | Decimal | M | Charge amount | 150.00 |
-| 5 | CurrencyId | Integer | M | Currency identifier | 2 |
-| 6 | Description | String - 200 | O | Charge description | Certificate Processing Fee |
-| 7 | IsSystem | Boolean | M | System-generated charge flag | true |
-
-#### 5.3.7 User Communication API
-
-**Endpoint:** `GET /api/userCommunication`
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | $expand | String - 100 | O | OData expand parameter | modifiedby |
-| 2 | $sort | String - 100 | O | OData sort parameter | -modifiedon |
-| 3 | ctn | Integer | M | CTN identifier | 503808 |
-| 4 | ctnid | Integer | M | CTN identifier (duplicate) | 503808 |
-
-**Response Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | Id | Integer | M | Communication record ID | 98765 |
-| 2 | CTNId | Integer | M | Related CTN ID | 503808 |
-| 3 | Subject | String - 200 | M | Communication subject | Document Review Required |
-| 4 | Message | String - 2000 | M | Communication message | Please review attached documents |
-| 5 | CreatedOn | DateTime | M | Creation timestamp | 2023-11-12T16:45:00Z |
-| 6 | CreatedById | Integer | M | User who created the message | 13345 |
-| 7 | IsInternal | Boolean | M | Internal communication flag | false |
-
-**POST /api/userCommunication - Create Communication**
-
-**Request Elements:**
-
-| S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
-|-------|------------|------------------|-----------|------------------------|--------------|
-| 1 | CTNId | Integer | M | Related CTN identifier | 503808 |
-| 2 | Subject | String - 200 | M | Communication subject | Document Review Required |
-| 3 | Message | String - 2000 | M | Communication message | Please review attached documents |
-| 4 | IsInternal | Boolean | M | Internal communication flag | false |
-| 5 | RecipientIds | Array | O | Array of recipient user IDs | [13345, 13346] |
-
-### 5.4 File Management APIs
-
-#### 5.4.1 File Upload API
+#### 5.3.1 File Upload API
 
 **Endpoint:** `POST /api/fileupload`
 
@@ -3825,7 +3484,7 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 - **FILEUP_E003**: "File upload failed" (HTTP 500)
 
 **Sample Multipart Request:**
-```
+```http
 POST /api/fileupload
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -3866,7 +3525,7 @@ Original shipping document for CTN certificate
 | 1 | fileId | String (UUID) | M | File identifier from URL path | 0da7461c-2155-4d20-a695-6b7463367327 |
 
 **Sample Download Request:**
-```
+```http
 GET /api/fileupload/0da7461c-2155-4d20-a695-6b7463367327
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 Accept: application/json
