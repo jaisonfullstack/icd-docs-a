@@ -4,8 +4,6 @@
 
 <div style="text-align: center;">
 
-![Abu Dhabi Ports Logo](./images/Maqta-logo.png)
-
 # **JUL – SINTECE**
 # **Integration Control Document**
 
@@ -20,8 +18,8 @@
 | Ver | Date | Name | Role | Summary of Changes |
 |-----|------|------|------|-------------------|
 | 1.0 | 12-Nov-2025 | Linoy Pappachan Malakkaran | Senior Integration Specialist | Initial Draft - Created ICD with technical specifications for JUL-SINTECE integration. Defined API specifications, data models, integration workflows, security requirements, and testing procedures. |
-| 2.0 | 13-Nov-2025 | Linoy Pappachan Malakkaran | Senior Integration Specialist | New:<br/>1. Amendment APIs<br/>2. Cancellation APIs<br/>3. Approval workflow specifications<br/>4. Status management with canAmend/canCancel flags<br/>5. Validation framework<br/>6. Enhanced error handling |
-| 3.0 | 14-Nov-2025 | Linoy Pappachan Malakkaran | Senior Integration Specialist | New:<br/>1. Keycloak SSO authentication<br/>2. NIF Validation API<br/>3. Invoice Download API<br/>4. CTN Status Retrieval API<br/>5. Consolidated CNCA certificate submission API<br/>6. Updated table formats |
+| 2.0 | 13-Nov-2025 | Linoy Pappachan Malakkaran | Senior Integration Specialist | New: 1. Amendment APIs; 2. Cancellation APIs; 3. Approval workflow specifications; 4. Status management with canAmend/canCancel flags; 5. Validation framework; 6. Enhanced error handling |
+| 3.0 | 14-Nov-2025 | Linoy Pappachan Malakkaran | Senior Integration Specialist | New: 1. Keycloak SSO authentication; 2. NIF Validation API; 3. Invoice Download API; 4. CTN Status Retrieval API; 5. Consolidated CNCA certificate submission API; 6. Updated table formats |
 
 ## Version Reviewers / Approvers
 
@@ -851,7 +849,7 @@ Abu Dhabi Ports uses Keycloak as the Single Sign-On (SSO) solution for authentic
 
 | Configuration | Value |
 |---------------|-------|
-| Keycloak Server URL | https://sso.adports.ae (Production)<br/>https://sso-uat.adports.ae (UAT) |
+| Keycloak Server URL | Production: https://sso.adports.ae; UAT: https://sso-uat.adports.ae |
 | Realm | ADP-External-Services |
 | Client ID | jul-sintece-integration |
 | Client Authentication | Client ID and Secret |
