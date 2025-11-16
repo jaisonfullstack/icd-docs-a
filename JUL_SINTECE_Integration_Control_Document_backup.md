@@ -40,45 +40,26 @@
 
 table {
   width: 100%;
-  border-collapse: collapse !important;
+  border-collapse: collapse;
   margin: 15px 0;
-  border: 2px solid #000000 !important;
+  border: 2px solid #333;
 }
 
 table th, table td {
-  border: 1px solid #000000 !important;
-  padding: 12px 8px;
+  border: 1px solid #333;
+  padding: 12px;
   text-align: left;
   vertical-align: top;
 }
 
 table th {
-  background-color: #f0f0f0 !important;
+  background-color: #f0f0f0;
   font-weight: bold;
-  border-bottom: 2px solid #000000 !important;
-}
-
-table tbody tr {
-  border-bottom: 1px solid #000000;
+  border-bottom: 2px solid #333;
 }
 
 table tbody tr:nth-child(even) {
-  background-color: #f9f9f9 !important;
-}
-
-/* Force borders in all table elements */
-table, table th, table td, table tr {
-  border-collapse: collapse !important;
-  border-style: solid !important;
-  border-color: #000000 !important;
-}
-
-/* Special handling for Pandoc conversion */
-@media print {
-  table, table th, table td {
-    border: 1px solid black !important;
-    border-collapse: collapse !important;
-  }
+  background-color: #f9f9f9;
 }
 
 code {
@@ -1112,7 +1093,7 @@ Master data APIs provide essential reference data required for certificate creat
 
 - **CARGO_E001**: "Invalid parameters" (HTTP 400)  
 - **CARGO_E002**: "No data found" (HTTP 404)  
-- **CARGO_E003**: "Access denied" (HTTP 403)  
+- **CARGO_E003**: "Access denied" (HTTP 403)
 
 **Sample HTTP Request:**
 ```http
@@ -1251,7 +1232,7 @@ Accept: application/json
 
 - **INCO_E001**: "Invalid format" (HTTP 400)  
 - **INCO_E002**: "Not applicable for cargo type" (HTTP 422)  
-- **INCO_E003**: "Inactive Incoterm" (HTTP 422)  
+- **INCO_E003**: "Inactive Incoterm" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -1345,7 +1326,7 @@ Accept: application/json
 
 - **COUNTRY_E001**: "Invalid format" (HTTP 400)  
 - **COUNTRY_E002**: "Not approved for trade" (HTTP 422)  
-- **COUNTRY_E003**: "Sanctioned country" (HTTP 403)  
+- **COUNTRY_E003**: "Sanctioned country" (HTTP 403)
 
 | S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
 |-------|------------|------------------|-----------|------------------------|--------------|
@@ -1406,7 +1387,7 @@ Accept: application/json
 
 - **CARRIER_E001**: "Invalid parameters" (HTTP 400)  
 - **CARRIER_E002**: "No data found" (HTTP 404)  
-- **CARRIER_E003**: "Access denied" (HTTP 403)  
+- **CARRIER_E003**: "Access denied" (HTTP 403)
 
 **Sample JSON Request:**
 ```json
@@ -1542,10 +1523,9 @@ Accept: application/json
 | 5 | Active | Boolean | M | Active status indicator | true |
 
 **Error Codes:**
-
-- **BANK_E001**: "Invalid parameters" (HTTP 400)  
-- **BANK_E002**: "No data found" (HTTP 404)  
-- **BANK_E003**: "Access denied" (HTTP 403)  
+- **BANK_E001**: "Invalid parameters" (HTTP 400)
+- **BANK_E002**: "No data found" (HTTP 404)
+- **BANK_E003**: "Access denied" (HTTP 403)
 
 **Sample JSON Request:**
 ```json
@@ -1602,8 +1582,8 @@ Accept: application/json
   }
 ]
 ```
-- **BANK_E002**: "Bank not authorized for transactions" (HTTP 422)  
-- **BANK_E003**: "Inactive bank selected" (HTTP 422)  
+- **BANK_E002**: "Bank not authorized for transactions" (HTTP 422)
+- **BANK_E003**: "Inactive bank selected" (HTTP 422)
 
 #### 5.1.7 Units API
 
@@ -1645,7 +1625,7 @@ Accept: application/json
 
 - **UNIT_E001**: "Invalid unit parameters" (HTTP 400)  
 - **UNIT_E002**: "Unit not found" (HTTP 404)  
-- **UNIT_E003**: "Unit conversion error" (HTTP 422)  
+- **UNIT_E003**: "Unit conversion error" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -1725,7 +1705,7 @@ Accept: application/json
 
 - **CONTAINER_E001**: "Invalid parameters" (HTTP 400)  
 - **CONTAINER_E002**: "Container type not found" (HTTP 404)  
-- **CONTAINER_E003**: "Container type not applicable for cargo" (HTTP 422)  
+- **CONTAINER_E003**: "Container type not applicable for cargo" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -1806,7 +1786,7 @@ Accept: application/json
 
 - **TRANSPORT_E001**: "Invalid parameters" (HTTP 400)  
 - **TRANSPORT_E002**: "Transport type not found" (HTTP 404)  
-- **TRANSPORT_E003**: "Transport type not applicable for cargo" (HTTP 422)  
+- **TRANSPORT_E003**: "Transport type not applicable for cargo" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -1883,7 +1863,7 @@ Accept: application/json
 
 - **LOCATION_E001**: "Invalid country ID" (HTTP 400)  
 - **LOCATION_E002**: "Port not found" (HTTP 404)  
-- **LOCATION_E003**: "Port not operational for cargo" (HTTP 422)  
+- **LOCATION_E003**: "Port not operational for cargo" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -1962,7 +1942,7 @@ Accept: application/json
 
 - **GOODS_E001**: "Invalid classification parameters" (HTTP 400)  
 - **GOODS_E002**: "Classification not found" (HTTP 404)  
-- **GOODS_E003**: "Classification not applicable" (HTTP 422)  
+- **GOODS_E003**: "Classification not applicable" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -2038,10 +2018,9 @@ Accept: application/json
 | 6 | Active | Boolean | M | Active status indicator | true |
 
 **Error Codes:**
-
-- **IMO_E001**: "Invalid IMO parameters" (HTTP 400)  
-- **IMO_E002**: "IMO code not found" (HTTP 404)  
-- **IMO_E003**: "Dangerous goods not permitted" (HTTP 422)  
+- **IMO_E001**: "Invalid IMO parameters" (HTTP 400)
+- **IMO_E002**: "IMO code not found" (HTTP 404)
+- **IMO_E003**: "Dangerous goods not permitted" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -2118,10 +2097,9 @@ Accept: application/json
 | 7 | Active | Boolean | M | Active status | true |
 
 **Error Codes:**
-
-- **VESSEL_E001**: "Invalid vessel parameters" (HTTP 400)  
-- **VESSEL_E002**: "Vessel not found" (HTTP 404)  
-- **VESSEL_E003**: "Vessel not available for route" (HTTP 422)  
+- **VESSEL_E001**: "Invalid vessel parameters" (HTTP 400)
+- **VESSEL_E002**: "Vessel not found" (HTTP 404)
+- **VESSEL_E003**: "Vessel not available for route" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -2202,10 +2180,9 @@ Accept: application/json
 | 5 | Active | Boolean | M | Active status indicator | true |
 
 **Error Codes:**
-
-- **CITY_E001**: "Invalid country ID" (HTTP 400)  
-- **CITY_E002**: "City not found" (HTTP 404)  
-- **CITY_E003**: "City not operational for trade" (HTTP 422)  
+- **CITY_E001**: "Invalid country ID" (HTTP 400)
+- **CITY_E002**: "City not found" (HTTP 404)
+- **CITY_E003**: "City not operational for trade" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -2295,10 +2272,9 @@ Accept: application/json
 | 5 | Active | Boolean | M | Active status indicator | true |
 
 **Error Codes:**
-
-- **CTNPORT_E001**: "Invalid port parameters" (HTTP 400)  
-- **CTNPORT_E002**: "Port not found" (HTTP 404)  
-- **CTNPORT_E003**: "Port not operational" (HTTP 422)  
+- **CTNPORT_E001**: "Invalid port parameters" (HTTP 400)
+- **CTNPORT_E002**: "Port not found" (HTTP 404)
+- **CTNPORT_E003**: "Port not operational" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -2380,10 +2356,9 @@ Certificate management APIs handle the core CTN certificate lifecycle operations
 | 10 | ModifiedOn | DateTime | O | Record modification timestamp | 2025-11-12T19:15:45.23Z |
 
 **Error Codes:**
-
-- **CTN_E001**: "Invalid parameters" (HTTP 400)  
-- **CTN_E002**: "Access denied" (HTTP 403)  
-- **CTN_E003**: "No data found" (HTTP 404)  
+- **CTN_E001**: "Invalid parameters" (HTTP 400)
+- **CTN_E002**: "Access denied" (HTTP 403)
+- **CTN_E003**: "No data found" (HTTP 404)
 
 **Sample JSON Request:**
 ```json
@@ -2487,10 +2462,9 @@ Accept: application/json
 | 8 | CreatedById | Integer | M | User who uploaded file | 13345 |
 
 **Error Codes:**
-
-- **CTNATT_E001**: "Invalid CTN ID" (HTTP 400)  
-- **CTNATT_E002**: "No attachments found" (HTTP 404)  
-- **CTNATT_E003**: "File access denied" (HTTP 403)  
+- **CTNATT_E001**: "Invalid CTN ID" (HTTP 400)
+- **CTNATT_E002**: "No attachments found" (HTTP 404)
+- **CTNATT_E003**: "File access denied" (HTTP 403)
 
 **Sample JSON Request:**
 ```json
@@ -2674,16 +2648,15 @@ Accept: application/json
 | 12 | AttachmentsCreated | Integer | M | Number of attachments created | 2 |
 
 **Error Codes:**
-
-- **CTNCRE_E001**: "BL number already exists" (HTTP 409)  
-- **CTNCRE_E002**: "Invalid reference data" (HTTP 400)  
-- **CTNCRE_E003**: "Insufficient permissions" (HTTP 403)  
-- **CTNCRE_E004**: "Invalid address information" (HTTP 422)  
-- **CTNCRE_E005**: "Invalid goods information" (HTTP 422)  
-- **CTNCRE_E006**: "Invalid container information" (HTTP 422)  
-- **CTNCRE_E007**: "Invalid tracking information" (HTTP 422)  
-- **CTNCRE_E008**: "Invalid attachment information" (HTTP 422)  
-- **CTNCRE_E009**: "NIF validation failed" (HTTP 422)  
+- **CTNCRE_E001**: "BL number already exists" (HTTP 409)
+- **CTNCRE_E002**: "Invalid reference data" (HTTP 400)
+- **CTNCRE_E003**: "Insufficient permissions" (HTTP 403)
+- **CTNCRE_E004**: "Invalid address information" (HTTP 422)
+- **CTNCRE_E005**: "Invalid goods information" (HTTP 422)
+- **CTNCRE_E006**: "Invalid container information" (HTTP 422)
+- **CTNCRE_E007**: "Invalid tracking information" (HTTP 422)
+- **CTNCRE_E008**: "Invalid attachment information" (HTTP 422)
+- **CTNCRE_E009**: "NIF validation failed" (HTTP 422)
 
 **Sample HTTP Request:**
 ```http
@@ -2878,11 +2851,10 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 | 3 | newCtnId | Integer | M | CTN identifier (0 for existing) | 0 |
 
 **Error Codes:**
-
-- **REQVISA_E001**: "Missing or incomplete Shipper Address" (HTTP 400)  
-- **REQVISA_E002**: "Missing or incomplete Forwarder Address" (HTTP 400)  
-- **REQVISA_E003**: "At least 1 attachment must be uploaded" (HTTP 400)  
-- **REQVISA_E004**: "CTN not found or not accessible" (HTTP 404)  
+- **REQVISA_E001**: "Missing or incomplete Shipper Address" (HTTP 400)
+- **REQVISA_E002**: "Missing or incomplete Forwarder Address" (HTTP 400)
+- **REQVISA_E003**: "At least 1 attachment must be uploaded" (HTTP 400)
+- **REQVISA_E004**: "CTN not found or not accessible" (HTTP 404)
 
 **Sample HTTP Request:**
 ```http
@@ -2946,12 +2918,11 @@ Accept: application/json
 | 10 | ctnId | Integer | M | Associated CTN ID | 503808 |
 
 **Error Codes:**
-
-- **DOCUP_E001**: "CTN not found" (HTTP 404)  
-- **DOCUP_E002**: "Invalid document type" (HTTP 400)  
-- **DOCUP_E003**: "File size exceeds limit" (HTTP 413)  
-- **DOCUP_E004**: "Invalid file type" (HTTP 415)  
-- **DOCUP_E005**: "Document upload failed" (HTTP 500)  
+- **DOCUP_E001**: "CTN not found" (HTTP 404)
+- **DOCUP_E002**: "Invalid document type" (HTTP 400)
+- **DOCUP_E003**: "File size exceeds limit" (HTTP 413)
+- **DOCUP_E004**: "Invalid file type" (HTTP 415)
+- **DOCUP_E005**: "Document upload failed" (HTTP 500)
 
 **Sample Multipart Request:**
 ```http
@@ -3037,12 +3008,11 @@ true
 | 6 | message | String - 200 | M | Confirmation message | Document successfully deleted |
 
 **Error Codes:**
-
-- **DOCDEL_E001**: "CTN not found" (HTTP 404)  
-- **DOCDEL_E002**: "Document not found" (HTTP 404)  
-- **DOCDEL_E003**: "Cannot delete after visa submission" (HTTP 409)  
-- **DOCDEL_E004**: "Cannot delete required document" (HTTP 409)  
-- **DOCDEL_E005**: "Insufficient permissions" (HTTP 403)  
+- **DOCDEL_E001**: "CTN not found" (HTTP 404)
+- **DOCDEL_E002**: "Document not found" (HTTP 404)
+- **DOCDEL_E003**: "Cannot delete after visa submission" (HTTP 409)
+- **DOCDEL_E004**: "Cannot delete required document" (HTTP 409)
+- **DOCDEL_E005**: "Insufficient permissions" (HTTP 403)
 
 **Sample HTTP Request:**
 ```http
@@ -3109,13 +3079,12 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 | 8 | errorDetails | Array | O | Array of validation errors if any | [] |
 
 **Error Codes:**
-
-- **NIF_E001**: "Invalid NIF format" (HTTP 400)  
-- **NIF_E002**: "NIF not found in ARCCLA system" (HTTP 404)  
-- **NIF_E003**: "NIF suspended or blacklisted" (HTTP 403)  
-- **NIF_E004**: "Entity name mismatch" (HTTP 400)  
-- **NIF_E005**: "NIF validation service unavailable" (HTTP 503)  
-- **NIF_E006**: "Invalid entity type for certificate" (HTTP 400)  
+- **NIF_E001**: "Invalid NIF format" (HTTP 400)
+- **NIF_E002**: "NIF not found in ARCCLA system" (HTTP 404)
+- **NIF_E003**: "NIF suspended or blacklisted" (HTTP 403)
+- **NIF_E004**: "Entity name mismatch" (HTTP 400)
+- **NIF_E005**: "NIF validation service unavailable" (HTTP 503)
+- **NIF_E006**: "Invalid entity type for certificate" (HTTP 400)
 
 **Sample HTTP Request:**
 ```http
@@ -3219,13 +3188,12 @@ Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
 | 6 | generatedDate | Date | M | Invoice generation timestamp | 2025-11-14T10:30:00Z |
 
 **Error Codes:**
-
-- **INV_E001**: "Invoice not found" (HTTP 404)  
-- **INV_E002**: "Certificate not completed" (HTTP 400)  
-- **INV_E003**: "Access denied" (HTTP 403)  
-- **INV_E004**: "Invalid invoice format requested" (HTTP 400)  
-- **INV_E005**: "Export certificates do not support invoices" (HTTP 400)  
-- **INV_E006**: "Invoice generation in progress" (HTTP 202)  
+- **INV_E001**: "Invoice not found" (HTTP 404)
+- **INV_E002**: "Certificate not completed" (HTTP 400)
+- **INV_E003**: "Access denied" (HTTP 403)
+- **INV_E004**: "Invalid invoice format requested" (HTTP 400)
+- **INV_E005**: "Export certificates do not support invoices" (HTTP 400)
+- **INV_E006**: "Invoice generation in progress" (HTTP 202)
 
 **Sample API Request:**
 ```http
@@ -3310,10 +3278,9 @@ CTN Related Entity APIs manage the specific entities and components that are dir
 | 6 | Active | Boolean | M | Active status indicator | true |
 
 **Error Codes:**
-
-- **CONSIGNEE_E001**: "Invalid NIF number format" (HTTP 400)  
-- **CONSIGNEE_E002**: "Consignee not found" (HTTP 404)  
-- **CONSIGNEE_E003**: "Consignee not authorized for import" (HTTP 422)  
+- **CONSIGNEE_E001**: "Invalid NIF number format" (HTTP 400)
+- **CONSIGNEE_E002**: "Consignee not found" (HTTP 404)
+- **CONSIGNEE_E003**: "Consignee not authorized for import" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -3377,10 +3344,9 @@ Accept: application/json
 | 6 | Active | Boolean | M | Active status indicator | true |
 
 **Error Codes:**
-
-- **ATTACHMENT_E001**: "Invalid attachment parameters" (HTTP 400)  
-- **ATTACHMENT_E002**: "Attachment type not found" (HTTP 404)  
-- **ATTACHMENT_E003**: "File exceeds size limit" (HTTP 413)  
+- **ATTACHMENT_E001**: "Invalid attachment parameters" (HTTP 400)
+- **ATTACHMENT_E002**: "Attachment type not found" (HTTP 404)
+- **ATTACHMENT_E003**: "File exceeds size limit" (HTTP 413)
 
 **Sample JSON Request:**
 ```json
@@ -3460,10 +3426,9 @@ Accept: application/json
 | 11 | VoyageNumber | String - 50 | O | Voyage number | 546894 |
 
 **Error Codes:**
-
-- **TRACKING_E001**: "Invalid CTN ID" (HTTP 400)  
-- **TRACKING_E002**: "Tracking information not found" (HTTP 404)  
-- **TRACKING_E003**: "Tracking data inconsistent" (HTTP 422)  
+- **TRACKING_E001**: "Invalid CTN ID" (HTTP 400)
+- **TRACKING_E002**: "Tracking information not found" (HTTP 404)
+- **TRACKING_E003**: "Tracking data inconsistent" (HTTP 422)
 
 **Sample JSON Request:**
 ```json
@@ -3530,10 +3495,9 @@ Accept: application/json
 - **FILEUP_BV_003**: User must have permission to upload files
 
 **Error Codes:**
-
-- **FILEUP_E001**: "File size exceeds maximum limit" (HTTP 413)  
-- **FILEUP_E002**: "File type not supported" (HTTP 415)  
-- **FILEUP_E003**: "File upload failed" (HTTP 500)  
+- **FILEUP_E001**: "File size exceeds maximum limit" (HTTP 413)
+- **FILEUP_E002**: "File type not supported" (HTTP 415)
+- **FILEUP_E003**: "File upload failed" (HTTP 500)
 
 **Sample Multipart Request:**
 ```http
@@ -3983,11 +3947,10 @@ Status polling APIs provide real-time status updates with eligibility flags for 
 | 5 | remarks | String - 500 | O | Status change remarks | Submitted for ARCCLA review |
 
 **Error Codes:**
-
-- **STATUS_E001**: "CTN not found" (HTTP 404)  
-- **STATUS_E002**: "Access denied" (HTTP 403)  
-- **STATUS_E003**: "Invalid CTN ID format" (HTTP 400)  
-- **STATUS_E004**: "Status service temporarily unavailable" (HTTP 503)  
+- **STATUS_E001**: "CTN not found" (HTTP 404)
+- **STATUS_E002**: "Access denied" (HTTP 403)
+- **STATUS_E003**: "Invalid CTN ID format" (HTTP 400)
+- **STATUS_E004**: "Status service temporarily unavailable" (HTTP 503)
 
 **Sample API Request:**
 ```http

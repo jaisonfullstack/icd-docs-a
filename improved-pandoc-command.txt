@@ -1,0 +1,44 @@
+Improved Pandoc Command for Better Word Formatting:
+
+# Option 1: Enhanced table formatting
+pandoc JUL_SINTECE_Integration_Control_Document.md \
+  -o JUL_SINTECE_Integration_Control_Document.docx \
+  --reference-doc=reference_with_borders.docx \
+  --toc \
+  --toc-depth=3 \
+  --highlight-style=tango \
+  --table-style=Table
+
+# Option 2: With additional styling control
+pandoc JUL_SINTECE_Integration_Control_Document.md \
+  -o JUL_SINTECE_Integration_Control_Document.docx \
+  --reference-doc=reference_with_borders.docx \
+  --toc \
+  --toc-depth=3 \
+  --highlight-style=tango \
+  --wrap=preserve \
+  --columns=80
+
+# Option 3: Force HTML table processing for better borders
+pandoc JUL_SINTECE_Integration_Control_Document.md \
+  -o JUL_SINTECE_Integration_Control_Document.docx \
+  --reference-doc=reference_with_borders.docx \
+  --toc \
+  --toc-depth=3 \
+  --highlight-style=tango \
+  -f markdown+pipe_tables+grid_tables \
+  --table-style="Table Grid"
+
+# Recommended command (use this one):
+pandoc JUL_SINTECE_Integration_Control_Document.md \
+  -o JUL_SINTECE_Integration_Control_Document.docx \
+  --reference-doc=reference_with_borders.docx \
+  --toc \
+  --toc-depth=3 \
+  --highlight-style=tango \
+  --wrap=preserve \
+  -f markdown+pipe_tables+grid_tables \
+  --table-style="Table Grid"
+
+# For Windows (single line):
+pandoc JUL_SINTECE_Integration_Control_Document.md -o JUL_SINTECE_Integration_Control_Document.docx --reference-doc=reference_with_borders.docx --toc --toc-depth=3 --highlight-style=tango --wrap=preserve -f markdown+pipe_tables+grid_tables --table-style="Table Grid"

@@ -20,5 +20,5 @@ npx md-to-pdf JUL_SINTECE_Integration_Control_Document.md
 # word conversion
 
 ```
-pandoc JUL_SINTECE_Integration_Control_Document.md -o JUL_SINTECE_Integration_Control_Document.docx   --reference-doc=reference_with_borders.docx   --toc   --toc-depth=3   --highlight-style=tango
+ pandoc JUL_SINTECE_Integration_Control_Document.md -o JUL_SINTECE_Integration_Control_Document_test.docx --reference-doc=reference_with_borders.docx --toc --toc-depth=3 --highlight-style=tango --wrap=preserve -f markdown+pipe_tables+grid_tables
 ```
