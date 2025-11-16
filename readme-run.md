@@ -16,3 +16,9 @@ md-to-pdf JUL_SINTECE_Integration_Control_Document.md --config-file .md2pdf.json
 # Without explicit config file (uses .md2pdf.json automatically)
 npx md-to-pdf JUL_SINTECE_Integration_Control_Document.md
 ```
+
+# word conversion
+
+```
+pandoc JUL_SINTECE_Integration_Control_Document.md -o JUL_SINTECE_Integration_Control_Document.docx   --reference-doc=reference_with_borders.docx   --toc   --toc-depth=3   --highlight-style=tango
+```
