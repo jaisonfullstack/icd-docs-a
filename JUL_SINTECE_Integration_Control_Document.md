@@ -1347,6 +1347,126 @@ Accept: application/json
 - **COUNTRY_E002**: "Not approved for trade" (HTTP 422)  
 - **COUNTRY_E003**: "Sanctioned country" (HTTP 403)  
 
+**Sample cURL Request:**
+```bash
+curl 'https://uat.cncangola.com/api/Countries?$sort=Country_Name&Country_Name=&ExportingCountry=true&active=1' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IkNOQ1NBRVhQT1JUIiwidXNlck5hbWUiOiJDTkNTQUVYUE9SVCIsInVzZXJJZCI6MTMzNDUsImxhbmd1YWdlSXNvQ29kZSI6ImVuIiwicm9sZUNvZGUiOiJFWFAiLCJsYW5ndWFnZUlkIjoyLCJpc1ByaW1hcnkiOnRydWUsIm9yZ2FuaXNhdGlvbklkIjoxMzI2NywibmJmIjoxNzYyOTY5NDAyLCJleHAiOjE3NjI5NzEyMDIsImlhdCI6MTc2Mjk2OTQwMiwiaXNzIjoiNER2aXNpb24iLCJhdWQiOiJUaW1lQm94In0.eDoNJNu8MlkCtMCdXkoBDwFaIG4T2L_OgK1_lfMRBUgzQmjQfHAXw6ungQP_f2HoAoZmy-KnVsIKppoOWgRWVxLzWJMnZS01IxrGj2K8a8oaPpJdwZxdwt4h3yg0qkU8modRfA4A5rTYR_zUyuKNfhcPKrVJgsc3vhYFipjsyxt5eFlW-eEWaZIaIybTVqObpI5UMgQE9iaBjdAcj5Oj5aBoGh1rp_tU9cv3j8GYD56FsIxRoSMg6K7cnoKHaPCkcEI36hFDJL9_WGuMKD37B37nELkXfjAMsrHMu3_qKDBgGilqd93nJb4K8FsEcTp3EdNJFhPH8TmeMx46K20QKw' \
+  -H 'Connection: keep-alive' \
+  -H 'Referer: https://uat.cncangola.com/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-origin' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36' \
+  -H $'X-Context: %7B%22CTN_Addresses%22:%5B%5D,%22CTN_Containers%22:%5B%5D,%22CTN_Goods%22:%5B%5D,%22CTN_RORO%22:%5B%5D,%22CTN_Tracking%22:%5B%5D,%22Id%22:null,%22CTN_Reference_Number%22:%22%22,%22StatusId%22:1,%22Groupage%22:false,%22ParentCTNId%22:null,%22CargoTypeId%22:null,%22ETD%22:null,%22ETA%22:null,%22BL_number%22:%22vc568009iujh%22,%22IncotermId%22:null,%22OriginCountryId%22:null,%22FinalDestinationCountryId%22:null,%22FreightPaymentTypeId%22:null,%22Total_number_containers%22:0,%22Total_number_vehicles%22:0,%22Total_Ocean_Freight%22:0,%22Total_Value_Of_Goods%22:0,%22Total_Charges%22:0,%22General_Total%22:0,%22View_CurrencyId%22:2,%22Exchange_Rate%22:1,%22Visum_Location%22:null,%22Visum_Reference_number%22:null,%22Visum_Cost%22:1,%22Visum_Date%22:null,%22Visum_AgentId%22:null,%22Invoicer_to_agent%22:null,%22VoyageNo%22:null,%22RegularisationCTN%22:false,%22Corrected%22:null,%22Original_Amount%22:null,%22DateAccepted%22:null,%22AcceptedBy%22:null,%22DateGranted%22:null,%22GrantedBy%22:null,%22DateRejected%22:null,%22RejectedById%22:null,%22Gumar_Ref%22:null,%22RequiredVisa%22:null,%22DateRequestVisa%22:null,%22DateRequestCorrection%22:null,%22IsExport%22:true,%22IsImport%22:false,%22DateSuspended%22:null,%22DateRefused%22:null,%22PrintDate%22:null,%22RequestedBy%22:null,%22SuspendedBy%22:null,%22RefusedBy%22:null,%22RefusedById%22:null,%22PrintedBy%22:null,%22PrintNumber%22:null,%22CTNCost%22:null,%22CommissionCNC%22:0,%22CTNExchangeRate%22:null,%22MarkedForUpdate%22:false,%22ReceivedByGumar%22:false,%22ErrorSendToGumar%22:false,%22Origin_CityId%22:null,%22Final_Destination_CityId%22:null,%22CarrierId%22:null,%22UniqueTradeNumber%22:%2256789098765%22,%22Commission%22:0,%22Origin_City%22:%7B%22id%22:262,%22Id%22:262,%22text%22:%22Benguela%22%7D,%22Final_Destination_City%22:null,%22Status%22:null,%22CargoType%22:%7B%22id%22:1,%22Id%22:1,%22text%22:%22CONTAINER%22%7D,%22FreightPaymentType%22:null,%22Incoterm%22:%7B%22id%22:2,%22Id%22:2,%22text%22:%22CIF%22%7D,%22View_Currency%22:%7B%22id%22:2,%22Id%22:2,%22text%22:%22USD%22%7D,%22Created_User_Currency%22:null,%22OriginCountry%22:%7B%22id%22:10,%22Id%22:10,%22text%22:%22Angola%22%7D,%22FinalDestinationCountry%22:null,%22CreatedBy%22:null,%22RejectedBy%22:null,%22ModifiedBy%22:null,%22Visum_Agent%22:null,%22Carrier%22:%7B%22id%22:789,%22Id%22:789,%22text%22:%22A.C.%20ORSSLEFF\%27S%20EFTF%20A/S%22%7D,%22ParentCTN%22:null,%22BankId%22:null,%22Bank%22:null,%22ConsigneeId%22:null,%22Consignee%22:null,%22ReExport%22:false,%22DCNumber%22:%227777777%22,%22CreatedOn%22:%222025-11-12T18:49:30.8817831+01:00%22,%22CreatedById%22:1,%22CreatedByLogin%22:null,%22ModifiedOn%22:null,%22ModifiedById%22:null,%22ModifiedByLogin%22:null%7D' \
+  -H 'sec-ch-ua: "Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"'
+```
+
+**Sample JSON Response:**
+```json
+[
+  {
+    "Id": 4,
+    "Country_Code": "AF",
+    "Country_Name": "Afghanistan",
+    "Import_Fixed_Visa_Cost": false,
+    "CountryZoneId": 3,
+    "ContinentId": 3,
+    "VisaCurrencyId": 2,
+    "Export_Fixed_Visa_Cost": false,
+    "Enable_Discharge": false,
+    "MarkedForUpdate": false,
+    "IsCtnCountry": false,
+    "ExportingCountry": true,
+    "ImportingCountry": false,
+    "CountryZone": null,
+    "Continent": null,
+    "VisaCurrency": null,
+    "CreatedOn": null,
+    "CreatedById": null,
+    "CreatedByLogin": null,
+    "ModifiedOn": null,
+    "ModifiedById": null,
+    "ModifiedByLogin": null
+  },
+  {
+    "Id": 7,
+    "Country_Code": "AL",
+    "Country_Name": "Albania",
+    "Import_Fixed_Visa_Cost": false,
+    "CountryZoneId": 2,
+    "ContinentId": 4,
+    "VisaCurrencyId": 2,
+    "Export_Fixed_Visa_Cost": false,
+    "Enable_Discharge": false,
+    "MarkedForUpdate": false,
+    "IsCtnCountry": false,
+    "ExportingCountry": true,
+    "ImportingCountry": false,
+    "CountryZone": null,
+    "Continent": null,
+    "VisaCurrency": null,
+    "CreatedOn": null,
+    "CreatedById": null,
+    "CreatedByLogin": null,
+    "ModifiedOn": null,
+    "ModifiedById": null,
+    "ModifiedByLogin": null
+  },
+  {
+    "Id": 59,
+    "Country_Code": "DZ",
+    "Country_Name": "Algeria",
+    "Import_Fixed_Visa_Cost": false,
+    "CountryZoneId": 2,
+    "ContinentId": 1,
+    "VisaCurrencyId": 2,
+    "Export_Fixed_Visa_Cost": false,
+    "Enable_Discharge": false,
+    "MarkedForUpdate": false,
+    "IsCtnCountry": false,
+    "ExportingCountry": true,
+    "ImportingCountry": false,
+    "CountryZone": null,
+    "Continent": null,
+    "VisaCurrency": null,
+    "CreatedOn": null,
+    "CreatedById": null,
+    "CreatedByLogin": null,
+    "ModifiedOn": null,
+    "ModifiedById": null,
+    "ModifiedByLogin": null
+  },
+  {
+    "Id": 13,
+    "Country_Code": "AS",
+    "Country_Name": "American Samoa",
+    "Import_Fixed_Visa_Cost": false,
+    "CountryZoneId": 3,
+    "ContinentId": 6,
+    "VisaCurrencyId": 2,
+    "Export_Fixed_Visa_Cost": false,
+    "Enable_Discharge": false,
+    "MarkedForUpdate": false,
+    "IsCtnCountry": false,
+    "ExportingCountry": true,
+    "ImportingCountry": false,
+    "CountryZone": null,
+    "Continent": null,
+    "VisaCurrency": null,
+    "CreatedOn": null,
+    "CreatedById": null,
+    "CreatedByLogin": null,
+    "ModifiedOn": null,
+    "ModifiedById": null,
+    "ModifiedByLogin": null
+  }
+]
+```
+
 | S. No | Attributes | Data Type-Length | Condition | Format/Derivation Logic | Data Example |
 |-------|------------|------------------|-----------|------------------------|--------------|
 | 1 | $sort | String - 100 | O | OData sort parameter | Country_Name |
