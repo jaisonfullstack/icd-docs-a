@@ -1,0 +1,10 @@
+{
+  "validationStatus": "VALID",
+  "nifNumber": "5000000000",
+  "registeredName": "ABC Trading Company Lda",
+  "entityStatus": "ACTIVE",
+  "registrationDate": "2020-05-15",
+  "validationCode": "NIF_VALID",
+  "validationMessage": "NIF is valid and active in ARCCLA system",
+  "errorDetails": []
+}

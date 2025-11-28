@@ -1,0 +1,29 @@
+{
+  "imoClassifications": [
+    {
+      "id": "1",
+      "unNumber": "1203",
+      "properShippingName": "GASOLINE",
+      "hazardClass": "3",
+      "packingGroup": "II",
+      "hazardLabels": ["3"],
+      "emergencySchedules": ["F-E", "S-E"],
+      "marinePollutant": false,
+      "specialProvisions": ["144", "177", "274"],
+      "packingInstructions": {
+        "limitedQuantity": "5 L",
+        "exceptedQuantity": "E2",
+        "passengerAircraft": "5 L",
+        "cargoAircraftOnly": "60 L"
+      },
+      "stowageCategory": "B",
+      "segregationGroup": "3",
+      "description": "Highly flammable liquid. Keep away from heat, sparks and flame.",
+      "isActive": true
+    }
+  ],
+  "responseCode": "SUCCESS",
+  "responseMessage": "IMO classifications retrieved successfully",
+  "totalRecords": 1,
+  "timestamp": "2024-01-15T10:30:05Z"
+}

@@ -1,0 +1,128 @@
+{
+  "Id": null,
+  "CTN_Reference_Number": "",
+  "StatusId": 1,
+  "Groupage": false,
+  "ParentCTNId": null,
+  "CargoTypeId": 1,
+  "ETD": null,
+  "ETA": null,
+  "BL_number": "vc568009iujh",
+  "IncotermId": 2,
+  "OriginCountryId": 10,
+  "FinalDestinationCountryId": 4,
+  "FreightPaymentTypeId": 1,
+  "Total_number_containers": 1,
+  "Total_number_vehicles": 0,
+  "Total_Ocean_Freight": 22.0,
+  "Total_Value_Of_Goods": 33.0,
+  "Total_Charges": 55.0,
+  "General_Total": 55.0,
+  "View_CurrencyId": 1,
+  "Exchange_Rate": 1,
+  "Visum_Location": null,
+  "Visum_Reference_number": null,
+  "Visum_Cost": 1,
+  "Visum_Date": null,
+  "Visum_AgentId": null,
+  "Invoicer_to_agent": null,
+  "VoyageNo": "546894",
+  "RegularisationCTN": false,
+  "IsExport": true,
+  "IsImport": false,
+  "Origin_CityId": 262,
+  "Final_Destination_CityId": null,
+  "CarrierId": 789,
+  "UniqueTradeNumber": "56789098765",
+  "Commission": 0,
+  "CommissionCNC": 0,
+  "CTNExchangeRate": null,
+  "MarkedForUpdate": false,
+  "ReceivedByGumar": false,
+  "ErrorSendToGumar": false,
+  "BankId": 2,
+  "ConsigneeId": 43214,
+  "ReExport": false,
+  "DCNumber": "7777777",
+  "CreatedOn": "2025-11-14T10:30:00Z",
+  "CreatedById": 1,
+  "CTN_Addresses": [
+    {
+      "Id": null,
+      "QryAddressTypeId": 1,
+      "Name": "EXPORTER COMPANY LTD",
+      "Address": "123 Export Street",
+      "City": "Export City",
+      "CountryId": 10,
+      "Email": "exporter@company.com",
+      "Telephone": "244123456789",
+      "NIFNumber": "1234567890"
+    },
+    {
+      "Id": null,
+      "QryAddressTypeId": 2,
+      "Name": "M.A.C.S AS.TEC.N. E IND",
+      "Address": "maculusso rua comandate",
+      "City": "kwenhan",
+      "CountryId": 4,
+      "Email": "contact@company.com",
+      "Telephone": "923798669",
+      "NIFNumber": "0000000458608"
+    }
+  ],
+  "CTN_Goods": [
+    {
+      "Id": null,
+      "GoodsClassificationId": 16882,
+      "IMOId": 2,
+      "CargoTypeId": 1,
+      "DescriptionGoods": "Electronic Components and Parts",
+      "GrossWeightKG": 1000.0,
+      "VolumeCBM": 11.0,
+      "OceanFreight": 22.0,
+      "ValueOfGoods": 33.0,
+      "NumberOfPackages": 3
+    }
+  ],
+  "CTN_Containers": [
+    {
+      "Id": null,
+      "ContainerTypeId": 31,
+      "Number_of_Containers": 1,
+      "ContainerNumbers": "MSCU1234567",
+      "SealNumbers": "23234",
+      "Groupage": false,
+      "IsEmpty": false,
+      "OwnedByShipper": false
+    }
+  ],
+  "CTN_Tracking": [
+    {
+      "Id": null,
+      "SourceCountryId": 10,
+      "SourcePortId": 80,
+      "ETD": "2025-11-15T00:00:00.000Z",
+      "TransportTypeId": 1,
+      "VoyageNumber": "546894",
+      "CarrierId": 789,
+      "VesselId": 5163,
+      "DestinationCountryId": 4,
+      "DestinationPortId": 35,
+      "ETA": "2025-12-09T00:00:00.000Z",
+      "Sequence": 1
+    }
+  ],
+  "CTN_RORO": [],
+  "CTN_Attachments": [
+    {
+      "Id": null,
+      "AttachmentGuid": "0da7461c-2155-4d20-a695-6b7463367327",
+      "NameId": 4
+    },
+    {
+      "Id": null,
+      "AttachmentGuid": "1eb8572d-3266-5e31-b7a6-7c8574468438",
+      "NameId": 1
+    }
+  ]
+}

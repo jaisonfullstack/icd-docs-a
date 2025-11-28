@@ -1,0 +1,7 @@
+{
+  "requestId": "CTN_ATT_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "ctnNumber": "CTN2024000001",
+  "attachmentTypes": ["INVOICE", "PACKING_LIST", "CERTIFICATE_OF_ORIGIN"],
+  "language": "PT"
+}

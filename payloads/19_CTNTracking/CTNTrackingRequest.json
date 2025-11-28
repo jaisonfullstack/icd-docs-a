@@ -1,0 +1,14 @@
+{
+  "requestId": "TRK_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "ctnNumber": "CTN2024000001",
+  "language": "PT",
+  "requestedBy": {
+    "userId": "EXP001",
+    "userName": "João Silva",
+    "email": "joao.silva@empresa.com",
+    "nif": "5000000000"
+  },
+  "includeHistory": true,
+  "includeAttachments": false
+}

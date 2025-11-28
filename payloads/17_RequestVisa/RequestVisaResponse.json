@@ -1,0 +1,47 @@
+{
+  "visaRequestId": "VISA_REQ_001",
+  "visaNumber": "VISA2024000001",
+  "status": "APPROVED",
+  "approvalDetails": {
+    "approvedBy": "CNCA_INSPECTOR_001",
+    "approverName": "Dr. Maria Santos",
+    "approvalDate": "2024-01-15T15:30:00Z",
+    "approvalNotes": "Visa approved for conformity verification. Physical inspection scheduled."
+  },
+  "inspectionSchedule": {
+    "inspectionId": "INSP2024000001",
+    "scheduledDate": "2024-01-20T09:00:00Z",
+    "inspectorAssigned": "INSP_001",
+    "inspectorName": "Carlos Mendoza",
+    "inspectorPhone": "+244-923-789-456",
+    "location": {
+      "locationCode": "AOLUA_WH01",
+      "locationName": "Luanda Central Warehouse",
+      "address": "Zona Industrial de Luanda"
+    },
+    "estimatedDuration": "2 hours",
+    "requirements": [
+      "Original invoice",
+      "Packing list",
+      "Certificate of origin",
+      "Goods must be unpacked for inspection"
+    ]
+  },
+  "certificateDetails": {
+    "certificateNumber": "CNCA2024000001",
+    "ctnNumber": "CTN2024000001",
+    "validityPeriod": "90 days from inspection",
+    "estimatedIssuanceDate": "2024-01-21T17:00:00Z"
+  },
+  "fees": {
+    "inspectionFee": 15000,
+    "visaProcessingFee": 5000,
+    "totalAmount": 20000,
+    "currency": "AOA",
+    "paymentStatus": "PENDING",
+    "paymentReference": "PAY2024000001"
+  },
+  "responseCode": "SUCCESS",
+  "responseMessage": "Visa request approved and inspection scheduled successfully",
+  "timestamp": "2024-01-15T15:30:05Z"
+}

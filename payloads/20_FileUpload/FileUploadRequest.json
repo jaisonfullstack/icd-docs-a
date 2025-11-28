@@ -1,0 +1,24 @@
+{
+  "requestId": "FILE_UP_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "ctnNumber": "CTN2024000001",
+  "certificateNumber": "CNCA2024000001",
+  "uploadDetails": {
+    "attachmentType": "INVOICE",
+    "fileName": "Commercial_Invoice_001.pdf",
+    "fileSize": 245760,
+    "mimeType": "application/pdf",
+    "checksum": "a1b2c3d4e5f6789",
+    "encoding": "base64"
+  },
+  "uploadedBy": {
+    "userId": "EXP001",
+    "userName": "João Silva",
+    "email": "joao.silva@empresa.com",
+    "nif": "5000000000"
+  },
+  "fileContent": "JVBERi0xLjQKJdPr6eEKMSAwIG9iagpgDIC...base64EncodedContent...IHhhcmVmCjQ5OTUKJSVFT0YK",
+  "description": "Commercial invoice for electronics shipment",
+  "language": "PT",
+  "replaceExisting": false
+}

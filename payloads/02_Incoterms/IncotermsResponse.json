@@ -1,0 +1,67 @@
+{
+  "incoterms": [
+    {
+      "id": "1",
+      "code": "CIF",
+      "name": "Cost, Insurance and Freight",
+      "description": "Seller delivers goods to port of destination, including cost, insurance, and freight",
+      "version": "2020",
+      "transportMode": ["MARITIME", "INLAND_WATERWAY"],
+      "sellerObligations": [
+        "Deliver goods to port of destination",
+        "Pay freight and insurance to destination",
+        "Handle export clearance"
+      ],
+      "buyerObligations": [
+        "Handle import clearance",
+        "Unload goods at destination",
+        "Pay duties and taxes"
+      ],
+      "riskTransfer": "On board vessel at port of shipment",
+      "isActive": true
+    },
+    {
+      "id": "2",
+      "code": "FOB",
+      "name": "Free On Board", 
+      "description": "Seller delivers goods on board vessel at port of shipment",
+      "version": "2020",
+      "transportMode": ["MARITIME", "INLAND_WATERWAY"],
+      "sellerObligations": [
+        "Deliver goods on board vessel",
+        "Handle export clearance",
+        "Pay loading costs"
+      ],
+      "buyerObligations": [
+        "Arrange and pay for freight",
+        "Arrange and pay for insurance",
+        "Handle import clearance"
+      ],
+      "riskTransfer": "On board vessel at port of shipment",
+      "isActive": true
+    },
+    {
+      "id": "3",
+      "code": "EXW",
+      "name": "Ex Works",
+      "description": "Seller makes goods available at their premises",
+      "version": "2020",
+      "transportMode": ["ANY"],
+      "sellerObligations": [
+        "Make goods available at premises",
+        "Provide commercial invoice"
+      ],
+      "buyerObligations": [
+        "Collect goods from seller premises",
+        "Handle all transportation",
+        "Handle export and import clearance"
+      ],
+      "riskTransfer": "At seller's premises",
+      "isActive": true
+    }
+  ],
+  "responseCode": "SUCCESS",
+  "responseMessage": "Incoterms retrieved successfully",
+  "totalRecords": 3,
+  "timestamp": "2024-01-15T10:30:05Z"
+}

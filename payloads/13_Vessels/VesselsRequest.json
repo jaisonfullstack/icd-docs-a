@@ -1,0 +1,13 @@
+{
+  "requestId": "VES_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "language": "PT",
+  "searchCriteria": {
+    "vesselName": "MSC",
+    "imoNumber": "9274427",
+    "flag": "LR",
+    "vesselType": "CONTAINER_SHIP"
+  },
+  "includeSchedules": true,
+  "activeOnly": true
+}

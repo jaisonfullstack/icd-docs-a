@@ -1,0 +1,46 @@
+{
+  "downloadInfo": {
+    "downloadId": "DL2024000001",
+    "fileName": "CNCA_Invoice_2024000001.pdf",
+    "fileSize": 234567,
+    "mimeType": "application/pdf",
+    "downloadUrl": "https://api.cnca.gov.ao/download/invoice/DL2024000001",
+    "downloadToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbnZvaWNlIjoiSU5WMjAyNDAwMDAwMSIsImV4cCI6MTcwNTQxODIwMH0.signature",
+    "tokenExpiryTime": "2024-01-16T10:30:00Z",
+    "validityPeriod": "24 hours"
+  },
+  "invoiceDetails": {
+    "invoiceNumber": "INV2024000001",
+    "invoiceDate": "2024-01-15T15:30:00Z",
+    "certificateNumber": "CNCA2024000001",
+    "ctnNumber": "CTN2024000001",
+    "totalAmount": 20000,
+    "currency": "AOA",
+    "paymentStatus": "PAID",
+    "paymentDate": "2024-01-15T16:00:00Z",
+    "paymentReference": "PAY2024000001"
+  },
+  "charges": [
+    {
+      "chargeType": "INSPECTION_FEE",
+      "description": "Physical inspection fee",
+      "amount": 15000,
+      "currency": "AOA"
+    },
+    {
+      "chargeType": "PROCESSING_FEE",
+      "description": "Visa processing fee",
+      "amount": 5000,
+      "currency": "AOA"
+    }
+  ],
+  "downloadInstructions": [
+    "Click the download URL to access the invoice",
+    "Use the download token for authentication",
+    "Token is valid for 24 hours only",
+    "Keep this invoice for your records"
+  ],
+  "responseCode": "SUCCESS",
+  "responseMessage": "Invoice download prepared successfully",
+  "timestamp": "2024-01-15T10:30:05Z"
+}

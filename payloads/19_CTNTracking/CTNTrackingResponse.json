@@ -1,0 +1,105 @@
+{
+  "trackingInfo": {
+    "ctnNumber": "CTN2024000001",
+    "currentStatus": "INSPECTION_SCHEDULED",
+    "statusDescription": "Physical inspection has been scheduled",
+    "lastUpdate": "2024-01-15T15:30:00Z",
+    "estimatedCompletion": "2024-01-21T17:00:00Z",
+    "progressPercentage": 65
+  },
+  "certificateDetails": {
+    "certificateNumber": "CNCA2024000001",
+    "certificateType": "CONFORMITY_CERTIFICATE",
+    "applicantName": "ABC Trading Company Lda",
+    "applicantNif": "5000000000",
+    "submissionDate": "2024-01-10T09:00:00Z",
+    "expectedIssuanceDate": "2024-01-21T17:00:00Z"
+  },
+  "statusHistory": [
+    {
+      "status": "SUBMITTED",
+      "statusDescription": "CTN application submitted",
+      "timestamp": "2024-01-10T09:00:00Z",
+      "actionBy": "EXPORTER_USER",
+      "notes": "Initial application submitted with all required documents"
+    },
+    {
+      "status": "UNDER_REVIEW",
+      "statusDescription": "Application under preliminary review",
+      "timestamp": "2024-01-10T14:30:00Z",
+      "actionBy": "CNCA_REVIEWER_001",
+      "notes": "Documentation review started"
+    },
+    {
+      "status": "DOCUMENTS_VERIFIED",
+      "statusDescription": "All documents verified and accepted",
+      "timestamp": "2024-01-12T11:15:00Z",
+      "actionBy": "CNCA_REVIEWER_001",
+      "notes": "All supporting documents are complete and valid"
+    },
+    {
+      "status": "VISA_REQUESTED",
+      "statusDescription": "Visa requested for physical inspection",
+      "timestamp": "2024-01-15T10:30:00Z",
+      "actionBy": "EXPORTER_USER",
+      "notes": "Physical inspection visa requested"
+    },
+    {
+      "status": "VISA_APPROVED",
+      "statusDescription": "Visa approved, inspection scheduled",
+      "timestamp": "2024-01-15T15:30:00Z",
+      "actionBy": "CNCA_INSPECTOR_001",
+      "notes": "Visa approved, inspection scheduled for 2024-01-20"
+    },
+    {
+      "status": "INSPECTION_SCHEDULED",
+      "statusDescription": "Physical inspection has been scheduled",
+      "timestamp": "2024-01-15T15:30:00Z",
+      "actionBy": "CNCA_INSPECTOR_001",
+      "notes": "Inspection scheduled for Jan 20, 2024 at 09:00 AM"
+    }
+  ],
+  "nextSteps": [
+    {
+      "step": "PHYSICAL_INSPECTION",
+      "description": "Attend physical inspection",
+      "scheduledDate": "2024-01-20T09:00:00Z",
+      "location": "Luanda Central Warehouse",
+      "responsible": "APPLICANT",
+      "requirements": [
+        "Bring original documents",
+        "Ensure goods are unpacked",
+        "Inspector contact: Carlos Mendoza (+244-923-789-456)"
+      ]
+    },
+    {
+      "step": "INSPECTION_REPORT",
+      "description": "Inspection report generation",
+      "estimatedDate": "2024-01-20T17:00:00Z",
+      "responsible": "CNCA_INSPECTOR"
+    },
+    {
+      "step": "CERTIFICATE_ISSUANCE",
+      "description": "Final certificate issuance",
+      "estimatedDate": "2024-01-21T17:00:00Z",
+      "responsible": "CNCA_CERTIFICATION_OFFICE"
+    }
+  ],
+  "paymentStatus": {
+    "totalAmount": 20000,
+    "currency": "AOA",
+    "status": "PAID",
+    "paymentDate": "2024-01-15T16:00:00Z",
+    "paymentReference": "PAY2024000001",
+    "invoiceNumber": "INV2024000001"
+  },
+  "contactInfo": {
+    "supportPhone": "+244-222-310-500",
+    "supportEmail": "suporte@cnca.gov.ao",
+    "officeHours": "Monday-Friday, 8:00-17:00",
+    "emergencyContact": "+244-923-000-911"
+  },
+  "responseCode": "SUCCESS",
+  "responseMessage": "CTN tracking information retrieved successfully",
+  "timestamp": "2024-01-15T10:30:05Z"
+}

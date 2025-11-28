@@ -1,0 +1,49 @@
+{
+  "locations": [
+    {
+      "id": "1",
+      "code": "AOLUA_PORT",
+      "name": "Porto de Luanda",
+      "description": "Main port of Luanda, Angola",
+      "type": "PORT",
+      "countryCode": "AO",
+      "countryName": "Angola",
+      "cityCode": "LUA",
+      "cityName": "Luanda",
+      "address": "Marginal de Luanda",
+      "coordinates": {
+        "latitude": "-8.8383",
+        "longitude": "13.2344"
+      },
+      "isActive": true,
+      "operatingHours": "24/7",
+      "contactInfo": {
+        "phone": "+244-222-310-428",
+        "email": "info@portaluanda.co.ao"
+      }
+    },
+    {
+      "id": "2",
+      "code": "AOLUA_WH01",
+      "name": "Luanda Central Warehouse",
+      "description": "Central warehouse facility in Luanda",
+      "type": "WAREHOUSE",
+      "countryCode": "AO",
+      "countryName": "Angola",
+      "cityCode": "LUA",
+      "cityName": "Luanda",
+      "address": "Zona Industrial de Luanda",
+      "coordinates": {
+        "latitude": "-8.8500",
+        "longitude": "13.2500"
+      },
+      "isActive": true,
+      "capacity": "50000 TEU",
+      "operatingHours": "Mon-Fri 8:00-18:00"
+    }
+  ],
+  "responseCode": "SUCCESS",
+  "responseMessage": "Locations retrieved successfully",
+  "totalRecords": 2,
+  "timestamp": "2024-01-15T10:30:05Z"
+}

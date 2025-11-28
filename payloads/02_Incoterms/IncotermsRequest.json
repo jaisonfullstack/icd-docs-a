@@ -1,0 +1,8 @@
+{
+  "requestId": "INCO_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "language": "PT",
+  "version": "2020",
+  "includeDescriptions": true,
+  "transportMode": "MARITIME"
+}

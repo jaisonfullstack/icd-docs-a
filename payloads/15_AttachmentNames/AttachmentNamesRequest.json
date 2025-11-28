@@ -1,0 +1,12 @@
+{
+  "requestId": "ATT_NAME_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "language": "PT",
+  "certificateType": "CONFORMITY_CERTIFICATE",
+  "goodsCategory": "ELECTRONICS",
+  "includeOptional": true,
+  "filters": {
+    "documentType": "SUPPORTING_DOCUMENT",
+    "isDigitalOnly": false
+  }
+}

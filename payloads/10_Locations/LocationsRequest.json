@@ -1,0 +1,9 @@
+{
+  "requestId": "LOC_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "language": "PT",
+  "locationTypes": ["PORT", "WAREHOUSE", "CUSTOMS_OFFICE"],
+  "countryCode": "AO",
+  "cityCode": "LUA",
+  "activeOnly": true
+}

@@ -1,0 +1,13 @@
+{
+  "requestId": "CONS_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "language": "PT",
+  "searchCriteria": {
+    "consigneeName": "ABC",
+    "nif": "5000000000",
+    "cityCode": "LUA001",
+    "businessSector": "IMPORT_EXPORT"
+  },
+  "activeOnly": true,
+  "includeContactDetails": true
+}

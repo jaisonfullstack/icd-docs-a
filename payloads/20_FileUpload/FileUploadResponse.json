@@ -1,0 +1,65 @@
+{
+  "uploadResult": {
+    "uploadId": "UP2024000001",
+    "status": "SUCCESS",
+    "uploadTimestamp": "2024-01-15T10:30:05Z",
+    "fileId": "FILE2024000001"
+  },
+  "fileDetails": {
+    "attachmentId": "1",
+    "attachmentType": "INVOICE", 
+    "originalFileName": "Commercial_Invoice_001.pdf",
+    "storedFileName": "CTN2024000001_INVOICE_20240115_103005.pdf",
+    "fileSize": 245760,
+    "mimeType": "application/pdf",
+    "checksum": "a1b2c3d4e5f6789",
+    "checksumVerified": true,
+    "virusScanResult": "CLEAN",
+    "downloadUrl": "/api/ctn/attachments/download/1",
+    "thumbnailUrl": "/api/ctn/attachments/thumbnail/1"
+  },
+  "validationResults": {
+    "fileFormatValid": true,
+    "fileSizeValid": true,
+    "contentValid": true,
+    "requiredFieldsPresent": true,
+    "validationNotes": [
+      "Invoice number present",
+      "Exporter and importer details verified",
+      "Total amount matches declaration",
+      "Currency properly specified"
+    ],
+    "warnings": [],
+    "errors": []
+  },
+  "processingInfo": {
+    "ocrPerformed": true,
+    "textExtracted": true,
+    "dataExtractionStatus": "SUCCESS",
+    "extractedData": {
+      "invoiceNumber": "INV-2024-001",
+      "invoiceDate": "2024-01-10",
+      "totalAmount": 25000,
+      "currency": "USD",
+      "exporterName": "Global Electronics Ltd",
+      "importerName": "ABC Trading Company Lda"
+    },
+    "autoValidation": true,
+    "manualReviewRequired": false
+  },
+  "nextSteps": [
+    "File successfully uploaded and validated",
+    "Document will be included in certificate processing",
+    "No further action required for this attachment",
+    "You can proceed with other required documents"
+  ],
+  "linkingInfo": {
+    "ctnNumber": "CTN2024000001",
+    "certificateNumber": "CNCA2024000001",
+    "linkedToApplication": true,
+    "linkTimestamp": "2024-01-15T10:30:05Z"
+  },
+  "responseCode": "SUCCESS",
+  "responseMessage": "File uploaded and processed successfully",
+  "timestamp": "2024-01-15T10:30:05Z"
+}

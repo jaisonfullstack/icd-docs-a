@@ -1,0 +1,38 @@
+{
+  "transportTypes": [
+    {
+      "id": "1",
+      "code": "MAR_CONTAINER",
+      "name": "Maritime Container",
+      "description": "Container shipping via sea transport",
+      "mode": "MARITIME",
+      "category": "COMMERCIAL",
+      "isActive": true,
+      "createdDate": "2020-01-01"
+    },
+    {
+      "id": "2", 
+      "code": "MAR_BULK",
+      "name": "Maritime Bulk",
+      "description": "Bulk cargo shipping via sea transport",
+      "mode": "MARITIME",
+      "category": "COMMERCIAL",
+      "isActive": true,
+      "createdDate": "2020-01-01"
+    },
+    {
+      "id": "3",
+      "code": "AIR_EXPRESS",
+      "name": "Air Express",
+      "description": "Express air cargo transport",
+      "mode": "AIR",
+      "category": "EXPRESS",
+      "isActive": true,
+      "createdDate": "2020-01-01"
+    }
+  ],
+  "responseCode": "SUCCESS",
+  "responseMessage": "Transport types retrieved successfully",
+  "totalRecords": 3,
+  "timestamp": "2024-01-15T10:30:05Z"
+}

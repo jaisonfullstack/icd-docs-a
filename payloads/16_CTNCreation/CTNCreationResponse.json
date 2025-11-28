@@ -1,0 +1,15 @@
+{
+  "Id": 503808,
+  "CTN_Reference_Number": "AO-CNT-503808-2025",
+  "StatusId": 1,
+  "BL_number": "vc568009iujh",
+  "UniqueTradeNumber": "56789098765",
+  "CreatedOn": "2025-11-14T10:30:00Z",
+  "CreatedById": 1,
+  "AddressesCreated": 2,
+  "GoodsCreated": 1,
+  "ContainersCreated": 1,
+  "TrackingCreated": 1,
+  "AttachmentsCreated": 2,
+  "Message": "CTN certificate created successfully with all associated data"
+}

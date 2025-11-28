@@ -1,0 +1,24 @@
+[
+  {
+    "Id": 1,
+    "Code": "EUR",
+    "MarkedForUpdate": false,
+    "Countries": [],
+    "Exchange_rates": [],
+    "CreatedOn": null,
+    "CreatedById": null,
+    "ModifiedOn": null,
+    "ModifiedById": null
+  },
+  {
+    "Id": 2,
+    "Code": "USD",
+    "MarkedForUpdate": false,
+    "Countries": [],
+    "Exchange_rates": [],
+    "CreatedOn": null,
+    "CreatedById": null,
+    "ModifiedOn": null,
+    "ModifiedById": null
+  }
+]

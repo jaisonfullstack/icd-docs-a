@@ -1,0 +1,10 @@
+{
+  "requestId": "CARGO_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "language": "PT",
+  "includeInactive": false,
+  "filters": {
+    "category": "GENERAL",
+    "transportMode": "MARITIME"
+  }
+}

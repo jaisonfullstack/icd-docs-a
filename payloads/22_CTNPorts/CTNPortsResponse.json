@@ -1,0 +1,45 @@
+{
+  "ports": [
+    {
+      "id": "1",
+      "portCode": "AOLUA",
+      "portName": "Porto de Luanda",
+      "unlocode": "AOLUA",
+      "portType": "MARITIME",
+      "countryCode": "AO",
+      "countryName": "Angola",
+      "cityCode": "LUA001",
+      "cityName": "Luanda",
+      "coordinates": {
+        "latitude": "-8.8383",
+        "longitude": "13.2344"
+      },
+      "facilities": [
+        "CONTAINER_TERMINAL",
+        "GENERAL_CARGO",
+        "BULK_CARGO",
+        "PASSENGER_TERMINAL"
+      ],
+      "maxVesselLength": 400,
+      "maxVesselDraft": 16,
+      "operatingHours": "24/7",
+      "customsOffice": {
+        "officeCode": "AO_LUA_001",
+        "officeName": "Alfândega do Porto de Luanda",
+        "address": "Porto de Luanda, Marginal"
+      },
+      "harborMaster": {
+        "name": "Capitania do Porto de Luanda",
+        "phone": "+244-222-310-428",
+        "email": "capitania@portaluanda.co.ao"
+      },
+      "isActive": true,
+      "ctnEligible": true,
+      "lastUpdate": "2024-01-01T00:00:00Z"
+    }
+  ],
+  "responseCode": "SUCCESS",
+  "responseMessage": "CTN ports retrieved successfully",
+  "totalRecords": 1,
+  "timestamp": "2024-01-15T10:30:05Z"
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Unit_Desc": "Kilogram",
+    "UnitSymbol": "KG",
+    "UnitType": "Weight",
+    "ConversionFactor": 1.000,
+    "Active": true,
+    "CreatedOn": "2023-01-15T10:30:00Z",
+    "CreatedById": 1,
+    "ModifiedOn": null,
+    "ModifiedById": null
+  },
+  {
+    "Id": 2,
+    "Unit_Desc": "Ton",
+    "UnitSymbol": "TON",
+    "UnitType": "Weight",
+    "ConversionFactor": 1000.000,
+    "Active": true,
+    "CreatedOn": "2023-01-15T10:30:00Z",
+    "CreatedById": 1,
+    "ModifiedOn": null,
+    "ModifiedById": null
+  }
+]

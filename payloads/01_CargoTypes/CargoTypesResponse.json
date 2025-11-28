@@ -1,0 +1,41 @@
+{
+  "cargoTypes": [
+    {
+      "id": "1",
+      "code": "DRY_CARGO",
+      "name": "Dry Cargo",
+      "description": "Non-liquid cargo including manufactured goods",
+      "category": "GENERAL",
+      "transportMode": "MARITIME",
+      "isActive": true,
+      "hsCodePrefix": "84",
+      "specialRequirements": []
+    },
+    {
+      "id": "2",
+      "code": "CONTAINER_CARGO",
+      "name": "Container Cargo",
+      "description": "Cargo shipped in standard containers",
+      "category": "CONTAINERIZED",
+      "transportMode": "MARITIME",
+      "isActive": true,
+      "hsCodePrefix": "85",
+      "specialRequirements": ["CONTAINER_INSPECTION"]
+    },
+    {
+      "id": "3",
+      "code": "BULK_CARGO",
+      "name": "Bulk Cargo",
+      "description": "Unpackaged cargo in bulk form",
+      "category": "BULK",
+      "transportMode": "MARITIME",
+      "isActive": true,
+      "hsCodePrefix": "10",
+      "specialRequirements": ["WEIGHT_VERIFICATION"]
+    }
+  ],
+  "responseCode": "SUCCESS",
+  "responseMessage": "Cargo types retrieved successfully",
+  "totalRecords": 3,
+  "timestamp": "2024-01-15T10:30:05Z"
+}

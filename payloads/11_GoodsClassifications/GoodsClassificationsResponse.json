@@ -1,0 +1,38 @@
+{
+  "goodsClassifications": [
+    {
+      "id": "1",
+      "hsCode": "8501.10",
+      "description": "Motors of an output not exceeding 37.5 W",
+      "category": "MACHINERY",
+      "level": 4,
+      "parentCode": "8501",
+      "parentDescription": "Electric motors and generators",
+      "dutyRate": "15%",
+      "restrictionCodes": ["R001"],
+      "regulatoryNotes": "Requires electrical safety certification",
+      "isActive": true,
+      "effectiveDate": "2022-01-01"
+    },
+    {
+      "id": "2",
+      "hsCode": "8501.20",
+      "description": "Universal AC/DC motors of an output exceeding 37.5 W",
+      "category": "MACHINERY",
+      "level": 4,
+      "parentCode": "8501",
+      "parentDescription": "Electric motors and generators",
+      "dutyRate": "15%",
+      "restrictionCodes": [],
+      "regulatoryNotes": "Standard electrical equipment import procedure",
+      "isActive": true,
+      "effectiveDate": "2022-01-01"
+    }
+  ],
+  "classificationSystem": "HS",
+  "version": "2022",
+  "responseCode": "SUCCESS",
+  "responseMessage": "Goods classifications retrieved successfully",
+  "totalRecords": 2,
+  "timestamp": "2024-01-15T10:30:05Z"
+}

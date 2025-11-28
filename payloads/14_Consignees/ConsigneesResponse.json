@@ -1,0 +1,68 @@
+{
+  "consignees": [
+    {
+      "id": "1",
+      "consigneeCode": "CONS001",
+      "consigneeName": "ABC Trading Company Lda",
+      "nif": "5000000000",
+      "businessSector": "IMPORT_EXPORT",
+      "address": {
+        "street": "Rua da Missão 123",
+        "neighborhood": "Ingombota",
+        "cityCode": "LUA001",
+        "cityName": "Luanda",
+        "provinceCode": "LUA",
+        "provinceName": "Luanda",
+        "countryCode": "AO",
+        "countryName": "Angola",
+        "postalCode": "1000"
+      },
+      "contactDetails": {
+        "primaryContact": {
+          "name": "João Silva",
+          "position": "Import Manager",
+          "phone": "+244-923-456-789",
+          "email": "joao.silva@abctrading.co.ao"
+        },
+        "alternativeContact": {
+          "name": "Maria Santos",
+          "position": "Operations Director",
+          "phone": "+244-923-789-456",
+          "email": "maria.santos@abctrading.co.ao"
+        },
+        "officePhone": "+244-222-123-456",
+        "fax": "+244-222-123-457",
+        "website": "www.abctrading.co.ao"
+      },
+      "businessDetails": {
+        "registrationNumber": "REG001234567",
+        "registrationDate": "2015-03-15",
+        "businessLicense": "LIC789123456",
+        "taxNumber": "TAX5000000000",
+        "bankDetails": {
+          "bankName": "Banco de Fomento Angola",
+          "accountNumber": "123456789",
+          "iban": "AO06123456789",
+          "swift": "BFAOAOLU"
+        }
+      },
+      "importHistory": {
+        "totalImports": 245,
+        "lastImportDate": "2024-01-10T14:30:00Z",
+        "averageMonthlyValue": 150000,
+        "currency": "USD"
+      },
+      "certifications": [
+        "ISO_9001",
+        "CNCA_AUTHORIZED_IMPORTER"
+      ],
+      "status": "ACTIVE",
+      "registrationDate": "2020-01-15T00:00:00Z",
+      "lastUpdate": "2024-01-01T00:00:00Z"
+    }
+  ],
+  "responseCode": "SUCCESS",
+  "responseMessage": "Consignees retrieved successfully",
+  "totalRecords": 1,
+  "timestamp": "2024-01-15T10:30:05Z"
+}

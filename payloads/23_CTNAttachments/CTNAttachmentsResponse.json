@@ -1,0 +1,57 @@
+{
+  "attachments": [
+    {
+      "id": "1",
+      "attachmentType": "INVOICE",
+      "fileName": "Commercial_Invoice_001.pdf",
+      "fileSize": 245760,
+      "mimeType": "application/pdf",
+      "uploadDate": "2024-01-15T09:30:00Z",
+      "uploadedBy": "EXPORTER_USER",
+      "status": "VALIDATED",
+      "validationDate": "2024-01-15T09:35:00Z",
+      "downloadUrl": "/api/ctn/attachments/download/1",
+      "checksum": "a1b2c3d4e5f6789",
+      "isRequired": true,
+      "description": "Commercial invoice for shipment CTN2024000001"
+    },
+    {
+      "id": "2",
+      "attachmentType": "PACKING_LIST",
+      "fileName": "Packing_List_001.pdf",
+      "fileSize": 189440,
+      "mimeType": "application/pdf",
+      "uploadDate": "2024-01-15T09:32:00Z",
+      "uploadedBy": "EXPORTER_USER",
+      "status": "VALIDATED",
+      "validationDate": "2024-01-15T09:37:00Z",
+      "downloadUrl": "/api/ctn/attachments/download/2",
+      "checksum": "b2c3d4e5f6789a",
+      "isRequired": true,
+      "description": "Detailed packing list for shipment CTN2024000001"
+    },
+    {
+      "id": "3",
+      "attachmentType": "CERTIFICATE_OF_ORIGIN",
+      "fileName": "Certificate_Origin_001.pdf",
+      "fileSize": 156672,
+      "mimeType": "application/pdf", 
+      "uploadDate": "2024-01-15T09:34:00Z",
+      "uploadedBy": "EXPORTER_USER",
+      "status": "PENDING_VALIDATION",
+      "validationDate": null,
+      "downloadUrl": "/api/ctn/attachments/download/3",
+      "checksum": "c3d4e5f6789ab",
+      "isRequired": false,
+      "description": "Certificate of origin for goods in CTN2024000001"
+    }
+  ],
+  "ctnNumber": "CTN2024000001",
+  "totalAttachments": 3,
+  "requiredAttachments": 2,
+  "validatedAttachments": 2,
+  "pendingValidation": 1,
+  "responseCode": "SUCCESS",
+  "responseMessage": "CTN attachments retrieved successfully",
+  "timestamp": "2024-01-15T10:30:05Z"
+}

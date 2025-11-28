@@ -1,0 +1,13 @@
+{
+  "requestId": "GC_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "language": "PT",
+  "classificationSystem": "HS",
+  "version": "2022",
+  "searchCriteria": {
+    "category": "MACHINERY",
+    "level": "4",
+    "keyword": "electrical"
+  },
+  "includeDescriptions": true
+}

@@ -1,0 +1,45 @@
+[
+  {
+    "Id": 1,
+    "Name": "Banco Angolano de Investimentos",
+    "Code": "BAI",
+    "Address": "Rua Major Kanhangulo, nº 34",
+    "City": "Luanda",
+    "CountryID": 10,
+    "Country": {
+      "Id": 10,
+      "Country_Code": "AO",
+      "Country_Name": "Angola",
+      "ExportingCountry": true,
+      "ImportingCountry": true
+    },
+    "Website": "http://www.bancobai.ao",
+    "Telephone": "222 693 800 / 222 693 899",
+    "NIFNumber": null,
+    "CreatedOn": null,
+    "ModifiedOn": "2023-01-24T11:54:44.7181885",
+    "ModifiedById": 1,
+    "ModifiedByLogin": "TCNT"
+  },
+  {
+    "Id": 2,
+    "Name": "Banco Angolano de Negocios e Comercio, S.A.",
+    "Code": "BANC",
+    "Address": "Travessa da Sorte, nº 12. Maianga",
+    "City": "Luanda",
+    "CountryID": 10,
+    "Country": {
+      "Id": 10,
+      "Country_Code": "AO",
+      "Country_Name": "Angola",
+      "ExportingCountry": true,
+      "ImportingCountry": true
+    },
+    "Website": null,
+    "Telephone": null,
+    "NIFNumber": null,
+    "CreatedOn": null,
+    "ModifiedOn": null,
+    "ModifiedById": null
+  }
+]

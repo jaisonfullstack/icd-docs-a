@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 1343,
+    "LicenseNumber": null,
+    "Address": "Care of ZEABORN Ship Management GmbH & Cie KG , Ludwig-Erhard-Strasse 22, 20459 Hamburg, Germany",
+    "City": "Hamburg",
+    "CountryId": 54,
+    "Email": null,
+    "Name": "\"E.R. BRISTOL\" Schiffsbeteiligungsgesellschaft",
+    "Telephone": null,
+    "TrackingURL": null,
+    "CreatedOn": "2020-07-17T08:57:52.973",
+    "CreatedById": 1,
+    "ModifiedOn": "2020-07-17T08:57:52.973",
+    "ModifiedById": 1
+  },
+  {
+    "Id": 789,
+    "LicenseNumber": null,
+    "Address": "Kongevejen 40",
+    "City": "2840 Holte",
+    "CountryId": 56,
+    "Email": "chartering@acoe.dk",
+    "Name": "A.C. ORSSLEFF'S EFTF A/S",
+    "Telephone": "+45 45 46 00 66",
+    "TrackingURL": "",
+    "CreatedOn": "2008-05-13T08:36:14",
+    "CreatedById": 1,
+    "ModifiedOn": "2018-08-29T09:24:35.927",
+    "ModifiedById": 1
+  }
+]

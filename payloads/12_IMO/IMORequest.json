@@ -1,0 +1,12 @@
+{
+  "requestId": "IMO_REQ_001",
+  "requestTimestamp": "2024-01-15T10:30:00Z",
+  "language": "PT",
+  "classType": "DANGEROUS_GOODS",
+  "searchCriteria": {
+    "hazardClass": "3",
+    "unNumber": "1203",
+    "properShippingName": "gasoline"
+  },
+  "includePackingInstructions": true
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "Container_Type": "20GP",
+    "Description": "20-foot General Purpose",
+    "Length": 20.00,
+    "Width": 8.00,
+    "Height": 8.50,
+    "MaxWeight": 28.20,
+    "Active": true,
+    "CreatedOn": "2023-01-15T10:30:00Z",
+    "CreatedById": 1,
+    "ModifiedOn": null,
+    "ModifiedById": null
+  },
+  {
+    "Id": 2,
+    "Container_Type": "40GP",
+    "Description": "40-foot General Purpose",
+    "Length": 40.00,
+    "Width": 8.00,
+    "Height": 8.50,
+    "MaxWeight": 30.48,
+    "Active": true,
+    "CreatedOn": "2023-01-15T10:30:00Z",
+    "CreatedById": 1,
+    "ModifiedOn": null,
+    "ModifiedById": null
+  }
+]
