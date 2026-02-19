@@ -1,0 +1,47 @@
+1) intergration authetication and authorizationmethods --> we prefere basic authentication using client id and client secrets
+ Authorisation based on NIF or what, how u will identify the user that do the operation
+ User bulk upload and new user registration
+ relevent user profiles can do this service
+ 
+2) IP whitelisting requirements and which all environment u have
+
+3) Master data sync mechnisum, is SENTENCE master data can be used for other service
+How frequently should JUL sync this master data --> or its nightly syncpush or pull mechnisum
+
+
+4) Create CNCA Certificate 
+unified API approach - all data (addresses, goods, containers, tracking, attachments) in single POST request to /api/ctns
+mandatory fields and its validations like client side and server side
+
+5)Request Certificate Visa
+What are the complete prerequisites before calling this API --> after submission when i can call this api. any status update we will get
+
+
+6) Upload, Delete and View(download) Documents 
+Maximum file size limit? (Document mentions 10MB limit for file upload API)
+Supported file formats/MIME types?
+Is there a maximum number of documents per CTN?
+Document naming conventions?
+
+7) Status Retrieval & Polling
+Endpoint: GET /api/ctns/{ctnId}/status
+should pull or push using webhook
+What are ALL possible status values and their meanings?
+
+8) Do u need any type of amed or cancelation options required
+
+9) Data Format & Validation Clarifications
+onfirm ISO 8601 format: YYYY-MM-DDTHH:mm:ss.SSSZ
+Timezone handling - always UTC?
+
+10) After generating CNCA certificate in any future points like custome clarence we get full latest infromation from your system to prepopulae from your system or we can use our submitted data to prepopulate the informations
+
+11) Test data needs for the api and test user
+
+12) Export vs Import Differences
+Any other API behavioral differences between Export and Import flows
+
+13) Any SLA for request completetion
+
+14) Is any users have view only aceess, or approval access or any other type of roles exsisit
+
